@@ -1,4 +1,4 @@
-package dev.pjatk.recipeapp.security;
+package dev.pjatk.recipeapp.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

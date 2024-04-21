@@ -1,4 +1,4 @@
-package dev.pjatk.recipeapp.config;
+package dev.pjatk.recipeapp.utils;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.pattern.CompositeConverter;
