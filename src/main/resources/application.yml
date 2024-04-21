@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: recipe-app
+  docker:
+    compose:
+      lifecycle-management: start_only
+  liquibase:
+    change-log: db/changelog/db.changelog-master.xml
