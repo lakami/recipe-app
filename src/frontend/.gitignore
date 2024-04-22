@@ -11,6 +11,9 @@
 npm-debug.log
 yarn-error.log
 
+# Node installed with maven plugin
+/node
+
 # IDEs and editors
 .idea/
 .project

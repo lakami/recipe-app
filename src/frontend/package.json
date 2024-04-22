@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "private": true,
   "dependencies": {
@@ -57,14 +59,9 @@
     "@angular/cli": "^17.3.4",
     "@angular/compiler-cli": "^17.3.0",
     "@spartan-ng/cli": "^0.0.1-alpha.346",
-    "@types/jasmine": "~5.1.0",
+    "@types/jest": "^29.5.12",
     "autoprefixer": "^10.4.19",
-    "jasmine-core": "~5.1.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
+    "jest-preset-angular": "^14.0.3",
     "postcss": "^8.4.38",
     "tailwind-merge": "^2.2.0",
     "tailwindcss": "^3.4.3",

@@ -16,6 +16,8 @@
 	
 	<properties>
 		<java.version>21</java.version>
+	  <node.version>v20.12.2</node.version>
+	  <npm.version>10.5.0</npm.version>
 	</properties>
 
 	<dependencies>
@@ -81,6 +83,13 @@
   		<dependency>
   			<groupId>org.springframework.boot</groupId>
   			<artifactId>spring-boot-starter-test</artifactId>
+  			<exclusions>
+  			<!-- Exclude JUnit 4, not needed -->
+          <exclusion>
+              <groupId>org.junit.vintage</groupId>
+              <artifactId>junit-vintage-engine</artifactId>
+          </exclusion>
+        </exclusions>
   			<scope>test</scope>
   		</dependency>
   		<dependency>
@@ -148,6 +157,83 @@
   					</excludes>
   				</configuration>
   			</plugin>
+  			<plugin>
+  			  <groupId>com.github.eirslett</groupId>
+  			  <artifactId>frontend-maven-plugin</artifactId>
+  			  <version>1.15.0</version>
+  			  <configuration>
+            <!--  Be cautious: Must point to path of directory containing package.json  -->
+            <workingDirectory>src/frontend</workingDirectory>
+            <nodeVersion>${node.version}</nodeVersion>
+            <npmVersion>${npm.version}</npmVersion>
+          </configuration>
+  			  <executions>
+  			    <execution>
+  			      <id>Install node and npm</id>
+  			      <goals>
+  			        <goal>install-node-and-npm</goal>
+  			      </goals>
+  			      <phase>generate-resources</phase>
+  			      <configuration>
+  			        <nodeVersion>${node.version}</nodeVersion>
+  			        <npmVersion>${npm.version}</npmVersion>
+  			      </configuration>
+  			    </execution>
+  			    <execution>
+  			      <id>Run npm install</id>
+  			      <goals>
+  			        <goal>npm</goal>
+  			      </goals>
+  			      <phase>generate-resources</phase>
+  			      <configuration>
+  			        <arguments>install</arguments>
+  			      </configuration>
+  			    </execution>
+  			    <execution>
+                <id>Run frontend tests</id>
+                <goals>
+                    <goal>npm</goal>
+                </goals>
+                <phase>test</phase>
+                <configuration>
+                  <skip>${skipTests}</skip>
+                  <arguments>test</arguments>
+                </configuration>
+            </execution>
+  			    <execution>
+  			      <id>Run npm run build</id>
+  			      <goals>
+  			        <goal>npm</goal>
+  			      </goals>
+  			      <phase>generate-resources</phase>
+  			      <configuration>
+  			        <arguments>run build</arguments>
+  			      </configuration>
+  			    </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <executions>
+              <execution>
+                  <id>Copy Angular frontend into Spring Boot target static folder</id>
+                  <phase>process-resources</phase>
+                  <goals>
+                      <goal>copy-resources</goal>
+                  </goals>
+                  <configuration>
+                      <outputDirectory>target/classes/static</outputDirectory>
+                      <resources>
+                          <resource>
+                              <directory>src/frontend/dist/frontend/browser</directory>
+                              <filtering>true</filtering>
+                          </resource>
+                      </resources>
+                  </configuration>
+              </execution>
+          </executions>
+      </plugin>
   		</plugins>
   	</build>
 </project>
