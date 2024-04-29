@@ -1,4 +1,4 @@
-package dev.pjatk.recipeapp.utils;
+package dev.pjatk.recipeapp.util;
 
 import org.slf4j.Logger;
 

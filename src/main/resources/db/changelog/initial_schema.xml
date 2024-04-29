@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- Create a sequence for the generator -->
+    <changeSet id="00000000000000" author="k.hermann">
+        <createSequence sequenceName="seq_gen" startValue="1050" incrementBy="50"/>
+    </changeSet>
+    
+    <!-- Create table for user related data -->
+    <changeSet id="00000000000001" author="k.hermann">
+        <createTable tableName="user">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="email" type="varchar(128)">
+                <constraints unique="true" nullable="false" uniqueConstraintName="unique_user_email"/>
+            </column>
+            <column name="password_hash" type="varchar(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(50)"/>
+            <column name="last_name" type="varchar(50)"/>
+            <column name="profile_url" type="varchar(256)">
+                <constraints unique="true" nullable="false" uniqueConstraintName="unique_user_profile_url"/>
+            </column>
+            <column name="image_url" type="varchar(255)"/>
+            
+            <column name="activated" type="boolean" valueBoolean="false">
+                <constraints nullable="false" />
+            </column>
+            <column name="activation_token" type="varchar(20)"/>
+            <column name="activation_date" type="timestamp"/>
+            
+            <column name="reset_token" type="varchar(20)"/>
+            <column name="reset_date" type="timestamp">
+                <constraints nullable="true"/>
+            </column>
+            
+            <!-- Audit fields -->
+            <!-- email is used as identifier, therefore same length as email -->
+            <column name="created_by" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp"/>
+            
+            <column name="last_modified_by" type="varchar(128)"/>
+            <column name="last_modified_date" type="timestamp"/>
+        </createTable>
+        
+        <createTable tableName="authority">
+            <column name="name" type="varchar(50)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+        </createTable>
+        
+        <createTable tableName="user_authority">
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="authority_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <addPrimaryKey columnNames="user_id, authority_name" tableName="user_authority"/>
+        
+        <addForeignKeyConstraint baseColumnNames="authority_name"
+                                 baseTableName="user_authority"
+                                 constraintName="fk_authority_name"
+                                 referencedColumnNames="name"
+                                 referencedTableName="authority"/>
+        
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="user_authority"
+                                 constraintName="fk_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user"/>
+                                 
+        <loadData tableName="user" file="db/data/user-init-data.csv" separator=";" usePreparedStatements="true">
+            <column name="id" type="numeric" />
+            <column name="activated" type="boolean" />
+            <column name="created_date" type="timestamp" />
+            <column name="activation_date" type="timestamp" />
+        </loadData>
+        
+        <loadData tableName="authority" file="db/data/authority-init-data.csv" separator=";" usePreparedStatements="true">
+            <column name="name" type="string" />
+        </loadData>
+        
+        <loadData tableName="user_authority" file="db/data/user-authority-init-data.csv" separator=";" usePreparedStatements="true">
+            <column name="user_id" type="numeric" />
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

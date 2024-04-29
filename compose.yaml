@@ -1,13 +1,16 @@
 services:
   postgres:
     image: 'postgres:latest'
+    container_name: recipe-app-postgres
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+      POSTGRES_DB: recipe-app
+      POSTGRES_PASSWORD: recipe-app
+      POSTGRES_USER: recipe-app
     ports:
-      - '5432'
+      - "5432:5432"
+    volumes:
+      - ~/docker/volumes/recipe-app-postgres:/var/lib/postgresql/data
   redis:
     image: 'redis:latest'
     ports:
-      - '6379'
+      - '6379:6379'

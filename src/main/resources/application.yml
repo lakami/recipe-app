@@ -1,8 +1,31 @@
 spring:
   application:
     name: recipe-app
+  devtools:
+    restart:
+      enabled: true # I think it is default value
   docker:
     compose:
       lifecycle-management: start_only
   liquibase:
     change-log: db/changelog/db.changelog-master.xml
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5432/recipe-app
+    username: recipe-app
+    password: recipe-app
+    driver-class-name: org.postgresql.Driver
+  output:
+    ansi:
+      console-available: true
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+        security: DEBUG
