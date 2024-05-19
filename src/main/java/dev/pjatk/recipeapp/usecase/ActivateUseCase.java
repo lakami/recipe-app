@@ -26,7 +26,4 @@ public class ActivateUseCase implements Loggable {
                     throw new NoUserFoundException();
                 });
     }
-
-    public static class NoUserFoundException extends RuntimeException {
-    }
 }
