@@ -42,7 +42,7 @@ public class RecipeUserDetailsService implements UserDetailsService, Loggable {
         }
 
         return userRepository.findOneWithAuthoritiesByEmailIgnoreCase(email)
-                .map(user -> asSecuredUser(user))
+                .map(RecipeUserDetailsService::asSecuredUser)
                 .orElseThrow(() -> new UsernameNotFoundException("User with email %s was not found".formatted(email)));
     }
 

@@ -6,10 +6,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler;
+import org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter;
 import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.OrRequestMatcher;
@@ -53,18 +58,40 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, MvcRequestMatcher.Builder mvc) throws Exception {
         return http
-                .authorizeHttpRequests(auth -> auth
+                .cors(Customizer.withDefaults())
+                // TODO: let it stay for now this way
+                .csrf(csrf -> csrf
+                        .csrfTokenRepository(new org.springframework.security.web.csrf.CookieCsrfTokenRepository())
+                        .csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler())
+                )
+                .addFilterAfter(new CookieCsrfFilter(), BasicAuthenticationFilter.class)
+                // TODO: evaluate what is needed
+//                .headers(headers -> headers
+//                         .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)
+//                         .contentSecurityPolicy(csp -> csp.policyDirectives("default-src 'self'; script-src 'self'"))
+//                         .referrerPolicy(referrerPolicy -> referrerPolicy.policy(ReferrerPolicyHeaderWriter.ReferrerPolicy.STRICT_ORIGIN_WHEN_CROSS_ORIGIN))
+//                )
+                .authorizeHttpRequests(auth -> auth // TODO: add more rules for certain paths
                         .requestMatchers(ALLOWED_STATIC_PATHS).permitAll()
+                        .requestMatchers(mvc.pattern("/api/v1/register")).permitAll()
+                        .requestMatchers(mvc.pattern("/api/v1/login")).permitAll()
+                        .requestMatchers(mvc.pattern("/api/v1/activate")).permitAll()
+                        .requestMatchers(mvc.pattern("/api/v1/")).permitAll()
                         .requestMatchers(mvc.pattern("/api/v1/**")).authenticated()
                 )
-                .exceptionHandling(
-                        exceptionHanding ->
-                                exceptionHanding.defaultAuthenticationEntryPointFor(
-                                        new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED),
-                                        new OrRequestMatcher(antMatcher("/api/v1/**"))
-                                )
+                .exceptionHandling(eH -> eH.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
+                .formLogin(formLogin -> formLogin
+                        .loginPage("/login")
+                        .loginProcessingUrl("/api/v1/login")
+                        .successHandler((request, response, authentication) -> response.setStatus(HttpStatus.OK.value()))
+                        .failureHandler((request, response, exception) -> response.setStatus(HttpStatus.UNAUTHORIZED.value()))
+                        .permitAll()
                 )
-                .formLogin(Customizer.withDefaults())
-                .build();
+                .logout(logout -> logout
+                        .logoutUrl("/api/v1/logout")
+                        .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler(HttpStatus.OK))
+                        .permitAll()
+                )
+                .build(); // TODO: rememberMe
     }
 }
