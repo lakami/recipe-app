@@ -1,7 +1,9 @@
 package dev.pjatk.recipeapp.config;
 
+import dev.pjatk.recipeapp.security.Authorities;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -70,10 +72,16 @@ public class SecurityConfig {
                         .requestMatchers(mvc.pattern("/api/v1/register")).permitAll()
                         .requestMatchers(mvc.pattern("/api/v1/login")).permitAll()
                         .requestMatchers(mvc.pattern("/api/v1/activate")).permitAll()
-                        .requestMatchers(mvc.pattern("/api/v1/tag")).permitAll()
-                        .requestMatchers(mvc.pattern("/api/v1/category")).permitAll()
-                        .requestMatchers(mvc.pattern("/api/v1/dish")).permitAll()
-                        .requestMatchers(mvc.pattern("/api/v1/")).permitAll()
+                        .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/tag")).permitAll()
+                        .requestMatchers(mvc.pattern(HttpMethod.PUT, "/api/v1/tag")).hasAnyAuthority(Authorities.ADMIN)
+                        .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/category")).permitAll()
+                        .requestMatchers(mvc.pattern(HttpMethod.PUT,
+                                                     "/api/v1/category")).hasAnyAuthority(Authorities.ADMIN)
+                        .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/dish")).permitAll()
+                        .requestMatchers(mvc.pattern(HttpMethod.PUT, "/api/v1/dish")).hasAnyAuthority(Authorities.ADMIN)
+                        .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/recipe/**")).permitAll()
+                        .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/v1/recipe/**")).authenticated()
+                        .requestMatchers(mvc.pattern(HttpMethod.PUT, "/api/v1/recipe/**")).authenticated()
                         .requestMatchers(mvc.pattern("/api/v1/**")).authenticated()
                 )
                 .exceptionHandling(eH -> eH.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
