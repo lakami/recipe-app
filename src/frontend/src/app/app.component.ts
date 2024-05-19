@@ -9,8 +9,7 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'frontend';
-
+  // todo: remove this and corresponding test
   sum(a: number, b: number): number {
     return a + b;
   }

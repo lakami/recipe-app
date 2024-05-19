@@ -1,0 +1,9 @@
+<app-navbar></app-navbar>
+<p>main-page works!: {{result}}</p>
+<div>asynchronicznie: {{ result$ | async }}</div>
+<div>BehaviorSubject: {{ resultBS.getValue() }}</div>
+<div>Signal: {{ resultSignal() }}</div>
+<div>Observable from signal: {{resultAsObservable$ | async}}</div>
+<button (click)="makeABigger()">Click here</button>
+
+
