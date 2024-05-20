@@ -1,0 +1,8 @@
+id,name,preparation_time,servings,image_url,description,created_by,last_modified_by
+0,Ciasto dyniowe z herbatą,120,10,5083d89c-ec4e-4cca-a230-1c967dbad8c3.jpg,Pyszne ciasto dyniowe z domieszką herbaty.,system,system
+1,Spaghetti wegetariańskie,30,4,97daf6a0-fbb8-4b18-9c0b-c2ec03cf3dfb.jpg,Wegetariańska wersja spaghetti bolognese.,system,system
+2,Spaghetti z mięsem,30,4,63f910d2-378f-4ee4-b45f-cc9fa1d889ca.jpg,Klasyczne spaghetti z mięsem mielonym i sosem pomidorowym.,system,system
+3,Sernik matcha,120,10,fd7ae20b-8909-4a4c-b0e1-d274080dfd10.jpg,Pyszny sernik w wydaniu azjatyckim o smaku herbaty matcha.,system,system
+4,Jajecznica,10,2,fdd23cf8-c834-4f5e-aec6-c52fe90b8876.jpg,Klasyczna jajecznica z cebulą i szczypiorkiem.,system,system
+5,Naleśniki ketogeniczne,20,2,29b5e698-9a81-4515-b312-fcdf69533899.jpg,"Naleśniki bez mąki, bez cukru, bez zbędnych węglowodanów.",system,system
+6,Złote mleko,10,2,e8933284-c1ef-4338-87c9-6b513121af9a.jpg,"Indyjski napój na bazie mleka roślinnego z dodatkiem kurkumy. Posiada właściwości przeciwzapalne i przeciwbakteryjne. Zalecany do picia celem wzmocnienia odporności organizmu, zwłaszcza w okresie jesienno-zimowym.",system,system

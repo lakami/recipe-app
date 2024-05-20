@@ -1,13 +1,16 @@
 package dev.pjatk.recipeapp.controller;
 
+import dev.pjatk.recipeapp.dto.request.AddRecipeDTO;
 import dev.pjatk.recipeapp.dto.response.RecipeDTO;
 import dev.pjatk.recipeapp.service.RecipeService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RequiredArgsConstructor
 @RestController
@@ -25,5 +28,13 @@ public class RecipeController {
     @GetMapping("/{id}")
     public RecipeDTO getRecipeById(Long id) {
         return recipeService.getRecipeById(id);
+    }
+
+    @PostMapping
+    @RequestMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+    public Long createRecipe(@Valid @RequestPart("recipe") AddRecipeDTO recipeDTO,
+                             @RequestParam("image") MultipartFile image) {
+        return 0L;
     }
 }

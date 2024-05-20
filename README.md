@@ -18,7 +18,7 @@ Projekt na inżynierkę
 - [x] Pobieranie wszystkich kategorii
 - [x] Pobieranie wszystkich dań
 - [x] Pobieranie wszystkich tagów
-- [ ] Dodać przykładowe przepisy
+- [x] Dodać przykładowe przepisy
 - [x] Dodać przykładowe kategorie
 - [x] Dodać przykładowe dania
 - [x] Dodać przykładowe tagi
