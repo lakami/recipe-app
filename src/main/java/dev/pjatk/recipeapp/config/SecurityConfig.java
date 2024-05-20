@@ -82,6 +82,7 @@ public class SecurityConfig {
                         .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/recipe/**")).permitAll()
                         .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/v1/recipe/**")).authenticated()
                         .requestMatchers(mvc.pattern(HttpMethod.PUT, "/api/v1/recipe/**")).authenticated()
+                        .requestMatchers(mvc.pattern("/api/v1/favourites")).authenticated()
                         .requestMatchers(mvc.pattern("/api/v1/**")).authenticated()
                 )
                 .exceptionHandling(eH -> eH.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))

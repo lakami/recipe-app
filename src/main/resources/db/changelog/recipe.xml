@@ -180,4 +180,29 @@
         <addNotNullConstraint columnName="number" tableName="step"/>
     </changeSet>
 
+    <changeSet id="00000000000005" author="k.hermann">
+        <createTable tableName="favourite_recipe">
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="recipe_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey tableName="favourite_recipe" columnNames="recipe_id, user_id"/>
+
+        <addForeignKeyConstraint baseColumnNames="recipe_id"
+                                 baseTableName="favourite_recipe"
+                                 constraintName="fk_favrec_on_recipe"
+                                 referencedColumnNames="id"
+                                 referencedTableName="recipe"/>
+
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="favourite_recipe"
+                                 constraintName="fk_favrec_on_user"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user"/>
+    </changeSet>
+
 </databaseChangeLog>

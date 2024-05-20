@@ -14,4 +14,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByEmail(String email);
     Optional<User> findByActivationToken(String activationToken);
     boolean existsByProfileUrl(String profileUrl);
+
+    @EntityGraph(attributePaths = "favourites")
+    Optional<User> findOneWithFavouriteRecipesByEmail(String email);
 }

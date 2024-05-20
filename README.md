@@ -25,11 +25,12 @@ Projekt na inżynierkę
 - [ ] Dodawanie kategorii (admin only)
 - [ ] Dodawanie dania (admin only)
 - [ ] Dodawanie tagu (admin only)
-- [x] Pobieranie przepisu
 - [ ] Wyszukiwarka dań
 - [ ] Komentarze
 - [ ] Oceny
-- [ ] Polubienia przepisu
+- [x] Pobieranie polubionych przepisów użytkownika
+- [ ] Dodawanie polubionych przepisów użytkownika
+- [ ] Usuwanie polubionych przepisów użytkownika
 
 ## Frontend
 

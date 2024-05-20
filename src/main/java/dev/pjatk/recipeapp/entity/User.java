@@ -1,11 +1,13 @@
 package dev.pjatk.recipeapp.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import dev.pjatk.recipeapp.entity.recipe.Recipe;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.NaturalId;
 
@@ -86,6 +88,14 @@ public class User extends AuditedEntityBase<Long> {
             inverseJoinColumns = {@JoinColumn(name = "authority_name", referencedColumnName = "name")}
     )
     private Set<Authority> authorities = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "favourite_recipe",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "recipe_id", referencedColumnName = "id")}
+    )
+    private Set<Recipe> favouriteRecipes = new HashSet<>();
 
     /**
      * We treat email as a unique identifier for the user. It can be treated as businessKey according to the article below.
