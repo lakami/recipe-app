@@ -1,6 +1,8 @@
 package dev.pjatk.recipeapp.service;
 
+import dev.pjatk.recipeapp.dto.request.NewDishDTO;
 import dev.pjatk.recipeapp.dto.response.DishDTO;
+import dev.pjatk.recipeapp.entity.recipe.Dish;
 import dev.pjatk.recipeapp.repository.DishRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -19,5 +21,12 @@ public class DishService {
                 .stream()
                 .map(dish -> new DishDTO(dish.getId(), dish.getName()))
                 .toList();
+    }
+
+    public DishDTO create(NewDishDTO dishDTO) {
+        var dish = new Dish();
+        dish.setName(dishDTO.name());
+        dishRepository.save(dish);
+        return new DishDTO(dish.getId(), dish.getName());
     }
 }

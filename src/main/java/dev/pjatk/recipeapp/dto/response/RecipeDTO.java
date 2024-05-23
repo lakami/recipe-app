@@ -2,6 +2,7 @@ package dev.pjatk.recipeapp.dto.response;
 
 import dev.pjatk.recipeapp.entity.recipe.Recipe;
 
+import java.time.Instant;
 import java.util.List;
 
 public record RecipeDTO(
@@ -15,7 +16,9 @@ public record RecipeDTO(
         List<StepDTO> steps,
         List<TagDTO> tags,
         List<CategoryDTO> categories,
-        List<DishDTO> dishes
+        List<DishDTO> dishes,
+        AuthorDTO author,
+        Instant createdDate
 ) {
     public RecipeDTO(Recipe recipe) {
         this(
@@ -29,7 +32,9 @@ public record RecipeDTO(
                 recipe.getSteps().stream().map(StepDTO::new).toList(),
                 recipe.getTags().stream().map(TagDTO::new).toList(),
                 recipe.getCategories().stream().map(CategoryDTO::new).toList(),
-                recipe.getDishes().stream().map(DishDTO::new).toList()
+                recipe.getDishes().stream().map(DishDTO::new).toList(),
+                new AuthorDTO(recipe.getCreatedBy()),
+                recipe.getCreatedDate()
         );
     }
 }

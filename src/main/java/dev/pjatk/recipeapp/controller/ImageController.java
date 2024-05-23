@@ -1,14 +1,13 @@
 package dev.pjatk.recipeapp.controller;
 
+import dev.pjatk.recipeapp.usecase.UpdateMainImageUseCase;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.net.MalformedURLException;
 import java.nio.file.Path;
@@ -19,9 +18,11 @@ public class ImageController {
 
     protected static final String IMAGES = "/api/v1/images";
     private final Path root;
+    private final UpdateMainImageUseCase updateMainImageUseCase;
 
-    public ImageController(@Value("${recipe.app-dir}") String root) {
+    public ImageController(@Value("${recipe.app-dir}") String root, UpdateMainImageUseCase updateMainImageUseCase) {
         this.root = Path.of(root);
+        this.updateMainImageUseCase = updateMainImageUseCase;
     }
 
     @GetMapping("/{filename:.+}")
@@ -42,4 +43,16 @@ public class ImageController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @PutMapping("/{id}")
+    public void updateMainImage(@PathVariable Long id, @RequestParam("image") MultipartFile image) {
+        updateMainImageUseCase.updateMainImage(id, image);
+    }
+
+//    // TODO: Implement this endpoint when multi-image support will be added
+//    @PostMapping("/{id}")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public void addImage(@PathVariable Long id, @RequestParam("image") MultipartFile image) {
+//    }
+
 }

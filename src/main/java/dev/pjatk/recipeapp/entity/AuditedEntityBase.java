@@ -1,8 +1,6 @@
 package dev.pjatk.recipeapp.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedBy;
@@ -23,16 +21,18 @@ public abstract class AuditedEntityBase<ID> implements Serializable {
     public abstract ID getId(); // remember about getters for ID
 
     @CreatedBy
-    @Column(name = "created_by", nullable = false, length = 50, updatable = false)
-    private String createdBy;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "created_by_user_id", updatable = false, nullable = false)
+    private User createdBy;
 
     @CreatedDate
     @Column(name = "created_date", updatable = false)
     private Instant createdDate = Instant.now();
 
     @LastModifiedBy
-    @Column(name = "last_modified_by", length = 50)
-    private String lastModifiedBy;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "last_modified_by_user_id")
+    private User lastModifiedBy;
 
     @LastModifiedDate
     @Column(name = "last_modified_date")

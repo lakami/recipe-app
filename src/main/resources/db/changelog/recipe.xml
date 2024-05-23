@@ -107,6 +107,9 @@
             <column name="recipe_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
+            <column name="number" type="INT">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
 
         <addForeignKeyConstraint baseColumnNames="recipe_id"
@@ -174,13 +177,6 @@
     </changeSet>
 
     <changeSet id="00000000000004" author="k.hermann">
-        <addColumn tableName="step">
-            <column name="number" type="INT"/>
-        </addColumn>
-        <addNotNullConstraint columnName="number" tableName="step"/>
-    </changeSet>
-
-    <changeSet id="00000000000005" author="k.hermann">
         <createTable tableName="favourite_recipe">
             <column name="user_id" type="bigint">
                 <constraints nullable="false"/>
@@ -206,7 +202,7 @@
     </changeSet>
 
     <!-- Load recipes, ingredients, steps and add categories, tags and dishes to recipes -->
-    <changeSet id="00000000000006" author="k.hermann">
+    <changeSet id="00000000000005" author="k.hermann">
         <loadData tableName="recipe" file="db/data/recipes.csv">
             <column name="id" type="NUMERIC"/>
             <column name="name" type="STRING"/>

@@ -39,7 +39,10 @@ public class Recipe extends AuditedEntityBase<Long> {
     @Column(name = "image_url")
     private String imageUrl;
 
-    @ManyToMany
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
     @JoinTable(
             name = "recipe_category",
             joinColumns = @JoinColumn(name = "recipe_id"),
@@ -47,7 +50,10 @@ public class Recipe extends AuditedEntityBase<Long> {
     )
     private Set<Category> categories;
 
-    @ManyToMany
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
     @JoinTable(
             name = "recipe_tag",
             joinColumns = @JoinColumn(name = "recipe_id"),
@@ -55,7 +61,10 @@ public class Recipe extends AuditedEntityBase<Long> {
     )
     private Set<Tag> tags;
 
-    @ManyToMany
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
     @JoinTable(
             name = "recipe_dish",
             joinColumns = @JoinColumn(name = "recipe_id"),
@@ -68,6 +77,5 @@ public class Recipe extends AuditedEntityBase<Long> {
 
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Ingredient> ingredients;
-
 
 }

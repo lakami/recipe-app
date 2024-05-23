@@ -1,11 +1,12 @@
 package dev.pjatk.recipeapp.controller;
 
+import dev.pjatk.recipeapp.dto.request.NewTagDTO;
 import dev.pjatk.recipeapp.dto.response.TagDTO;
 import dev.pjatk.recipeapp.service.TagService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +20,12 @@ public class TagController {
     @GetMapping
     public List<TagDTO> getAll() {
         return tagService.getAll();
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public TagDTO create(@Valid @RequestBody NewTagDTO newTagDTO) {
+        return tagService.create(newTagDTO);
     }
 
 }

@@ -73,18 +73,23 @@ public class SecurityConfig {
                         .requestMatchers(mvc.pattern("/api/v1/login")).permitAll()
                         .requestMatchers(mvc.pattern("/api/v1/activate")).permitAll()
                         .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/tag")).permitAll()
-                        .requestMatchers(mvc.pattern(HttpMethod.PUT, "/api/v1/tag")).hasAnyAuthority(Authorities.ADMIN)
+                                               .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/v1/tag")).hasAnyAuthority(Authorities.ADMIN)
+//                        .requestMatchers(mvc.pattern( "/api/v1/tag")).permitAll()
                         .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/category")).permitAll()
-                        .requestMatchers(mvc.pattern(HttpMethod.PUT,
+                                               .requestMatchers(mvc.pattern(HttpMethod.POST,
                                                      "/api/v1/category")).hasAnyAuthority(Authorities.ADMIN)
                         .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/dish")).permitAll()
-                        .requestMatchers(mvc.pattern(HttpMethod.PUT, "/api/v1/dish")).hasAnyAuthority(Authorities.ADMIN)
+                                               .requestMatchers(mvc.pattern(HttpMethod.POST,
+                                                                            "/api/v1/dish")).hasAnyAuthority(Authorities.ADMIN)
                         .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/recipe/**")).permitAll()
                         .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/v1/recipe/**")).authenticated()
                         .requestMatchers(mvc.pattern(HttpMethod.PUT, "/api/v1/recipe/**")).authenticated()
                         .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/images/**")).permitAll()
+                                               .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/v1/images/**")).authenticated()
+                                               .requestMatchers(mvc.pattern(HttpMethod.PUT, "/api/v1/images/**")).authenticated()
                         .requestMatchers(mvc.pattern("/api/v1/favourites")).authenticated()
                         .requestMatchers(mvc.pattern("/api/v1/**")).authenticated()
+                                               .requestMatchers(mvc.pattern("/error")).permitAll()
                 )
                 .exceptionHandling(eH -> eH.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
                 .formLogin(formLogin -> formLogin

@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 import java.util.List;
 import java.util.Set;
 
-public record AddRecipeDTO(
+public record NewRecipeDTO(
         @Size(min = 1, max = 100) String name,
         @Size(min = 1, max = 1000) String description,
         @Size(min = 1, max = 10000) Integer preparationTime,

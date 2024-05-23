@@ -3,7 +3,9 @@ package dev.pjatk.recipeapp.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.domain.Persistable;
 
 import java.io.Serializable;
@@ -24,6 +26,7 @@ public class Authority implements Serializable, Persistable<String> {
     @Getter
     @Setter
     @EqualsAndHashCode.Include
+    @Column(length = 50)
     private String name;
 
     @Transient
