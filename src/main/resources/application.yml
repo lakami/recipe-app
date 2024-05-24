@@ -1,6 +1,11 @@
 spring:
   application:
     name: recipe-app
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
   devtools:
     restart:
       enabled: true # I think it is default value
@@ -29,3 +34,6 @@ logging:
       springframework:
         web: DEBUG
         security: DEBUG
+
+recipe:
+  app-dir: ${user.home}/.recipe-app

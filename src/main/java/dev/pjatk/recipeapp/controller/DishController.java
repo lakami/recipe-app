@@ -1,11 +1,12 @@
 package dev.pjatk.recipeapp.controller;
 
+import dev.pjatk.recipeapp.dto.request.NewDishDTO;
 import dev.pjatk.recipeapp.dto.response.DishDTO;
 import dev.pjatk.recipeapp.service.DishService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +21,11 @@ public class DishController {
     @GetMapping
     public List<DishDTO> getAll() {
         return dishService.getAll();
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public DishDTO create(@Valid @RequestBody NewDishDTO dishDTO) {
+        return dishService.create(dishDTO);
     }
 }

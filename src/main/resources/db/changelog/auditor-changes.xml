@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+	<changeSet id="00000000000006" author="k.hermann">
+		<addColumn tableName="recipe">
+			<column name="created_by_user_id" type="BIGINT" defaultValue="1"/>
+			<column name="last_modified_by_user_id" type="BIGINT" defaultValue="1"/>
+		</addColumn>
+		<addNotNullConstraint columnName="created_by_user_id" tableName="recipe"/>
+		<addColumn tableName="user">
+			<column name="created_by_user_id" type="BIGINT" defaultValue="1"/>
+			<column name="last_modified_by_user_id" type="BIGINT" defaultValue="1"/>
+		</addColumn>
+		<addNotNullConstraint columnName="created_by_user_id" tableName="user"/>
+		<addForeignKeyConstraint baseColumnNames="created_by_user_id" baseTableName="recipe" constraintName="FK_RECIPE_ON_CREATED_BY_USER" referencedColumnNames="id" referencedTableName="user"/>
+		<addForeignKeyConstraint baseColumnNames="last_modified_by_user_id" baseTableName="recipe" constraintName="FK_RECIPE_ON_LAST_MODIFIED_BY_USER" referencedColumnNames="id" referencedTableName="user"/>
+		<addForeignKeyConstraint baseColumnNames="created_by_user_id" baseTableName="user" constraintName="FK_USER_ON_CREATED_BY_USER" referencedColumnNames="id" referencedTableName="user"/>
+		<addForeignKeyConstraint baseColumnNames="last_modified_by_user_id" baseTableName="user" constraintName="FK_USER_ON_LAST_MODIFIED_BY_USER" referencedColumnNames="id" referencedTableName="user"/>
+		<dropColumn columnName="created_by" tableName="recipe"/>
+		<dropColumn columnName="last_modified_by" tableName="recipe"/>
+		<dropColumn columnName="created_by" tableName="user"/>
+		<dropColumn columnName="last_modified_by" tableName="user"/>
+	</changeSet>
+	<changeSet id="00000000000007" author="k.hermann">
+		<modifyDataType columnName="profile_url" newDataType="VARCHAR(255)" tableName="user"/>
+	</changeSet>
+</databaseChangeLog>

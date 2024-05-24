@@ -1,0 +1,46 @@
+id,recipe_id,number,description
+0,0,1,"Dynię obrać, pokroić w kostkę i ugotować na parze."
+1,0,2,W międzyczasie zalać herbatę wrzątkiem i odstawić do ostygnięcia.
+2,0,3,Ostudzoną dynię zmiksować na gładką masę.
+3,0,4,Wymieszać wszystkie mokre składniki i zblendować
+4,0,5,Wymieszać wszystkie suche składniki i dodać do nich mokre.
+5,0,6,Wylać ciasto do formy i piec w 180 stopniach przez 50-60 minut.
+6,1,1,"Soczewicę i grzyby zalej sosem sojowym, wodą i olejem. Wstaw na mały ogień i gotuj pod przykryciem 20-25 minut do wchłonięcia płynów."
+7,1,2,"Cebulę, marchewki i seler pokrój w kostkę. Czosnek posiekaj. Na patelni rozgrzej olej, dodaj cebulę i smaż przez 2 minuty. Dodaj marchewkę, seler i czosnek. Smaż aż warzywa zmiękną."
+8,1,3,"Dodaj cynamon, anyż i sól. "
+9,1,4,"Jeśli używasz wina, dodaj je teraz i gotuj, aż odparuje."
+10,1,5,W międzyczasie zblenduj soczewicę z grzybami na gładką masę. Dodaj do warzyw i wymieszaj.
+11,1,6,Dodaj passatę pomidorową i zioła prowansalskie. Gotuj przez 10 minut.
+12,1,7,Makaron ugotuj al dente w osolonej wodzie. Odcedź i wymieszaj z sosem.
+13,1,8,Podawaj z posypanymi płatkami drożdżowymi i świeżą bazylią.
+14,2,1,"Włącz patelnię na bardzo niski ogień. Dodaj oliwę oraz zioła prowansalskie. W momencie kiedy zioła zaczną pachnieć, zdejmij do miski."
+15,2,2,"Cebulę i czosnek posiekaj. Na patelni rozgrzej oliwę, dodaj cebulę i smaż przez 2 minuty. Dodaj czosnek i smaż przez kolejną minutę."
+16,2,3,Zdejmij z ognia i przełóż do miski.
+17,2,4,Na tej samej patelni podsmaż mięso mielone. Dodaj do cebuli i czosnku.
+18,2,5,Dodaj passatę pomidorową. Gotuj przez 10 minut.
+19,2,6,Makaron ugotuj al dente w osolonej wodzie. Odcedź i wymieszaj z sosem.
+20,2,7,Podawaj z posypanymi płatkami drożdżowymi lub startym serem i świeżą bazylią.
+21,3,1,Rozgnieść herbatniki. Wymieszać z roztopionym masłem i wyłożyć na dno tortownicy.
+22,3,2,Matchę wymieszać z 2 łyżkami gorącej wody.
+23,3,3,"Ser miksować w misce 2-3 minuty, aby uzyskać jednolitą, napowietrzoną masę"
+24,3,4,Dodać cukier
+25,3,5,"Dodawać jajka po jednym, zmniejszyć obroty miksera"
+26,3,6,Dodać śmietanki
+27,3,7,Dodać matchę
+28,3,8,Dodać ekstrakt waniliowy
+29,3,9,Dodać mąkę i wymieszać dokładnie łyżką
+30,3,10,Wylać masę na herbatniki
+31,3,11,Formę ustawić w kąpieli wodnej. Użyć gorącej wody
+32,3,12,Przykryć formę folią aluminiową
+33,3,13,Piekarnik powinien być nagrzany do 170 stopni. Piec w tej temperaturze przez 15 minut. Następnie obniżyć ją do 120 stopni i piec kolejne 45-60 minut.
+34,3,14,Po upieczeniu wyjąć z piekarnika i ostudzić. Następnie wstawić do lodówki na kilka godzin.
+35,4,1,"Cebulę pokroić w kostkę, szczypiorek posiekać."
+36,4,2,"Na patelni rozgrzać olej, dodać cebulę i smażyć, aż się zeszkli."
+37,4,3,"Jajka roztrzepać z mlekiem, solą i pieprzem."
+38,4,4,"Dodać do cebuli i smażyć, mieszając, aż się zetną."
+39,4,5,Na koniec dodać szczypiorek.
+40,4,6,Podawać z chlebem.
+41,5,1,Wszystkie składniki naleśników umieścić w blenderze i zmiksować na gładką masę.
+42,5,2,Na patelni rozgrzać olej kokosowy i smażyć naleśniki z obu stron na złoty kolor.
+43,6,1,"Wszystkie składniki umieścić w garnku i podgrzewać, aż się zagotują."
+44,6,2,Podawać ciepłe.

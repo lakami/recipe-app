@@ -97,6 +97,9 @@ public class User extends AuditedEntityBase<Long> {
     )
     private Set<Recipe> favouriteRecipes = new HashSet<>();
 
+    @OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL, orphanRemoval = false)
+    private Set<Recipe> recipes = new HashSet<>();
+
     /**
      * We treat email as a unique identifier for the user. It can be treated as businessKey according to the article below.
      * @see <a href="https://thorben-janssen.com/ultimate-guide-to-implementing-equals-and-hashcode-with-hibernate/">About equals() and hashCode()</a>

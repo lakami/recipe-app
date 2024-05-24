@@ -7,8 +7,8 @@ Projekt na inżynierkę
 
 - [x] Pobieranie wszystkich przepisów
 - [x] Pobieranie przepisu po id
-- [ ] Dodawanie przepisu (w tym zdjęcia!)
-- [ ] Edycja przepisu
+- [x] Dodawanie przepisu (w tym zdjęcia!)
+- [x] Edycja przepisu
 - [x] Logowanie
 - [x] Rejestracja
 - [x] Aktywacja
@@ -18,19 +18,19 @@ Projekt na inżynierkę
 - [x] Pobieranie wszystkich kategorii
 - [x] Pobieranie wszystkich dań
 - [x] Pobieranie wszystkich tagów
-- [ ] Dodać przykładowe przepisy
+- [x] Dodać przykładowe przepisy
 - [x] Dodać przykładowe kategorie
 - [x] Dodać przykładowe dania
 - [x] Dodać przykładowe tagi
-- [ ] Dodawanie kategorii (admin only)
-- [ ] Dodawanie dania (admin only)
-- [ ] Dodawanie tagu (admin only)
-- [ ] Wyszukiwarka dań
-- [ ] Komentarze
-- [ ] Oceny
+- [x] Dodawanie kategorii (admin only)
+- [x] Dodawanie dania (admin only)
+- [x] Dodawanie tagu (admin only)
 - [x] Pobieranie polubionych przepisów użytkownika
 - [ ] Dodawanie polubionych przepisów użytkownika
 - [ ] Usuwanie polubionych przepisów użytkownika
+- [ ] Wyszukiwarka dań
+- [ ] Komentarze
+- [ ] Oceny
 
 ## Frontend
 
