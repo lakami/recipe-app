@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit, signal, WritableSignal} from '@angular/cor
 import {RouterOutlet} from "@angular/router";
 import {ExampleService} from "../shared/services/example.service";
 import {BehaviorSubject, Observable, Subscription} from "rxjs";
-import {AsyncPipe} from "@angular/common";
+import {AsyncPipe, CommonModule} from "@angular/common";
 import {toObservable} from "@angular/core/rxjs-interop";
 
 @Component({
@@ -10,7 +10,8 @@ import {toObservable} from "@angular/core/rxjs-interop";
   standalone: true,
   imports: [
     RouterOutlet,
-    AsyncPipe
+    AsyncPipe,
+    CommonModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
@@ -29,7 +30,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   resultAsObservable$: Observable<number> = toObservable(this.resultSignal)
 
-
+  numbers: number[] = Array.from({length: 100}, (_, i) => i + 1);
 
   constructor(private exampleService: ExampleService) {
   }

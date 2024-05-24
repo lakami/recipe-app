@@ -1,5 +1,5 @@
 import {inject, Injectable, Signal, signal} from "@angular/core";
-import {Account, Authority} from "./account.module";
+import {Account, Authority} from "./account.model";
 import {catchError, Observable, of, ReplaySubject, shareReplay, tap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";

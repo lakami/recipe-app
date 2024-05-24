@@ -1,0 +1,58 @@
+:host {
+  @apply w-full bg-white fixed top-0 z-[1000] right-0 left-0 min-h-[4rem] shadow-bottom pt-4;
+}
+
+div.header-container {
+  @apply max-w-[70em] mx-auto
+}
+
+nav {
+  @apply min-w-[70em] items-start justify-start mt-6
+}
+
+ul.navbar {
+  @apply list-none m-0 p-0 flex flex-wrap
+}
+
+li.navbar-text {
+  @apply py-0 pr-4 pl-4 h-11
+  text-sm leading-5 tracking-[.0625rem] font-bold uppercase underline-offset-[.25rem] decoration-1 antialiased cursor-pointer
+}
+
+li.multi-utility-text {
+  @apply text-sm leading-5 pl-3 flex items-center gap-1 h-6 cursor-pointer
+}
+li.multi-utility-text {
+  letter-spacing: inherit;
+  text-underline-offset: .1875rem;
+}
+
+div.logo-container{
+  @apply justify-self-start justify-center flex m-0 p-0 box-border fill-lime-500 cursor-pointer
+}
+div.logo-container{
+  line-height: 0;
+}
+
+svg.logo{
+  @apply h-10 pl-4 pr-4
+}
+
+div.header-top {
+    @apply grid-cols-none grid gap-4 grid-flow-col items-end justify-between w-full m-0 p-0 h-auto box-border
+}
+
+
+div.multi-utility-nav-group {
+  @apply min-w-[34em] justify-self-end justify-end flex w-full m-0 pr-4 pl-0 py-0 box-border
+}
+
+ul.multi-utility-nav {
+  @apply flex items-center gap-x-6 gap-y-3 m-0 p-0 list-none box-border
+  divide-x divide-black/15
+}
+
+.icon-login {
+  --ng-icon__stroke-width: 1.2;
+}
+

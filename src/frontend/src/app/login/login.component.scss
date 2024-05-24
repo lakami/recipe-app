@@ -1,0 +1,7 @@
+:host {
+  @apply flex h-full w-full justify-center items-center relative;
+}
+
+.btn-text {
+  @apply absolute left-[calc(50%+2,5rem)]
+}

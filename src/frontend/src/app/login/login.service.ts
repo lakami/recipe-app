@@ -1,8 +1,8 @@
 import {inject, Injectable} from "@angular/core";
 import {Router} from "@angular/router";
 import {mergeMap, Observable} from "rxjs";
-import {Login} from "./login.module";
-import {Account} from "../core/auth/account.module";
+import {Login} from "./login.model";
+import {Account} from "../core/auth/account.model";
 import {AccountService} from "../core/auth/account.service";
 import {AuthService} from "../core/auth/auth.service";
 
