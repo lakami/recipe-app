@@ -31,6 +31,8 @@ Projekt na inżynierkę
 - [ ] Wyszukiwarka dań
 - [ ] Komentarze
 - [ ] Oceny
+- [ ] Pobieranie informacji o użytkowniku pod profil użytkownika
+- [ ] 
 
 ## Frontend
 
