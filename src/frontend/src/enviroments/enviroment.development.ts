@@ -5,4 +5,5 @@ export const environment = {
   login: base('/login'),
   logout: base('/logout'),
   account: base('/account'),
+  register: base('/register'),
 }

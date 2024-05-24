@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {provideIcons} from '@ng-icons/core';
-import {lucideUserCircle} from '@ng-icons/lucide';
+import {lucideMoon, lucideUserCircle} from '@ng-icons/lucide';
 import {HlmIconComponent} from '@spartan-ng/ui-icon-helm';
 
 @Component({
@@ -11,7 +11,7 @@ import {HlmIconComponent} from '@spartan-ng/ui-icon-helm';
     RouterLink,
     [HlmIconComponent]
   ],
-  providers: [provideIcons({ lucideUserCircle })],
+  providers: [provideIcons({ lucideUserCircle, lucideMoon })],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
