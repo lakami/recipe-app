@@ -50,3 +50,4 @@ logging:
 
 recipe:
   app-dir: ${user.home}/.recipe-app
+  base-url: http://localhost:${server.port}

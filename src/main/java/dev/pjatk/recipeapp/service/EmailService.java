@@ -4,7 +4,7 @@ import dev.pjatk.recipeapp.entity.User;
 import dev.pjatk.recipeapp.util.Loggable;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -16,13 +16,22 @@ import org.thymeleaf.spring6.SpringTemplateEngine;
 import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 
-@RequiredArgsConstructor
 @Service
 public class EmailService implements Loggable {
     private final JavaMailSender mailSender;
     private final MessageSource messageSource;
     private final SpringTemplateEngine templateEngine;
+    private final String url;
 
+    public EmailService(JavaMailSender mailSender,
+                        MessageSource messageSource,
+                        SpringTemplateEngine templateEngine,
+                        @Value("${recipe.base-url}") String url) {
+        this.mailSender = mailSender;
+        this.messageSource = messageSource;
+        this.templateEngine = templateEngine;
+        this.url = url;
+    }
 
     public void senActivationEmail(User user) {
         log().info("Sending activation email to '{}'", user.getEmail());
@@ -36,8 +45,7 @@ public class EmailService implements Loggable {
         }
         Locale locale = Locale.forLanguageTag("pl"); // we support only polish for now
         Context context = new Context(locale);
-        context.setVariable("url",
-                            "http://localhost:8080/activate?token=%s".formatted(user.getActivationToken())); // TODO: export to properties
+        context.setVariable("url", (url + "/activate?token=%s").formatted(user.getActivationToken()));
         String content = templateEngine.process(template, context);
         String subject = messageSource.getMessage("email.activation.title", null, locale);
         sendEmailSync(user.getEmail(), subject, content, false, true);
