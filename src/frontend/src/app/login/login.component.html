@@ -3,18 +3,18 @@
 (ngSubmit)="onSubmit()"
 class="flex flex-col gap-4 w-80">
   <div class="flex flex-col gap-2">
-    <label class="title">Logowanie</label>
-    <label class="subtitle">Miło Cię widzieć, zapraszamy.</label>
-    <label for="username">Nazwa Użytkownika</label>
+    <label class="title" translate="login.title"></label>
+    <label class="subtitle" translate="login.subtitle"></label>
+    <label for="username" translate="login.username"></label>
     <input id="username" hlmInput formControlName="username">
   </div>
   <div class="flex flex-col gap-2">
-    <label for="password">Hasło</label>
+    <label for="password" translate="login.password"></label>
     <input id="password" hlmInput formControlName="password">
   </div>
   <span class="flex gap-4 items-center">
     <hlm-checkbox id="remember-me" formControlName="rememberMe"/>
-    <label for="remember-me">Zapamiętaj mnie</label>
+    <label for="remember-me" translate="login.remember"></label>
   </span>
   <button
     [disabled]="loginLoading()"
@@ -22,6 +22,6 @@ class="flex flex-col gap-4 w-80">
     hlmBtn
     type="submit"
     class="relative">
-    <span class="btn-text">Zaloguj</span>
+    <span class="btn-text" translate="login.submit"></span>
   </button>
 </form>

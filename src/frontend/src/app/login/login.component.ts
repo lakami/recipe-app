@@ -6,6 +6,7 @@ import {AccountService} from "../core/auth/account.service";
 import {HlmInputDirective} from "@spartan-ng/ui-input-helm";
 import {HlmCheckboxComponent} from "@spartan-ng/ui-checkbox-helm";
 import {HlmButtonDirective} from "@spartan-ng/ui-button-helm";
+import {TranslationDirective} from "../shared/translation/translation.directive";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ import {HlmButtonDirective} from "@spartan-ng/ui-button-helm";
     ReactiveFormsModule,
     HlmInputDirective,
     HlmCheckboxComponent,
-    HlmButtonDirective
+    HlmButtonDirective,
+    TranslationDirective
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'

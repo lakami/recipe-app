@@ -1,5 +1,33 @@
 {
   "home": {
-    "title": "Strona domowa"
+    "title": "Strona główna"
+  },
+  "header": {
+    "multi-utility-nav": {
+      "search": "Szukajka",
+      "login": "Logowanie",
+      "register": "Rejestracja"
+    },
+    "nav": {
+      "meals": "Posiłki",
+      "diet": "Dieta",
+      "about": "O nas"
+    }
+  },
+  "login": {
+    "title": "Logowanie",
+    "subtitle": "Miło Cię widzieć, zapraszamy.",
+    "username": "Nazwa użytkownika",
+    "password": "Hasło",
+    "remember": "Zapamiętaj mnie",
+    "submit": "Zaloguj"
+  },
+  "register": {
+    "title": "Rejestracja",
+    "subtitle": "Zarejestruj się, aby dodawać swoje ulubione przepisy.",
+    "username": "Nazwa użytkownika",
+    "email": "Email",
+    "password": "Hasło",
+    "submit": "Zarejestruj"
   }
 }
