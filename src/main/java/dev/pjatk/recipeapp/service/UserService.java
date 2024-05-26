@@ -81,11 +81,21 @@ class UserService implements IUserService {
                 .filter(__ -> !userRepository.existsByProfileUrl(profileUrl)) // make sure profileUrl is unique
                 .map(user -> {
                     user.setProfileUrl(profileUrl);
+                    userRepository.save(user);
                     return user;
                 });
     }
 
     private String generateToken() {
         return RandomStringUtils.random(20, 0, 0, true, true, null, SECURE_RANDOM);
+    }
+
+    @Override
+    public Optional<User> getUserWithRecipes(String profileUrl) {
+        return userRepository.findOneWithRecipesByProfileUrl(profileUrl)
+                .map(user -> {
+                    user.getRecipes().size(); // force fetch
+                    return user;
+                });
     }
 }

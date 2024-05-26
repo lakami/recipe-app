@@ -97,7 +97,11 @@ public class User extends AuditedEntityBase<Long> {
     )
     private Set<Recipe> favouriteRecipes = new HashSet<>();
 
-    @OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL, orphanRemoval = false)
+    @OneToMany(
+            mappedBy = "createdBy",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            orphanRemoval = false)
     private Set<Recipe> recipes = new HashSet<>();
 
     /**

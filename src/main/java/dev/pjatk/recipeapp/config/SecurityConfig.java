@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
@@ -48,6 +50,14 @@ public class SecurityConfig {
         return new MvcRequestMatcher.Builder(introspector);
     }
 
+    private static AuthenticationFailureHandler unathorizedHandler() {
+        return (request, response, exception) -> response.setStatus(HttpStatus.UNAUTHORIZED.value());
+    }
+
+    private static AuthenticationSuccessHandler successHandler() {
+        return (request, response, authentication) -> response.setStatus(HttpStatus.OK.value());
+    }
+
     /**
      * Configures the security filter chain that carries the responsibility of protecting our application.
      */
@@ -73,30 +83,30 @@ public class SecurityConfig {
                         .requestMatchers(mvc.pattern("/api/v1/login")).permitAll()
                         .requestMatchers(mvc.pattern("/api/v1/activate")).permitAll()
                         .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/tag")).permitAll()
-                                               .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/v1/tag")).hasAnyAuthority(Authorities.ADMIN)
-//                        .requestMatchers(mvc.pattern( "/api/v1/tag")).permitAll()
+                        .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/v1/tag")).hasAnyAuthority(Authorities.ADMIN)
                         .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/category")).permitAll()
-                                               .requestMatchers(mvc.pattern(HttpMethod.POST,
+                        .requestMatchers(mvc.pattern(HttpMethod.POST,
                                                      "/api/v1/category")).hasAnyAuthority(Authorities.ADMIN)
                         .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/dish")).permitAll()
-                                               .requestMatchers(mvc.pattern(HttpMethod.POST,
-                                                                            "/api/v1/dish")).hasAnyAuthority(Authorities.ADMIN)
+                        .requestMatchers(mvc.pattern(HttpMethod.POST,
+                                                     "/api/v1/dish")).hasAnyAuthority(Authorities.ADMIN)
                         .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/recipe/**")).permitAll()
                         .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/v1/recipe/**")).authenticated()
                         .requestMatchers(mvc.pattern(HttpMethod.PUT, "/api/v1/recipe/**")).authenticated()
                         .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/images/**")).permitAll()
-                                               .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/v1/images/**")).authenticated()
-                                               .requestMatchers(mvc.pattern(HttpMethod.PUT, "/api/v1/images/**")).authenticated()
+                        .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/v1/images/**")).authenticated()
+                        .requestMatchers(mvc.pattern(HttpMethod.PUT, "/api/v1/images/**")).authenticated()
                         .requestMatchers(mvc.pattern("/api/v1/favourites")).authenticated()
+                        .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/user/**")).permitAll()
                         .requestMatchers(mvc.pattern("/api/v1/**")).authenticated()
-                                               .requestMatchers(mvc.pattern("/error")).permitAll()
+                        .requestMatchers(mvc.pattern("/error")).permitAll()
                 )
                 .exceptionHandling(eH -> eH.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")
                         .loginProcessingUrl("/api/v1/login")
-                        .successHandler((request, response, authentication) -> response.setStatus(HttpStatus.OK.value()))
-                        .failureHandler((request, response, exception) -> response.setStatus(HttpStatus.UNAUTHORIZED.value()))
+                        .successHandler(successHandler())
+                        .failureHandler(unathorizedHandler())
                         .permitAll()
                 )
                 .logout(logout -> logout
