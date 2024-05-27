@@ -36,5 +36,15 @@
     "first-name": "Imię",
     "last-name": "Nazwisko",
     "submit": "Aktywuj"
+  },
+  "activate-success": {
+      "title": "Udało się!",
+      "subtitle": "Twoje konto zostało aktywowane.",
+      "main-page": "Przejdź do strony głównej"
+  },
+  "register-success": {
+    "title": "Sprawdź pocztę",
+    "subtitle": "Wysłaliśmy link aktywacyjny na podany adres email.",
+    "main-page": "Przejdź do strony głównej"
   }
 }

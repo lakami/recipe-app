@@ -2,7 +2,6 @@ import {Component, ElementRef, inject, OnInit, signal, ViewChild} from '@angular
 import {Router, RouterLink} from "@angular/router";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {HlmInputDirective} from "@spartan-ng/ui-input-helm";
-import {HlmCheckboxComponent} from "@spartan-ng/ui-checkbox-helm";
 import {HlmButtonDirective} from "@spartan-ng/ui-button-helm";
 import {AccountService} from "../core/auth/account.service";
 import {RegisterService} from "./register.service";
@@ -15,7 +14,6 @@ import {TranslationDirective} from "../shared/translation/translation.directive"
     RouterLink,
     ReactiveFormsModule,
     HlmInputDirective,
-    HlmCheckboxComponent,
     HlmButtonDirective,
     TranslationDirective
   ],

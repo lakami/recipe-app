@@ -4,6 +4,8 @@ import {errorRoute} from "./error/error.routes";
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {ActivateComponent} from "./activate/activate.component";
+import {ActivateSuccessComponent} from "./activate-success/activate-success.component";
+import {RegisterSuccessComponent} from "./register-success/register-success.component";
 
 export const routes: Routes = [
   {
@@ -25,6 +27,16 @@ export const routes: Routes = [
     path: 'activate',
     component: ActivateComponent,
     title: 'activate.title'
+  },
+  {
+    path: 'activate-success',
+    component: ActivateSuccessComponent,
+    title: 'activate-success.title'
+  },
+  {
+    path: 'register-success',
+    component: RegisterSuccessComponent,
+    title: 'register-success.title'
   },
   ...errorRoute
 ];
