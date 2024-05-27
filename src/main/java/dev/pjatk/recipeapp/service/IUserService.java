@@ -11,4 +11,6 @@ public interface IUserService {
     Optional<User> activate(String activationToken, ActivationDTO missingData);
     String findNextProfileUrl(String firstName, String lastName);
     Optional<User> updateProfileUrl(String email, String profileUrl);
+
+    Optional<User> getUserWithRecipes(String profileUrl);
 }

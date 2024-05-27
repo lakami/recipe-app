@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title th:text="#{email.activation.title}"></title>
+</head>
+<body>
+    <p th:text="#{email.activation.greeting}"></p>
+    <p th:text="#{email.activation.info}"></p>
+    <p>
+        <a th:href="${url}" th:text="#{email.activation.link}"></a>
+    </p>
+    <p>
+        <span th:text="#{email.activation.regards1}"></span>
+        <br/>
+        <em th:text="#{email.activation.regards2}"></em>
+    </p>
+</body>
+</html>

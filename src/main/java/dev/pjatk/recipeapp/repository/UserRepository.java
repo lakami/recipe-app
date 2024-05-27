@@ -12,7 +12,6 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     @EntityGraph(attributePaths = "authorities")
-
     Optional<User> findOneWithAuthoritiesByEmailIgnoreCase(String email);
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
@@ -24,4 +23,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @EntityGraph(attributePaths = "favourites")
     Optional<User> findOneWithFavouriteRecipesByEmail(String email);
+
+    Optional<User> findOneWithRecipesByProfileUrl(String profileUrl);
 }
