@@ -9,9 +9,6 @@ import {Activate} from "./activate.model";
 export class ActivateService {
     private http = inject(HttpClient);
     activate(credentials: Activate, token: string) {
-        const formData = new FormData();
-        formData.append('firstName', credentials.firstName);
-        formData.append('lastName', credentials.lastName);
-        return this.http.post(environment.activate+token, formData);
+        return this.http.post(environment.activate+token, credentials);
     }
 }

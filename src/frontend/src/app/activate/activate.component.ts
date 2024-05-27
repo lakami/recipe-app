@@ -28,11 +28,11 @@ export class ActivateComponent implements OnInit {
   activateForm : FormGroup = new FormGroup({
     firstName: new FormControl('', {
         nonNullable: true,
-        validators: [Validators.required, Validators.minLength(1), Validators.maxLength(255)]
+        validators: [Validators.required, Validators.minLength(1), Validators.maxLength(50)]
     }),
     lastName: new FormControl('', {
         nonNullable: true,
-        validators: [Validators.required, Validators.minLength(1), Validators.maxLength(255)]
+        validators: [Validators.required, Validators.minLength(1), Validators.maxLength(50)]
     })
   });
   private accountService: AccountService = inject(AccountService);

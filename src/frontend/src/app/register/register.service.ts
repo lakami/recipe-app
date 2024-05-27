@@ -10,9 +10,6 @@ import {HttpClient} from "@angular/common/http";
 export class RegisterService {
   private http = inject(HttpClient);
   register(credentials: Register): Observable<{}> {
-    const fromData = new FormData();
-    fromData.append('email', credentials.email);
-    fromData.append('password', credentials.password);
-    return this.http.post(environment.register, fromData);
+    return this.http.post(environment.register, credentials);
   }
 }

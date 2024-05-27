@@ -1,6 +1,6 @@
 export default [
   {
-    context: '/api/v1/**',
+    context: ['/api/v1/**'],
     target: 'http://localhost:8080',
     secure: false,
     changeOrigin: true,

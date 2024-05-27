@@ -10,6 +10,7 @@ class="flex flex-col gap-4 w-80">
             <input
                     id="firstName"
                     hlmInput
+                    formControlName="firstName"
                     [error]='hasFirstNameError()'
             />
         </div>
@@ -19,6 +20,7 @@ class="flex flex-col gap-4 w-80">
         <input
                 id="lastName"
                 hlmInput
+                formControlName="lastName"
                 [error]='hasLastNameError()'
         >
     </div>
