@@ -29,5 +29,12 @@
     "email": "Email",
     "password": "Hasło",
     "submit": "Zarejestruj"
+  },
+  "activate": {
+    "title": "Aktywacja konta",
+    "subtitle": "Podaj dane do aktywacji konta.",
+    "first-name": "Imię",
+    "last-name": "Nazwisko",
+    "submit": "Aktywuj"
   }
 }

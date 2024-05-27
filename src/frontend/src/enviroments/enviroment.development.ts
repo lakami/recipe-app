@@ -6,4 +6,5 @@ export const environment = {
   logout: base('/logout'),
   account: base('/account'),
   register: base('/register'),
+  activate: base('/activate?token='),
 }

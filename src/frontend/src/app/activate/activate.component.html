@@ -1,0 +1,33 @@
+<form
+[formGroup]="activateForm"
+(ngSubmit)="onSubmit()"
+class="flex flex-col gap-4 w-80">
+    <div class="flex flex-col gap-2">
+        <label class="title" translate="activate.title"></label>
+        <label class="subtitle" translate="activate.subtitle"></label>
+        <div class="flex flex-col gap-2">
+            <label translate="activate.first-name"></label>
+            <input
+                    id="firstName"
+                    hlmInput
+                    [error]='hasFirstNameError()'
+            />
+        </div>
+    </div>
+    <div class="flex flex-col gap-2">
+        <label translate="activate.last-name"></label>
+        <input
+                id="lastName"
+                hlmInput
+                [error]='hasLastNameError()'
+        >
+    </div>
+        <button
+            [disabled]="activateLoading() || !activateForm.valid"
+            id="acivate"
+            hlmBtn
+            type="submit"
+            class="relative">
+            <span class="btn-text" translate="activate.submit"></span>
+        </button>
+</form>

@@ -3,6 +3,7 @@ import {HomeComponent} from "./home/home.component";
 import {errorRoute} from "./error/error.routes";
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
+import {ActivateComponent} from "./activate/activate.component";
 
 export const routes: Routes = [
   {
@@ -19,6 +20,11 @@ export const routes: Routes = [
     path: 'register',
     component: RegisterComponent,
     title: 'register.title'
+  },
+  {
+    path: 'activate',
+    component: ActivateComponent,
+    title: 'activate.title'
   },
   ...errorRoute
 ];
