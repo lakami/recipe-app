@@ -1,14 +1,25 @@
-<p>main-page works!: {{result}}</p>
-<div>asynchronicznie: {{ result$ | async }}</div>
-<div>BehaviorSubject: {{ resultBS.getValue() }}</div>
-<div>Signal: {{ resultSignal() }}</div>
-<div>Observable from signal: {{resultAsObservable$ | async}}</div>
-<button (click)="makeABigger()">Click here</button>
+<!--<div>asynchronicznie: {{ result$ | async }}</div>-->
+<!--<div>BehaviorSubject: {{ resultBS.getValue() }}</div>-->
+<!--<div>Signal: {{ resultSignal() }}</div>-->
+<!--<div>Observable from signal: {{resultAsObservable$ | async}}</div>-->
+<!--<button (click)="makeABigger()">Click here</button>-->
 
 <div class="hover:text-sky-600">tailwind test</div>
 
-@for (iteam of numbers; track iteam) {
-    <div>{{iteam}}</div>
-}
+<!--@for (iteam of numbers; track iteam) {-->
+<!--    <div>{{iteam}}</div>-->
+<!--}-->
 
+<div class="card-list">
+<!--    @if (recipes$ | async; as recipes) {-->
+<!--        @for (recipe of recipes; track recipe.id) {-->
+<!--            <a class="card-iteam">{{recipe.name}}</a>-->
+<!--        }-->
+<!--    }-->
+</div>
+
+@if (true) {
+    <div>test</div>
+
+}
 

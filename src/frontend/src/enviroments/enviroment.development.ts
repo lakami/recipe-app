@@ -7,4 +7,5 @@ export const environment = {
   account: base('/account'),
   register: base('/register'),
   activate: base('/activate?token='),
+  recipe: base('/recipe'),
 }
