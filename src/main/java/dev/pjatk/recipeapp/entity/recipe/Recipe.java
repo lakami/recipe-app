@@ -39,6 +39,9 @@ public class Recipe extends AuditedEntityBase<Long> {
     @Column(name = "image_url")
     private String imageUrl;
 
+    @Column(name = "promoted")
+    private Boolean promoted;
+
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE

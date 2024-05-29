@@ -22,15 +22,18 @@ public class EmailService implements Loggable {
     private final MessageSource messageSource;
     private final SpringTemplateEngine templateEngine;
     private final String url;
+    private final String from;
 
     public EmailService(JavaMailSender mailSender,
                         MessageSource messageSource,
                         SpringTemplateEngine templateEngine,
-                        @Value("${recipe.base-url}") String url) {
+                        @Value("${recipe.base-url}") String url,
+                        @Value("${spring.mail.username}") String from) {
         this.mailSender = mailSender;
         this.messageSource = messageSource;
         this.templateEngine = templateEngine;
         this.url = url;
+        this.from = from;
     }
 
     public void senActivationEmail(User user) {
@@ -66,7 +69,7 @@ public class EmailService implements Loggable {
         try {
             MimeMessageHelper message = new MimeMessageHelper(mimeMessage, isMultipart, StandardCharsets.UTF_8.name());
             message.setTo(to);
-            message.setFrom("enil.asam@op.pl"); // TODO: export to properties. Remember than FROM must be achievable by mail server
+            message.setFrom(from);
             message.setSubject(subject);
             message.setText(content, isHtml);
             mailSender.send(mimeMessage);

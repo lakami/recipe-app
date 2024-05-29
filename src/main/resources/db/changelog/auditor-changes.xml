@@ -25,4 +25,10 @@
 	<changeSet id="00000000000007" author="k.hermann">
 		<modifyDataType columnName="profile_url" newDataType="VARCHAR(255)" tableName="user"/>
 	</changeSet>
+    <changeSet id="00000000000008" author="k.hermann">
+        <addColumn tableName="recipe">
+            <column name="promoted" type="BOOLEAN" defaultValue="false"/>
+        </addColumn>
+    </changeSet>
+
 </databaseChangeLog>
