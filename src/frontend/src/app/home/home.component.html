@@ -4,22 +4,20 @@
 <!--<div>Observable from signal: {{resultAsObservable$ | async}}</div>-->
 <!--<button (click)="makeABigger()">Click here</button>-->
 
-<div class="hover:text-sky-600">tailwind test</div>
+<!--<div class="hover:text-sky-600">tailwind test</div>-->
 
-<!--@for (iteam of numbers; track iteam) {-->
-<!--    <div>{{iteam}}</div>-->
-<!--}-->
-
-<div class="card-list">
-<!--    @if (recipes$ | async; as recipes) {-->
-<!--        @for (recipe of recipes; track recipe.id) {-->
-<!--            <a class="card-iteam">{{recipe.name}}</a>-->
-<!--        }-->
-<!--    }-->
+<div class="title">
+  <a translate="header.nav.recipes"></a>
+</div>
+<div class="card-list-container">
+  <div class="card-list">
+      @if (recipes$ | async; as recipes) {
+          @for (recipe of recipes; track recipe.id) {
+            <app-recipe-card-item [recipe]="recipe"></app-recipe-card-item>
+          }
+      }
+  </div>
 </div>
 
-@if (true) {
-    <div>test</div>
 
-}
 

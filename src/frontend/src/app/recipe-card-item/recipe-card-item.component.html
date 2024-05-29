@@ -1,0 +1,17 @@
+<div class="image-placeholder">
+  <img [src]="'/api/v1/images/' + recipe.imageUrl" />
+</div>
+<div class="content">
+  <div class="category">
+    @for (category of recipe.categories; track category.id) {
+        <span>{{category.name}} </span>
+    }
+  </div>
+  <h1 class="recipe-name">{{recipe.name}}</h1>
+  <div class="recipe-info">
+   <hlm-icon class="icon-clock" size='sm' name="lucideClock"/>
+   <span>{{recipe.preparationTime}} min</span>
+  </div>
+  <div class="recipe-info">{{recipe.author.firstName + " " + recipe.author.lastName}}</div>
+</div>
+

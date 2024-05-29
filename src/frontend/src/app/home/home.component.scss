@@ -1,36 +1,20 @@
+:host {
+  @apply bg-white;
+}
+
 .title {
-  @apply text-2xl text-black md:text-destructive
+  @apply font-serif text-4xl font-bold underline-offset-[.5625rem] px-0 pt-0 pb-4 text-center
+}
+
+.card-list-container {
+  unicode-bidi: isolate;
+  -webkit-text-size-adjust: 100%;
+}
+.card-list-container {
+  @apply box-border block antialiased text-xl
 }
 
 .card-list {
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  min-width: 70em;
-  grid-gap: 1.5em;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-  -webkit-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
-}
-
-.card-iteam {
-  display: flex;
-  flex-direction: column;
-  font-weight: 400;
-  overflow: initial;
-  padding: 0;
-  border: 1px solid rgba(0,0,0,0.15);
-  margin-bottom: 0;
-  cursor: pointer;
-  text-decoration-line: none;
-  outline: 0;
-  transition: rgba(0, 0, 0, .95) 0.15s ease-out;
-  box-sizing: border-box;
-  text-decoration: underline;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-  -webkit-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
+  @apply lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1
+  gap-6 flex-row flex-wrap grid justify-center box-border antialiased
 }

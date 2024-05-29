@@ -5,22 +5,26 @@ import {BehaviorSubject} from "rxjs";
 import {AsyncPipe, CommonModule} from "@angular/common";
 import {RecipeService} from "../shared/services/recipe.service";
 import {RecipeGetModel} from "../shared/dto/recipe-get.model";
+import {RecipeCardItemComponent} from "../recipe-card-item/recipe-card-item.component";
+import {TranslationDirective} from "../shared/translation/translation.directive";
 
 @Component({
   selector: 'app-main-page',
   standalone: true,
-  imports: [
-    RouterOutlet,
-    AsyncPipe,
-    CommonModule
-  ],
+    imports: [
+        RouterOutlet,
+        AsyncPipe,
+        CommonModule,
+        RecipeCardItemComponent,
+        TranslationDirective
+    ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit, OnDestroy {
   private recipeService: RecipeService = inject(RecipeService);
   private recipes = new BehaviorSubject<RecipeGetModel[]>([]);
-  receipes$ = this.recipes.asObservable();
+  recipes$ = this.recipes.asObservable();
 
   // result!: number;
   // a: number = 10;

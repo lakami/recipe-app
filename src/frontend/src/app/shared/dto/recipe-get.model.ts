@@ -1,3 +1,5 @@
+import {AuthorGetModel} from "./author-get.model";
+
 export class RecipeGetModel {
     constructor(
         public id: number,
@@ -9,9 +11,9 @@ export class RecipeGetModel {
         public ingredients: IngredientGetModel[],
         public steps: StepGetModel[],
         public tags: TagGetModel[],
-        public category: CategoryGetModel[],
+        public categories: CategoryGetModel[],
         public dishes: DishGetModel[],
-        public author: string,
+        public author: AuthorGetModel,
         public createDate: number,
     ) {}
 }
