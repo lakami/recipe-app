@@ -7,6 +7,6 @@ public record UserProfileDTO(
         String lastName,
         String profileUrl,
         String imageUrl,
-        Set<ShortRecipeDTO> authoredRecipes
+        Set<RecipeDTO> authoredRecipes
 ) {
 }
