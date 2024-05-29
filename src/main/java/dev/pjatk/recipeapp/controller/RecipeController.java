@@ -15,6 +15,8 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(RecipeController.RECIPE)
@@ -24,9 +26,28 @@ public class RecipeController {
     private final RecipeService recipeService;
     private final AddRecipeUseCase addRecipeUseCase;
 
+    @GetMapping("/promoted")
+    public List<RecipeDTO> getPromotedRecipes() {
+        return recipeService.getPromotedRecipes();
+    }
+
+    @PostMapping("/promote/{id}")
+    public void promoteRecipe(@PathVariable Long id) {
+        recipeService.promoteRecipe(id);
+    }
+
+    @DeleteMapping("/promote/{id}")
+    public void demoteRecipe(@PathVariable Long id) {
+        recipeService.demoteRecipe(id);
+    }
+
     @GetMapping
-    public Page<RecipeDTO> getAllRecipes(Pageable pageable) {
-        return recipeService.getAllRecipesForPageable(pageable);
+    public Page<RecipeDTO> getAllRecipes(Pageable pageable,
+                                         @RequestParam(required = false) List<String> categories,
+                                         @RequestParam(required = false) List<String> dishes,
+                                         @RequestParam(required = false) List<String> tags,
+                                         @RequestParam(required = false) String search) {
+        return recipeService.findAllMatchingRecipesForPage(pageable, categories, dishes, tags, search);
     }
 
     @GetMapping("/{id}")

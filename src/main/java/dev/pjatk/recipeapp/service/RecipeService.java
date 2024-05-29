@@ -16,10 +16,13 @@ import dev.pjatk.recipeapp.security.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -43,9 +46,41 @@ public class RecipeService {
                 .orElseThrow(() -> new ResourceNotFoundException("Recipe not found"));
     }
 
-    public Page<RecipeDTO> getAllRecipesForPageable(Pageable pageable) {
+    public Page<RecipeDTO> findAllMatchingRecipesForPage(Pageable pageable,
+                                                         List<String> categories,
+                                                         List<String> dishes,
+                                                         List<String> tags,
+                                                         String search) {
+        List<Specification<Recipe>> specifications = new LinkedList<>();
+        if (categories != null && !categories.isEmpty()) {
+            var spec = (Specification<Recipe>) (root, query, criteriaBuilder) -> root.join("categories").get("name").in(
+                    categories);
+            specifications.add(spec);
+        }
+
+        if (dishes != null && !dishes.isEmpty()) {
+            var spec = (Specification<Recipe>) (root, query, criteriaBuilder) -> root.join("dishes").get("name").in(
+                    dishes);
+            specifications.add(spec);
+        }
+
+        if (tags != null && !tags.isEmpty()) {
+            var spec = (Specification<Recipe>) (root, query, criteriaBuilder) -> root.join("tags").get("name").in(tags);
+            specifications.add(spec);
+        }
+
+        if (search != null && !search.isBlank()) {
+            var spec = (Specification<Recipe>) (root, query, criteriaBuilder) -> criteriaBuilder.or(
+                    criteriaBuilder.like(root.get("name"), "%" + search + "%"),
+                    criteriaBuilder.like(root.get("description"), "%" + search + "%")
+            );
+            specifications.add(spec);
+        }
+
+        var spec = Specification.allOf(specifications);
+
         return recipeRepository
-                .findAll(pageable)
+                .findAll(spec, pageable)
                 .map(RecipeDTO::new);
     }
 
@@ -84,6 +119,7 @@ public class RecipeService {
      * @param id        existing recipe id
      * @param recipeDTO new recipe data
      */
+    @Transactional
     public void updateRecipe(Long id, NewRecipeDTO recipeDTO) {
         var recipe = recipeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Recipe not found"));
@@ -105,5 +141,22 @@ public class RecipeService {
     private boolean isAuthor(Recipe recipe) {
         var currentUser = SecurityUtils.getCurrentUserLogin().orElseThrow();
         return recipe.getCreatedBy().getEmail().equals(currentUser);
+    }
+
+    public List<RecipeDTO> getPromotedRecipes() {
+        return recipeRepository.findAllByPromotedTrue()
+                .stream()
+                .map(RecipeDTO::new)
+                .toList();
+    }
+
+    @Transactional
+    public void promoteRecipe(Long id) {
+        recipeRepository.setPromotedForRecipe(true, id);
+    }
+
+    @Transactional
+    public void demoteRecipe(Long id) {
+        recipeRepository.setPromotedForRecipe(false, id);
     }
 }
