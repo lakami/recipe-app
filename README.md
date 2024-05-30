@@ -42,10 +42,10 @@ Projekt na inżynierkę
 - [ ] Wyświetlanie przepisu po id
 - [ ] Dodawanie przepisu
 - [ ] Edycja przepisu
-- [ ] Logowanie
+- [x] Logowanie
 - [ ] Wylogowanie
-- [ ] Rejestracja
-- [ ] Aktywacja
+- [x] Rejestracja
+- [x] Aktywacja
 - [ ] Resetowanie hasła (opcjonalnie)
 - [ ] Panel administratorski (opcjonalnie)
 - [ ] Wyszukiwarka dań
@@ -56,3 +56,6 @@ Projekt na inżynierkę
 - [ ] Edycja komentarza
 - [ ] Dodawanie oceny
 - [ ] Polubienia przepisu
+- [ ] Filtrowanie przepisów
+- [ ] Szukajka
+- [ ] Navbar rozwijaki

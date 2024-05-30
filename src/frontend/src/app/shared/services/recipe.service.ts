@@ -15,4 +15,8 @@ export class RecipeService {
   getRecipes(): Observable<PageGetModel<RecipeGetModel>> {
     return this.http.get<PageGetModel<RecipeGetModel>>(environment.recipe)
   }
+
+  getRecipeById(recipeId: number): Observable<RecipeGetModel> {
+    return this.http.get<RecipeGetModel>(`${environment.recipe}/${recipeId}`)
+  }
 }

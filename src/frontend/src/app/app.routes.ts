@@ -6,6 +6,7 @@ import {RegisterComponent} from "./register/register.component";
 import {ActivateComponent} from "./activate/activate.component";
 import {ActivateSuccessComponent} from "./activate-success/activate-success.component";
 import {RegisterSuccessComponent} from "./register-success/register-success.component";
+import {RecipeDetailsComponent} from "./recipe-details/recipe-details.component";
 
 export const routes: Routes = [
   {
@@ -37,6 +38,10 @@ export const routes: Routes = [
     path: 'register-success',
     component: RegisterSuccessComponent,
     title: 'register-success.title'
+  },
+  {
+    path: 'recipe/:recipeId',
+    component: RecipeDetailsComponent,
   },
   ...errorRoute
 ];

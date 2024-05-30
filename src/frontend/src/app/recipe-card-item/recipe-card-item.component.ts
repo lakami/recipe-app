@@ -13,12 +13,7 @@ import {provideIcons} from "@ng-icons/core";
     RouterOutlet,
     AsyncPipe,
     CommonModule,
-    [HlmIconComponent],
-    HlmIconComponent,
-    HlmIconComponent,
-    HlmIconComponent,
-    HlmIconComponent,
-
+    [HlmIconComponent]
   ],
   providers: [provideIcons({ lucideClock })],
   templateUrl: 'recipe-card-item.component.html',

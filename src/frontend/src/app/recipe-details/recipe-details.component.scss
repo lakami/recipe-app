@@ -1,0 +1,48 @@
+.image-placeholder {
+  @apply w-full bg-gray-300 overflow-hidden box-border
+}
+
+img {
+  @apply w-full object-cover h-[189px]
+}
+
+.content {
+  @apply p-3
+}
+
+.category .tag .dish {
+  @apply text-xs block mb-2 text-black/[.65] tracking-[.0625rem] font-bold uppercase max-h-8 min-h-8
+}
+
+.recipe-name {
+  @apply font-serif font-bold underline-offset-[.5rem] px-0 pt-0 pb-2 cursor-pointer text-2xl decoration-1
+  hover:underline
+}
+.recipe-name {
+  text-decoration-skip-ink: none;
+}
+
+.icon-clock {
+  --ng-icon__stroke-width: 1.2;
+}
+.icon-clock {
+  @apply text-lime-500
+}
+
+.recipe-date .recipe-servings .recipe-author  {
+  @apply flex gap-1 items-center text-sm text-black/[.65] font-normal underline-offset-[.1875rem] antialiased
+}
+
+.recipe-description {
+
+}
+
+.recipe-steps {
+
+}
+
+.recipe-ingredients {
+
+}
+
+

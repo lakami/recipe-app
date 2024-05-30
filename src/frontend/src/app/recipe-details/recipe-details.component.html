@@ -1,0 +1,48 @@
+<p>recipe-details works!</p>
+<div>
+  @if (recipe$ | async; as recipe) {
+
+    <div class="image-placeholder">
+      <img [src]="'/api/v1/images/' + recipe.imageUrl" />
+    </div>
+
+    <div class="content">
+      <div class="category">
+        @for (category of recipe.categories; track category.id) {
+            <span>{{category.name}} </span>
+        }
+      </div>
+
+      <h1 class="recipe-name">{{recipe.name}}</h1>
+
+      <div class="tag">
+        @for (tag of recipe.tags; track tag.id) {
+            <span>{{tag.name}} </span>
+        }
+      </div>
+
+      <div class="dish">
+        @for (dish of recipe.dishes; track dish.id) {
+            <span>{{dish.name}} </span>
+        }
+      </div>
+
+      <div class="create-date">{{recipe.createDate}}</div>
+
+      <div class="recipe-time">
+       <hlm-icon class="icon-clock" size='sm' name="lucideClock"/>
+       <span>{{recipe.preparationTime}} min</span>
+      </div>
+
+      <div class="recipe-servings">{{recipe.servings}}</div>
+
+      <div class="recipe-author">{{recipe.author.firstName + " " + recipe.author.lastName}}</div>
+
+      <div class="recipe-description">{{recipe.description}}</div>
+
+      <div class="recipe-steps">{{recipe.steps}}</div>
+
+      <div class="recipe-ingredients">{{recipe.ingredients}}</div>
+</div>
+}
+</div>
