@@ -43,6 +43,7 @@ Projekt na inżynierkę
 - [ ] Dodawanie przepisu
 - [ ] Edycja przepisu
 - [ ] Logowanie
+- [ ] Wylogowanie
 - [ ] Rejestracja
 - [ ] Aktywacja
 - [ ] Resetowanie hasła (opcjonalnie)
