@@ -19,14 +19,11 @@ img {
 }
 
 .recipe-name {
-  text-decoration-skip-ink: none;
+  @apply font-serif font-bold underline-offset-[.5rem] px-0 pt-0 pb-2 cursor-pointer text-2xl decoration-1
+  hover:underline
 }
-recie-name {
-  @apply decoration-1 text-2xl
-}
-
 .recipe-name {
-  @apply font-serif font-bold underline-offset-[.5rem] px-0 pt-0 pb-2 cursor-pointer
+  text-decoration-skip-ink: none;
 }
 
 .recipe-info {

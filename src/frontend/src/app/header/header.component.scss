@@ -17,14 +17,19 @@ ul.navbar {
 li.navbar-text {
   @apply py-0 pr-4 pl-4 h-11
   text-sm leading-5 tracking-[.0625rem] font-bold uppercase underline-offset-[.25rem] decoration-1 antialiased cursor-pointer
+  hover:underline
+}
+li.navbar-text {
+  text-decoration-skip-ink: none;
 }
 
 li.multi-utility-text {
-  @apply text-sm leading-5 pl-3 flex items-center gap-1 h-6 cursor-pointer
+  @apply pl-3 h-6
+  text-sm leading-5 flex items-center gap-1 decoration-1 underline-offset-[.1875rem] antialiased cursor-pointer
+  hover:underline
 }
 li.multi-utility-text {
-  letter-spacing: inherit;
-  text-underline-offset: .1875rem;
+  text-decoration-skip-ink: none;
 }
 
 div.logo-container{
@@ -41,7 +46,6 @@ svg.logo{
 div.header-top {
     @apply grid-cols-none grid gap-4 grid-flow-col items-end justify-between w-full m-0 p-0 h-auto box-border
 }
-
 
 div.multi-utility-nav-group {
   @apply min-w-[34em] justify-self-end justify-end flex w-full m-0 pr-4 pl-0 py-0 box-border
