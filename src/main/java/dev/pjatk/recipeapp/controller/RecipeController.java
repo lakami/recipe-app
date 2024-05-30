@@ -51,7 +51,7 @@ public class RecipeController {
     }
 
     @GetMapping("/{id}")
-    public RecipeDTO getRecipeById(Long id) {
+    public RecipeDTO getRecipeById(@PathVariable Long id) {
         return recipeService.getRecipeById(id);
     }
 
