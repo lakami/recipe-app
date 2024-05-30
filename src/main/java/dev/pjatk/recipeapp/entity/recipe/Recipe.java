@@ -1,6 +1,7 @@
 package dev.pjatk.recipeapp.entity.recipe;
 
 import dev.pjatk.recipeapp.entity.AuditedEntityBase;
+import dev.pjatk.recipeapp.entity.Comment;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -80,5 +81,8 @@ public class Recipe extends AuditedEntityBase<Long> {
 
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Ingredient> ingredients;
+
+    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Comment> comments;
 
 }

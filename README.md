@@ -12,7 +12,7 @@ Projekt na inżynierkę
 - [x] Logowanie
 - [x] Rejestracja
 - [x] Aktywacja
-- [ ] Wysyłanie maila z linkiem aktywacyjnym
+- [x] Wysyłanie maila z linkiem aktywacyjnym
 - [ ] Resetowanie hasła (opcjonalnie)
 - [ ] Wysyłanie maila z linkiem zmieniającym hasło (opcjonalnie)
 - [x] Pobieranie wszystkich kategorii
@@ -26,12 +26,12 @@ Projekt na inżynierkę
 - [x] Dodawanie dania (admin only)
 - [x] Dodawanie tagu (admin only)
 - [x] Pobieranie polubionych przepisów użytkownika
-- [ ] Dodawanie polubionych przepisów użytkownika
-- [ ] Usuwanie polubionych przepisów użytkownika
-- [ ] Wyszukiwarka dań
-- [ ] Komentarze
+- [x] Dodawanie polubionych przepisów użytkownika
+- [x] Usuwanie polubionych przepisów użytkownika
+- [x] Wyszukiwarka dań
+- [x] Komentarze
 - [ ] Oceny
-- [ ] Pobieranie informacji o użytkowniku pod profil użytkownika
+- [x] Pobieranie informacji o użytkowniku pod profil użytkownika
 - [ ] 
 
 ## Frontend
@@ -43,6 +43,7 @@ Projekt na inżynierkę
 - [ ] Dodawanie przepisu
 - [ ] Edycja przepisu
 - [ ] Logowanie
+- [ ] Wylogowanie
 - [ ] Rejestracja
 - [ ] Aktywacja
 - [ ] Resetowanie hasła (opcjonalnie)
