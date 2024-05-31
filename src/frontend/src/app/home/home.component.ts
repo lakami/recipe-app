@@ -1,5 +1,5 @@
 import {Component, inject, OnDestroy, OnInit} from '@angular/core';
-import {RouterOutlet} from "@angular/router";
+import {RouterLink, RouterOutlet} from "@angular/router";
 import {ExampleService} from "../shared/services/example.service";
 import {BehaviorSubject} from "rxjs";
 import {AsyncPipe, CommonModule} from "@angular/common";
@@ -11,13 +11,14 @@ import {TranslationDirective} from "../shared/translation/translation.directive"
 @Component({
   selector: 'app-main-page',
   standalone: true,
-    imports: [
-        RouterOutlet,
-        AsyncPipe,
-        CommonModule,
-        RecipeCardItemComponent,
-        TranslationDirective
-    ],
+  imports: [
+    RouterOutlet,
+    AsyncPipe,
+    CommonModule,
+    RecipeCardItemComponent,
+    TranslationDirective,
+    RouterLink
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

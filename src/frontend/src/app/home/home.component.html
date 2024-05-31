@@ -13,7 +13,7 @@
   <div class="card-list">
       @if (recipes$ | async; as recipes) {
           @for (recipe of recipes; track recipe.id) {
-            <app-recipe-card-item [recipe]="recipe"></app-recipe-card-item>
+            <app-recipe-card-item [recipe]="recipe" [routerLink]="'/recipe/' + recipe.id"></app-recipe-card-item>
           }
       }
   </div>
