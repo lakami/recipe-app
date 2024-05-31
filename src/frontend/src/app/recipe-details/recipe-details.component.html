@@ -1,48 +1,90 @@
-<p>recipe-details works!</p>
-<div>
+<div class="card-list-container">
   @if (recipe$ | async; as recipe) {
 
-    <div class="image-placeholder">
-      <img [src]="'/api/v1/images/' + recipe.imageUrl" />
+    <div class="category">
+      @for (category of recipe.categories; track category.id; let last = $last) {
+              @if (!last) {
+                <span>{{category.name}} > </span>
+              }
+              @else {
+                <span>{{category.name}}</span>
+              }
+          }
     </div>
 
-    <div class="content">
-      <div class="category">
-        @for (category of recipe.categories; track category.id) {
-            <span>{{category.name}} </span>
-        }
-      </div>
+    <h1 class="recipe-name">{{recipe.name}}</h1>
 
-      <h1 class="recipe-name">{{recipe.name}}</h1>
+  <div class="recipe-author">{{recipe.author.firstName + " " + recipe.author.lastName}}</div>
+
+  <div class="create-date">{{recipe.createDate}}</div>
+
+  <div class="recipe-time">
+   <hlm-icon class="icon-clock" size='sm' name="lucideClock"/>
+   <span>{{recipe.preparationTime}} min</span>
+  </div>
+
+    <div class="content">
 
       <div class="tag">
-        @for (tag of recipe.tags; track tag.id) {
-            <span>{{tag.name}} </span>
+        @for (tag of recipe.tags; track tag.id; let last = $last) {
+           @if (!last) {
+            <span>{{tag.name}} > </span>
+           }
+            @else {
+            <span>{{tag.name}}</span>
+           }
         }
       </div>
 
       <div class="dish">
-        @for (dish of recipe.dishes; track dish.id) {
+        @for (dish of recipe.dishes; track dish.id; let last = $last) {
+          @if (!last) {
+            <span>{{dish.name}} > </span>
+          }
+           @else {
             <span>{{dish.name}} </span>
+           }
         }
       </div>
 
-      <div class="create-date">{{recipe.createDate}}</div>
+      <div class="recipe-ingredients-steps-container">
 
-      <div class="recipe-time">
-       <hlm-icon class="icon-clock" size='sm' name="lucideClock"/>
-       <span>{{recipe.preparationTime}} min</span>
+        <div class="recipe-ingredients">
+          <div class="flex gap-1 recipe-title-ingredients-servings">
+            <span translate="recipe-details.ingredients"></span>
+            <span> / </span>
+            <span>{{recipe.servings}}</span>
+            <span translate="recipe-details.servings"></span>
+        </div>
+          @for (ingredient of recipe.ingredients; track ingredient.name; let first = $first) {
+            <div>
+            @if (!first) {
+                <span class="flex border-b-[1px] border-black/[/.65] pt-1.5">{{ingredient.name}} </span>
+            }
+            @else {
+              <span class="flex border-b-[1px] border-black/[/.65] pb-1.5">{{ingredient.name}} </span>
+            }
+            </div>
+          }
+        </div>
+
+        <div>
+          <div class="recipe-description">{{recipe.description}}</div>
+            <div class="recipe-steps">
+              @for (step of recipe.steps; track step.number) {
+                <div class="flex pb-2">
+                  <span>{{step.number}}. {{step.description}}</span>
+                </div>
+              }
+          </div>
+        </div>
       </div>
 
-      <div class="recipe-servings">{{recipe.servings}}</div>
-
-      <div class="recipe-author">{{recipe.author.firstName + " " + recipe.author.lastName}}</div>
-
-      <div class="recipe-description">{{recipe.description}}</div>
-
-      <div class="recipe-steps">{{recipe.steps}}</div>
-
-      <div class="recipe-ingredients">{{recipe.ingredients}}</div>
+      <div class="image-conatainer">
+        <div class="image-placeholder">
+              <img [src]="'/api/v1/images/' + recipe.imageUrl" />
+        </div>
+      </div>
 </div>
 }
 </div>

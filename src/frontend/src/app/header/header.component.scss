@@ -11,11 +11,11 @@ nav {
 }
 
 ul.navbar {
-  @apply list-none m-0 p-0 flex flex-wrap
+  @apply list-none m-0 p-0 flex flex-wrap gap-8
 }
 
 li.navbar-text {
-  @apply py-0 pr-4 pl-4 h-11
+  @apply py-0 h-11
   text-sm leading-5 tracking-[.0625rem] font-bold uppercase underline-offset-[.25rem] decoration-1 antialiased cursor-pointer
   hover:underline
 }
@@ -40,7 +40,7 @@ div.logo-container{
 }
 
 svg.logo{
-  @apply h-10 pl-4 pr-4
+  @apply h-10
 }
 
 div.header-top {
@@ -52,7 +52,7 @@ div.multi-utility-nav-group {
 }
 
 ul.multi-utility-nav {
-  @apply flex items-center gap-x-6 gap-y-3 m-0 p-0 list-none box-border
+  @apply flex items-center gap-x-3 gap-y-3 m-0 p-0 list-none box-border
   divide-x divide-black/15
 }
 

@@ -26,7 +26,7 @@ export class IngredientGetModel {
 
 export class StepGetModel {
     constructor(
-        public stepNumber: number,
+        public number: number,
         public description: string,
     ) {}
 }

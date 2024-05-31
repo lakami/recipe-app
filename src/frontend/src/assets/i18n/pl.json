@@ -47,5 +47,9 @@
     "title": "Sprawdź pocztę",
     "subtitle": "Wysłaliśmy link aktywacyjny na podany adres email.",
     "main-page": "Przejdź do strony głównej"
+  },
+  "recipe-details": {
+    "ingredients": "Składniki",
+    "servings": "Porcje"
   }
 }

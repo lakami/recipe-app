@@ -1,22 +1,40 @@
+:host {
+  @apply w-full block;
+}
+
+.card-list-container {
+  @apply box-border block
+}
+
+.image-conatainer {
+  @apply box-content block
+}
+
 .image-placeholder {
-  @apply w-full bg-gray-300 overflow-hidden box-border
+  //@apply w-full bg-gray-300 overflow-hidden box-border h-[612px]
+  @apply w-full bg-lime-50 overflow-hidden box-border flex justify-center px-64
 }
 
 img {
-  @apply w-full object-cover h-[189px]
+  //@apply object-center object-none
+  //@apply object-cover h-[560px]
+  @apply object-cover h-auto w-full
 }
 
 .content {
-  @apply p-3
+  @apply px-0 py-3
 }
 
-.category .tag .dish {
-  @apply text-xs block mb-2 text-black/[.65] tracking-[.0625rem] font-bold uppercase max-h-8 min-h-8
+.category {
+  @apply pb-1 text-sm block mb-2 text-black/[.65] tracking-[.0625rem] font-bold uppercase underline-offset-[.25rem] decoration-1 antialiased
+}
+
+.tag, .dish {
+  @apply text-xs block mb-2 text-black/[.65] tracking-[.0625rem] font-bold uppercase
 }
 
 .recipe-name {
-  @apply font-serif font-bold underline-offset-[.5rem] px-0 pt-0 pb-2 cursor-pointer text-2xl decoration-1
-  hover:underline
+  @apply font-serif font-bold px-0 pt-0 pb-2 text-5xl
 }
 .recipe-name {
   text-decoration-skip-ink: none;
@@ -29,20 +47,20 @@ img {
   @apply text-lime-500
 }
 
-.recipe-date .recipe-servings .recipe-author  {
+.recipe-date, .recipe-author, .recipe-time  {
   @apply flex gap-1 items-center text-sm text-black/[.65] font-normal underline-offset-[.1875rem] antialiased
 }
 
-.recipe-description {
-
-}
-
-.recipe-steps {
-
+.recipe-title-ingredients-servings, .recipe-description {
+@apply py-4 text-sm text-black tracking-[.0625rem] font-bold uppercase antialiased
 }
 
 .recipe-ingredients {
+  @apply pb-2 min-w-72
+}
 
+.recipe-ingredients-steps-container {
+  @apply flex gap-12 items-start pb-2
 }
 
 

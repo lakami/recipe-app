@@ -1,5 +1,9 @@
 :host {
-  @apply border border-solid border-[rgba(0,0,0,0.15)]
+  @apply border border-solid border-[rgba(0,0,0,0.15)] cursor-pointer
+}
+
+:host:hover .recipe-name {
+  @apply underline
 }
 
 .image-placeholder {
@@ -19,8 +23,7 @@ img {
 }
 
 .recipe-name {
-  @apply font-serif font-bold underline-offset-[.5rem] px-0 pt-0 pb-2 cursor-pointer text-2xl decoration-1
-  hover:underline
+  @apply font-serif font-bold underline-offset-[.5rem] px-0 pt-0 pb-2 text-2xl decoration-1
 }
 .recipe-name {
   text-decoration-skip-ink: none;

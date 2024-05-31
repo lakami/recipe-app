@@ -3,8 +3,13 @@
 </div>
 <div class="content">
   <div class="category">
-    @for (category of recipe.categories; track category.id) {
-        <span>{{category.name}} </span>
+    @for (category of recipe.categories; track category.id; let last = $last) {
+        @if (!last) {
+          <span>{{category.name}} > </span>
+        }
+        @else {
+          <span>{{category.name}}</span>
+        }
     }
   </div>
   <h1 class="recipe-name">{{recipe.name}}</h1>
