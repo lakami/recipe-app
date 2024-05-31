@@ -1,8 +1,10 @@
 package dev.pjatk.recipeapp.dto.response;
 
 import dev.pjatk.recipeapp.entity.recipe.Recipe;
+import dev.pjatk.recipeapp.entity.recipe.Step;
 
 import java.time.Instant;
+import java.util.Comparator;
 import java.util.List;
 
 public record RecipeDTO(
@@ -29,7 +31,7 @@ public record RecipeDTO(
                 recipe.getServings(),
                 recipe.getPreparationTime(),
                 recipe.getIngredients().stream().map(IngredientDTO::new).toList(),
-                recipe.getSteps().stream().map(StepDTO::new).toList(),
+                recipe.getSteps().stream().sorted(Comparator.comparingInt(Step::getNumber)).map(StepDTO::new).toList(),
                 recipe.getTags().stream().map(TagDTO::new).toList(),
                 recipe.getCategories().stream().map(CategoryDTO::new).toList(),
                 recipe.getDishes().stream().map(DishDTO::new).toList(),
