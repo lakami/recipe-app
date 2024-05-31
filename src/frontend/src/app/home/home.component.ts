@@ -67,8 +67,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         console.log('complete');
       }
     })
-
-
+    
   }
 
   // makeABigger() {

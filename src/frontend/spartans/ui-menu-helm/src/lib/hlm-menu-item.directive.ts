@@ -5,7 +5,7 @@ import {cva, type VariantProps} from 'class-variance-authority';
 import type {ClassValue} from 'clsx';
 
 export const hlmMenuItemVariants = cva(
-  'group w-full relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground disabled:pointer-events-none disabled:opacity-50',
+  'group w-full relative flex cursor-default select-none items-center px-2.5 py-2.5 text-sm capitalize font-medium tracking-[.0625rem]  outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {inset: {true: 'pl-8', false: ''}},
     defaultVariants: {inset: false},

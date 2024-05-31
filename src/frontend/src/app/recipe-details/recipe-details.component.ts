@@ -7,7 +7,6 @@ import {lucideClock} from "@ng-icons/lucide";
 import {RecipeGetModel} from "../shared/dto/recipe-get.model";
 import {RecipeService} from "../shared/services/recipe.service";
 import {BehaviorSubject, map} from "rxjs";
-import {data} from "autoprefixer";
 import {ReactiveFormsModule} from "@angular/forms";
 import {TranslationDirective} from "../shared/translation/translation.directive";
 
@@ -36,7 +35,7 @@ export class RecipeDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.recipeId$.subscribe(recipeId => {
-     console.log(recipeId);
+      console.log(recipeId);
       this.recipeService.getRecipeById(recipeId).subscribe(data => {
         this.recipe.next(data);
       });

@@ -8,4 +8,6 @@ export const environment = {
   register: base('/register'),
   activate: base('/activate?token='),
   recipe: base('/recipe'),
+  dish: base('/dish'),
+  diet: base('/category'),
 }
