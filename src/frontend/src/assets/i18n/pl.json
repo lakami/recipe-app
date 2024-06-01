@@ -53,6 +53,13 @@
     "servings": "Porcje"
   },
   "filter": {
-    "btnFilter": "Filtruj"
+    "btnFilter": "Filtruj",
+    "btnDeleteFilters": "Wyczyść",
+    "title-tags": "Co masz pod ręką?",
+    "tags": "Składniki",
+    "title-dishes": "Na co masz ochotę?",
+    "dishes": "Dania",
+    "title-diet": "Czego nie możesz jeść?",
+    "diet": "Dieta"
   }
 }

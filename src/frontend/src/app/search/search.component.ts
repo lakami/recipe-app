@@ -14,12 +14,20 @@ import {DietGetModel} from "../shared/dto/diet-get.model";
 import {HlmCheckboxComponent} from "@spartan-ng/ui-checkbox-helm";
 import {HlmButtonDirective} from "@spartan-ng/ui-button-helm";
 import {provideIcons} from "@ng-icons/core";
-import {lucideFilter} from "@ng-icons/lucide";
+import {lucidePlus, lucideSearch} from "@ng-icons/lucide";
+import {
+  HlmAccordionContentDirective,
+  HlmAccordionDirective,
+  HlmAccordionIconDirective,
+  HlmAccordionItemDirective,
+  HlmAccordionTriggerDirective
+} from "@spartan-ng/ui-accordion-helm";
+import {BrnAccordionContentComponent} from '@spartan-ng/ui-accordion-brain';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  providers: [provideIcons({ lucideFilter })],
+  providers: [provideIcons({ lucideSearch , lucidePlus})],
   imports: [
     RouterOutlet,
     AsyncPipe,
@@ -31,6 +39,13 @@ import {lucideFilter} from "@ng-icons/lucide";
     RecipeCardItemComponent,
     HlmCheckboxComponent,
     HlmButtonDirective,
+    BrnAccordionContentComponent,
+    HlmAccordionDirective,
+    HlmAccordionItemDirective,
+    HlmAccordionTriggerDirective,
+    HlmAccordionContentDirective,
+    HlmAccordionIconDirective,
+    HlmIconComponent,
   ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss'

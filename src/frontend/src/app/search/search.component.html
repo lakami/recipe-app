@@ -3,40 +3,88 @@
 </div>
 
 <form [formGroup]="form" (ngSubmit)="submit()">
-  <div formArrayName="dishes" class="dishes">
-    @for (d of dishesFormArray.controls; track d; let i = $index) {
-      <span class="dish">
-        <hlm-checkbox [formControlName]="i"/>
-        {{dishes[i].name}}
-      </span>
-    }
-  </div>
 
-  <div formArrayName="diets" class="diets">
-    @for (c of dietsFormArray.controls; track c; let i = $index) {
-      <span class="diet">
-        <hlm-checkbox [formControlName]="i"/>
-        {{diets[i].name}}
-      </span>
-    }
-  </div>
+  <div hlmAccordion>
+              <div hlmAccordionItem>
+                  <button hlmAccordionTrigger class="accordin-text">
+                      Co masz pod ręką?
+                      <hlm-icon hlmAccIcon />
+                  </button>
+                  <brn-accordion-content hlm class="accordin-text-inside">
+                    Składniki
+                    <div formArrayName="tags" class="tags">
+                      @for (t of tagsFormArray.controls; track t; let i = $index) {
+                        <span class="tag">
+                          <hlm-checkbox [formControlName]="i"/>
+                          {{tags[i].name}}
+                        </span>
+                      }
+                    </div>
+                    <div class="flex justify-end accordin-text-inside">
+                      <button hlmBtn variant='ghost' type="submit" [disabled]="form.invalid" >
+                        <hlm-icon size="sm" class="mr-2 rotate-45" name="lucidePlus" strokeWidth="3"/>
+                        <span translate="filter.btnDeleteFilters" class="btn-filter"></span>
+                      </button>
+                    </div>
+                  </brn-accordion-content>
+              </div>
 
-  <div formArrayName="tags" class="tags">
-    @for (t of tagsFormArray.controls; track t; let i = $index) {
-      <span class="tag">
-        <hlm-checkbox [formControlName]="i"/>
-        {{tags[i].name}}
-      </span>
-    }
-  </div>
+              <div hlmAccordionItem>
+                  <button hlmAccordionTrigger class="accordin-text">
+                      Na co masz ochotę?
+                      <hlm-icon hlmAccIcon />
+                  </button>
+                  <brn-accordion-content hlm class="accordin-text-inside">
+                      Danie
+                      <div formArrayName="dishes" class="dishes">
+                        @for (d of dishesFormArray.controls; track d; let i = $index) {
+                          <span class="dish">
+                            <hlm-checkbox [formControlName]="i"/>
+                            {{dishes[i].name}}
+                          </span>
+                        }
+                      </div>
+                      <div class="flex justify-end">
+                        <button hlmBtn variant='ghost' type="submit" [disabled]="form.invalid" >
+                          <hlm-icon size="sm" class="mr-2 rotate-45" name="lucidePlus" strokeWidth="3"/>
+                          <span translate="filter.btnDeleteFilters" class="btn-filter"></span>
+                        </button>
+                      </div>
+                  </brn-accordion-content>
+              </div>
 
-  <button hlmBtn type="submit" [disabled]="form.invalid" class="bg-lime-500 hover:bg-lime-400">
-    <hlm-icon size="sm" class="mr-2" name="lucideFilter" strokeWidth="3"/>
-    <span translate="filter.btnFilter" class="tracking-[.0625rem] uppercase p-1 text-base font-bold"></span>
-  </button>
-
+              <div hlmAccordionItem>
+                  <button hlmAccordionTrigger class="accordin-text">
+                      Czego nie możesz jeść?
+                      <hlm-icon hlmAccIcon />
+                  </button>
+                  <brn-accordion-content hlm class="accordin-text-inside">
+                      Dieta
+                      <div formArrayName="diets" class="diets">
+                          @for (c of dietsFormArray.controls; track c; let i = $index) {
+                            <span class="diet">
+                              <hlm-checkbox [formControlName]="i"/>
+                              {{diets[i].name}}
+                            </span>
+                          }
+                      </div>
+                      <div class="flex justify-end">
+                        <button hlmBtn variant='ghost' type="submit" [disabled]="form.invalid" >
+                          <hlm-icon size="sm" class="mr-2 rotate-45" name="lucidePlus" strokeWidth="3"/>
+                          <span translate="filter.btnDeleteFilters" class="btn-filter"></span>
+                        </button>
+                      </div>
+                  </brn-accordion-content>
+              </div>
+              <div class="py-1 flex justify-center accordin-text-inside">
+                <button hlmBtn variant='ghost' type="submit" [disabled]="form.invalid">
+                  <hlm-icon size="sm" class="mr-2" name="lucideSearch" strokeWidth="3"/>
+                  <span translate="filter.btnFilter" class="btn-filter"></span>
+                </button>
+              </div>
+          </div>
+      `,
 </form>
-
 
 <div class="card-list-container">
   <div class="card-list">
