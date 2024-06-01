@@ -53,7 +53,7 @@ public class RecipeService {
                                                          String search) {
         List<Specification<Recipe>> specifications = new LinkedList<>();
         if (categories != null && !categories.isEmpty()) {
-            var spec = (Specification<Recipe>) (root, query, criteriaBuilder) -> root.join("categories").get("name").in(
+            var spec = (Specification<Recipe>) (root, query, criteriaBuilder) -> root.join("diets").get("name").in(
                     categories);
             specifications.add(spec);
         }

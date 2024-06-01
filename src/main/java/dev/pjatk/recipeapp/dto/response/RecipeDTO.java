@@ -17,7 +17,7 @@ public record RecipeDTO(
         List<IngredientDTO> ingredients,
         List<StepDTO> steps,
         List<TagDTO> tags,
-        List<CategoryDTO> categories,
+        List<CategoryDTO> diets,
         List<DishDTO> dishes,
         AuthorDTO author,
         Instant createdDate
