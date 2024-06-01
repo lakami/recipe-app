@@ -22,5 +22,5 @@ svg.leaf{
 }
 
 .btn-text {
-  @apply bg-lime-500 p-4 rounded-lg text-white font-bold text-lg
+  @apply bg-lime-500 hover:bg-lime-400 p-4 rounded-md text-white font-bold text-lg tracking-[.0625rem] uppercase
 }

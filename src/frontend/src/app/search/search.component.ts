@@ -11,10 +11,15 @@ import {RecipeGetModel} from "../shared/dto/recipe-get.model";
 import {RecipeCardItemComponent} from "../recipe-card-item/recipe-card-item.component";
 import {TagGetModel} from "../shared/dto/tag-get.model";
 import {DietGetModel} from "../shared/dto/diet-get.model";
+import {HlmCheckboxComponent} from "@spartan-ng/ui-checkbox-helm";
+import {HlmButtonDirective} from "@spartan-ng/ui-button-helm";
+import {provideIcons} from "@ng-icons/core";
+import {lucideFilter} from "@ng-icons/lucide";
 
 @Component({
   selector: 'app-search',
   standalone: true,
+  providers: [provideIcons({ lucideFilter })],
   imports: [
     RouterOutlet,
     AsyncPipe,
@@ -24,6 +29,8 @@ import {DietGetModel} from "../shared/dto/diet-get.model";
     TranslationDirective,
     RouterLink,
     RecipeCardItemComponent,
+    HlmCheckboxComponent,
+    HlmButtonDirective,
   ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss'

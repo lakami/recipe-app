@@ -51,5 +51,8 @@
   "recipe-details": {
     "ingredients": "Składniki",
     "servings": "Porcje"
+  },
+  "filter": {
+    "btnFilter": "Filtruj"
   }
 }

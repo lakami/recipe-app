@@ -18,3 +18,14 @@
   @apply lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1
   gap-6 flex-row flex-wrap grid justify-center box-border antialiased
 }
+
+.dishes, .diets, .tags {
+  @apply py-2 text-sm block mb-2 text-black/[.65] tracking-[.0625rem] font-bold uppercase antialiased
+  flex flex-wrap gap-8 items-center
+}
+
+.dish, .diet, .tag {
+  @apply flex flex-wrap gap-2 items-center
+}
+
+

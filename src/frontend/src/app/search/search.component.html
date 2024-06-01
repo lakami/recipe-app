@@ -3,28 +3,38 @@
 </div>
 
 <form [formGroup]="form" (ngSubmit)="submit()">
-  <div formArrayName="dishes">
+  <div formArrayName="dishes" class="dishes">
     @for (d of dishesFormArray.controls; track d; let i = $index) {
-      <input type="checkbox" [formControlName]="i">
-      {{dishes[i].name}}
+      <span class="dish">
+        <hlm-checkbox [formControlName]="i"/>
+        {{dishes[i].name}}
+      </span>
     }
   </div>
 
-  <div formArrayName="diets">
+  <div formArrayName="diets" class="diets">
     @for (c of dietsFormArray.controls; track c; let i = $index) {
-      <input type="checkbox" [formControlName]="i">
-      {{diets[i].name}}
+      <span class="diet">
+        <hlm-checkbox [formControlName]="i"/>
+        {{diets[i].name}}
+      </span>
     }
   </div>
 
-  <div formArrayName="tags">
+  <div formArrayName="tags" class="tags">
     @for (t of tagsFormArray.controls; track t; let i = $index) {
-      <input type="checkbox" [formControlName]="i">
-      {{tags[i].name}}
+      <span class="tag">
+        <hlm-checkbox [formControlName]="i"/>
+        {{tags[i].name}}
+      </span>
     }
   </div>
 
-  <button type="submit" [disabled]="form.invalid">filtruj</button>
+  <button hlmBtn type="submit" [disabled]="form.invalid" class="bg-lime-500 hover:bg-lime-400">
+    <hlm-icon size="sm" class="mr-2" name="lucideFilter" strokeWidth="3"/>
+    <span translate="filter.btnFilter" class="tracking-[.0625rem] uppercase p-1 text-base font-bold"></span>
+  </button>
+
 </form>
 
 
