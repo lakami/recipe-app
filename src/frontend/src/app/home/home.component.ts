@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     //
     // this.result$ = this.exampleService.askServerForSum(this.a, this.b)
 
-    this.recipeService.getRecipes().subscribe({
+    this.recipeService.getRecipes("", "", "").subscribe({
       next: (page) => {
         this.recipes.next(page.content);
       },
@@ -67,7 +67,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         console.log('complete');
       }
     })
-    
+
   }
 
   // makeABigger() {

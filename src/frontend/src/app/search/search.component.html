@@ -1,0 +1,39 @@
+<div class="title">
+  <a translate="header.nav.recipes"></a>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div formArrayName="dishes">
+    @for (d of dishesFormArray.controls; track d; let i = $index) {
+      <input type="checkbox" [formControlName]="i">
+      {{dishes[i].name}}
+    }
+  </div>
+
+  <div formArrayName="diets">
+    @for (c of dietsFormArray.controls; track c; let i = $index) {
+      <input type="checkbox" [formControlName]="i">
+      {{diets[i].name}}
+    }
+  </div>
+
+  <div formArrayName="tags">
+    @for (t of tagsFormArray.controls; track t; let i = $index) {
+      <input type="checkbox" [formControlName]="i">
+      {{tags[i].name}}
+    }
+  </div>
+
+  <button type="submit" [disabled]="form.invalid">filtruj</button>
+</form>
+
+
+<div class="card-list-container">
+  <div class="card-list">
+      @if (recipes$ | async; as recipes) {
+          @for (recipe of recipes; track recipe.id) {
+            <app-recipe-card-item [recipe]="recipe" [routerLink]="'/recipe/' + recipe.id"></app-recipe-card-item>
+          }
+      }
+  </div>
+</div>

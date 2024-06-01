@@ -1,13 +1,13 @@
 <div class="card-list-container">
   @if (recipe$ | async; as recipe) {
 
-    <div class="category">
-      @for (category of recipe.categories; track category.id; let last = $last) {
+    <div class="diet">
+      @for (diet of recipe.categories; track diet.id; let last = $last) {
               @if (!last) {
-                <span>{{category.name}} > </span>
+                <span>{{diet.name}} > </span>
               }
               @else {
-                <span>{{category.name}}</span>
+                <span>{{diet.name}}</span>
               }
           }
     </div>
@@ -16,7 +16,7 @@
 
   <div class="recipe-author">{{recipe.author.firstName + " " + recipe.author.lastName}}</div>
 
-  <div class="create-date">{{recipe.createDate}}</div>
+  <div class="create-date">{{recipe.createdDate}}</div>
 
   <div class="recipe-time">
    <hlm-icon class="icon-clock" size='sm' name="lucideClock"/>

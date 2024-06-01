@@ -1,4 +1,9 @@
 import {AuthorGetModel} from "./author-get.model";
+import {DietGetModel} from "./diet-get.model";
+import {TagGetModel} from "./tag-get.model";
+import {StepGetModel} from "./step-get.model";
+import {IngredientGetModel} from "./ingredient-get.model";
+import {DishGetModel} from "./dish-get.model";
 
 export class RecipeGetModel {
     constructor(
@@ -11,43 +16,9 @@ export class RecipeGetModel {
         public ingredients: IngredientGetModel[],
         public steps: StepGetModel[],
         public tags: TagGetModel[],
-        public categories: CategoryGetModel[],
+        public categories: DietGetModel[], // TODO: fix when backend is changed to diets
         public dishes: DishGetModel[],
         public author: AuthorGetModel,
-        public createDate: number,
-    ) {}
-}
-
-export class IngredientGetModel {
-    constructor(
-        public name: string,
-    ) {}
-}
-
-export class StepGetModel {
-    constructor(
-        public number: number,
-        public description: string,
-    ) {}
-}
-
-export class TagGetModel {
-    constructor(
-        public id: number,
-        public name: string,
-    ) {}
-}
-
-export class CategoryGetModel {
-    constructor(
-        public id: number,
-        public name: string,
-    ) {}
-}
-
-export class DishGetModel {
-    constructor(
-        public id: number,
-        public name: string,
+        public createdDate: number,
     ) {}
 }

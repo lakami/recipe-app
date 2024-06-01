@@ -2,13 +2,13 @@
   <img [src]="'/api/v1/images/' + recipe.imageUrl" />
 </div>
 <div class="content">
-  <div class="category">
-    @for (category of recipe.categories; track category.id; let last = $last) {
+  <div class="diet">
+    @for (diet of recipe.categories; track diet.id; let last = $last) {
         @if (!last) {
-          <span>{{category.name}} > </span>
+          <span>{{diet.name}} > </span>
         }
         @else {
-          <span>{{category.name}}</span>
+          <span>{{diet.name}}</span>
         }
     }
   </div>

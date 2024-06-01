@@ -1,6 +1,6 @@
-export class IngredientGetModel {
-    constructor(
-        public id: number,
-        public description: string,
-    ) {}
+export class StepGetModel {
+  constructor(
+    public number: number,
+    public description: string,
+  ) {}
 }

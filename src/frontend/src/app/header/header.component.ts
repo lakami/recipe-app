@@ -20,6 +20,7 @@ import {RecipeService} from "../shared/services/recipe.service";
 import {BehaviorSubject, map} from "rxjs";
 import {DishGetModel} from "../shared/dto/dish-get.model";
 import {AsyncPipe} from "@angular/common";
+import {DietGetModel} from "../shared/dto/diet-get.model";
 
 @Component({
   selector: 'app-header',
@@ -49,7 +50,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private recipeService: RecipeService = inject(RecipeService);
   private dishes = new BehaviorSubject<DishGetModel[]>([]);
   dishes$ = this.dishes.asObservable();
-  private  diets = new BehaviorSubject<DishGetModel[]>([]);
+  private  diets = new BehaviorSubject<DietGetModel[]>([]);
     diets$ = this.diets.asObservable();
   private route: ActivatedRoute = inject(ActivatedRoute);
   dishId$ = this.route.params.pipe(map(params => params['dishId']));

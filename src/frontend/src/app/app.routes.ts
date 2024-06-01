@@ -7,6 +7,8 @@ import {ActivateComponent} from "./activate/activate.component";
 import {ActivateSuccessComponent} from "./activate-success/activate-success.component";
 import {RegisterSuccessComponent} from "./register-success/register-success.component";
 import {RecipeDetailsComponent} from "./recipe-details/recipe-details.component";
+import {DishComponent} from "./dish/dish.component";
+import {DietComponent} from "./diet/diet.component";
 
 export const routes: Routes = [
   {
@@ -42,6 +44,18 @@ export const routes: Routes = [
   {
     path: 'recipe/:recipeId',
     component: RecipeDetailsComponent,
+  },
+  // {
+  //   path: 'search',
+  //   component: SearchComponent,
+  // },
+  {
+    path: 'dish/:dishName',
+    component: DishComponent,
+  },
+  {
+    path: 'diet/:dietName',
+    component: DietComponent,
   },
   ...errorRoute
 ];
