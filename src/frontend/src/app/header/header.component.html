@@ -38,7 +38,7 @@
   <hlm-menu>
     <hlm-menu-group>
       @for (dish of (dishes$ | async); track dish.id) {
-        <button hlmMenuItem>{{dish.name}}</button>
+        <button hlmMenuItem [routerLink]="'dish/' + dish.name">{{dish.name}}</button>
       }
     </hlm-menu-group>
   </hlm-menu>
@@ -48,7 +48,7 @@
   <hlm-menu>
     <hlm-menu-group>
       @for (diet of (diets$ | async); track diet.id) {
-        <button hlmMenuItem>{{diet.name}}</button>
+        <button hlmMenuItem [routerLink]="'diet/' + diet.name">{{diet.name}}</button>
       }
     </hlm-menu-group>
   </hlm-menu>

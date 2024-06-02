@@ -85,6 +85,7 @@ export class SearchComponent implements OnInit, OnDestroy, OnChanges {
         console.log(diet);
         this.form.reset();
         this.form.controls["diets"].setValue(this.diets.map(d => d.name === diet));
+        this.submit();
     })
 
     this.dishesChanged
@@ -94,6 +95,7 @@ export class SearchComponent implements OnInit, OnDestroy, OnChanges {
         console.log(dish);
         this.form.reset();
         this.form.controls["dishes"].setValue(this.dishes.map(d => d.name === dish));
+        this.submit();
         }
       )
     // this.queryParams$.subscribe(params => {
