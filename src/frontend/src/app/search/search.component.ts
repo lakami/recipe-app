@@ -136,6 +136,10 @@ export class SearchComponent implements OnInit, OnDestroy {
       return this.form.controls["dishes"] as FormArray;
     }
 
+    get dishesFormArrayIterate() {
+      return (this.form.controls["dishes"] as FormArray).controls as FormControl[];
+    }
+
     get dietsFormArray() {
       return this.form.controls["diets"] as FormArray;
     }

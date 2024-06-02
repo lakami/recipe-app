@@ -21,12 +21,6 @@
                     </span>
                   }
                 </div>
-                <div class="flex justify-end accordin-text-inside">
-                  <button hlmBtn variant='ghost' type="submit" [disabled]="form.invalid" >
-                    <hlm-icon size="sm" class="mr-2 rotate-45" name="lucidePlus" strokeWidth="3"/>
-                    <span translate="filter.btnDeleteFilters" class="btn-filter"></span>
-                  </button>
-                </div>
             </brn-accordion-content>
         </div>
       </div>
@@ -46,12 +40,6 @@
                       {{dishes[i].name}}
                     </span>
                   }
-                </div>
-                <div class="flex justify-end">
-                  <button hlmBtn variant='ghost' type="submit" [disabled]="form.invalid" >
-                    <hlm-icon size="sm" class="mr-2 rotate-45" name="lucidePlus" strokeWidth="3"/>
-                    <span translate="filter.btnDeleteFilters" class="btn-filter"></span>
-                  </button>
                 </div>
             </brn-accordion-content>
           </div>
@@ -73,12 +61,6 @@
                       </span>
                     }
                 </div>
-                <div class="flex justify-end">
-                  <button hlmBtn variant='ghost' type="submit" [disabled]="form.invalid">
-                    <hlm-icon size="sm" class="mr-2 rotate-45" name="lucidePlus" strokeWidth="3"/>
-                    <span translate="filter.btnDeleteFilters" class="btn-filter"></span>
-                  </button>
-                </div>
             </brn-accordion-content>
           </div>
       </div>
@@ -87,6 +69,11 @@
                 <button hlmBtn variant='ghost' type="submit" [disabled]="form.invalid">
                   <hlm-icon size="sm" class="mr-2" name="lucideSearch" strokeWidth="3"/>
                   <span translate="filter.btnFilter" class="btn-filter"></span>
+                </button>
+
+                <button hlmBtn variant='ghost' type="reset" [disabled]="form.invalid">
+                  <hlm-icon size="sm" class="mr-2 rotate-45" name="lucidePlus" strokeWidth="3"/>
+                  <span translate="filter.btnDeleteFilters" class="btn-filter"></span>
                 </button>
               </div>
           </div>
