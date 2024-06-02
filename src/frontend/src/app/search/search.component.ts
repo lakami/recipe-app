@@ -24,6 +24,8 @@ import {
 } from "@spartan-ng/ui-accordion-helm";
 import {BrnAccordionContentComponent} from '@spartan-ng/ui-accordion-brain';
 import {LayoutService} from "../shared/services/layout.service";
+import {HlmInputDirective} from "@spartan-ng/ui-input-helm";
+import {TranslationPipe} from "../shared/translation/translation.pipe";
 
 @Component({
   selector: 'app-search',
@@ -47,6 +49,8 @@ import {LayoutService} from "../shared/services/layout.service";
     HlmAccordionContentDirective,
     HlmAccordionIconDirective,
     HlmIconComponent,
+    HlmInputDirective,
+    TranslationPipe,
   ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss'
@@ -69,7 +73,8 @@ export class SearchComponent implements OnInit, OnDestroy, OnChanges {
   form: FormGroup = new FormGroup({
     dishes: new FormArray([]),
     diets: new FormArray([]),
-    tags: new FormArray([])
+    tags: new FormArray([]),
+    search: new FormControl('')
   });
 
   ngOnInit(): void {
@@ -130,9 +135,11 @@ export class SearchComponent implements OnInit, OnDestroy, OnChanges {
         this.form = new FormGroup({
           dishes: new FormArray(this.dishes.map(dish => new FormControl( false))),
           diets: new FormArray(this.diets.map(diet => new FormControl( false))),
-          tags: new FormArray(this.tags.map(tag => new FormControl( false)))
+          tags: new FormArray(this.tags.map(tag => new FormControl( false))),
+          search: new FormControl('')
         })
         formLoaded.next(true);
+        this.submit();
       })
 
     this.recipeService.getDishes().subscribe({
@@ -216,7 +223,8 @@ export class SearchComponent implements OnInit, OnDestroy, OnChanges {
     this.recipeService.getRecipes(
       selectedDishesNames.join(','),
       selectedDietsNames.join(','),
-      selectedTagsNames.join(',')
+      selectedTagsNames.join(','),
+      this.form.value.search
     ).subscribe({
       next: (page) => {
         this.recipe.next(page.content)

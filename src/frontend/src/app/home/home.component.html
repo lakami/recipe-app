@@ -6,18 +6,18 @@
 
 <!--<div class="hover:text-sky-600">tailwind test</div>-->
 
-<div class="title">
-  <a translate="header.nav.recipes"></a>
-</div>
-<div class="card-list-container">
-  <div class="card-list">
-      @if (recipes$ | async; as recipes) {
-          @for (recipe of recipes; track recipe.id) {
-            <app-recipe-card-item [recipe]="recipe" [routerLink]="'/recipe/' + recipe.id"></app-recipe-card-item>
-          }
-      }
-  </div>
-</div>
-
+<!--<div class="title">-->
+<!--  <a translate="header.nav.recipes"></a>-->
+<!--</div>-->
+<!--<div class="card-list-container">-->
+<!--  <div class="card-list">-->
+<!--      @if (recipes$ | async; as recipes) {-->
+<!--          @for (recipe of recipes; track recipe.id) {-->
+<!--            <app-recipe-card-item [recipe]="recipe" [routerLink]="'/recipe/' + recipe.id"></app-recipe-card-item>-->
+<!--          }-->
+<!--      }-->
+<!--  </div>-->
+<!--</div>-->
+<app-search></app-search>
 
 

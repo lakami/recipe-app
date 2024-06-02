@@ -92,12 +92,21 @@
             </brn-accordion-content>
           </div>
       </div>
+              <div class="py-3 flex justify-between accordin-text-inside">
+                <div class="flex gap-2">
+                  <input
+                    id="search"
+                    hlmInput
+                    formControlName="search"
+                    (keydown.enter)="submit()"
+                    [placeholder]="'filter.placeholder' | translation | async"
+                  />
 
-              <div class="py-3 flex justify-center accordin-text-inside">
-                <button hlmBtn variant='ghost' type="submit" [disabled]="form.invalid">
-                  <hlm-icon size="sm" class="mr-2" name="lucideSearch" strokeWidth="3"/>
-                  <span translate="filter.btnFilter" class="btn-filter"></span>
-                </button>
+                    <button hlmBtn variant='ghost' type="submit" [disabled]="form.invalid">
+                      <hlm-icon size="sm" class="mr-2" name="lucideSearch" strokeWidth="3"/>
+                      <span translate="filter.btnFilter" class="btn-filter"></span>
+                    </button>
+                  </div>
 
                 <button hlmBtn variant='ghost' type="reset" [disabled]="form.invalid">
                   <hlm-icon size="sm" class="mr-2 rotate-45" name="lucidePlus" strokeWidth="3"/>

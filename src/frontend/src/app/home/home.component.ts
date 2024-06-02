@@ -7,6 +7,7 @@ import {RecipeService} from "../shared/services/recipe.service";
 import {RecipeGetModel} from "../shared/dto/recipe-get.model";
 import {RecipeCardItemComponent} from "../recipe-card-item/recipe-card-item.component";
 import {TranslationDirective} from "../shared/translation/translation.directive";
+import {SearchComponent} from "../search/search.component";
 
 @Component({
   selector: 'app-main-page',
@@ -17,7 +18,8 @@ import {TranslationDirective} from "../shared/translation/translation.directive"
     CommonModule,
     RecipeCardItemComponent,
     TranslationDirective,
-    RouterLink
+    RouterLink,
+    SearchComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
