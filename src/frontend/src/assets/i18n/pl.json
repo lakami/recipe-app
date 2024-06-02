@@ -56,10 +56,10 @@
     "btnFilter": "Filtruj",
     "btnDeleteFilters": "Wyczyść",
     "title-tags": "Co masz pod ręką?",
-    "tags": "Składniki",
+    "tags": "Składniki:",
     "title-dishes": "Na co masz ochotę?",
-    "dishes": "Dania",
-    "title-diet": "Czego nie możesz jeść?",
-    "diet": "Dieta"
+    "dishes": "Dania:",
+    "title-diets": "Czego nie możesz jeść?",
+    "diets": "Dieta:"
   }
 }

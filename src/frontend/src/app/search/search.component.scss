@@ -25,7 +25,7 @@
 }
 
 .dish, .diet, .tag {
-  @apply flex flex-wrap gap-2 items-center
+  @apply flex flex-wrap gap-1 items-center
 }
 
 .accordin-text {
@@ -41,6 +41,10 @@
 
 .btn-filter {
   @apply tracking-[.0625rem] uppercase p-1 text-base font-bold
+}
+
+.accordin-input-container {
+  @apply px-3 flex
 }
 
 
