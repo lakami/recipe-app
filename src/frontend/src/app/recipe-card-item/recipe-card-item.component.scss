@@ -1,5 +1,5 @@
 :host {
-  @apply border border-solid border-[rgba(0,0,0,0.15)] cursor-pointer
+  @apply border border-solid border-foreground/[.15] cursor-pointer
 }
 
 :host:hover .recipe-name {
@@ -19,7 +19,7 @@ img {
 }
 
 .diet {
-  @apply text-xs block mb-2 text-black/[.65] tracking-[.0625rem] font-bold uppercase max-h-8 min-h-8
+  @apply text-xs block mb-2 text-foreground/[.65] tracking-[.0625rem] font-bold uppercase max-h-8 min-h-8
 }
 
 .recipe-name {
@@ -30,7 +30,7 @@ img {
 }
 
 .recipe-info {
-  @apply flex gap-1 items-center text-sm text-black/[.65] font-normal underline-offset-[.1875rem] antialiased
+  @apply flex gap-1 items-center text-sm text-foreground/[.65] font-normal underline-offset-[.1875rem] antialiased
 }
 
 .icon-clock {

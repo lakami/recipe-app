@@ -1,5 +1,5 @@
 :host {
-  @apply w-full bg-white fixed top-0 z-[1000] right-0 left-0 min-h-[4rem] shadow-bottom pt-4;
+  @apply w-full bg-background fixed top-0 z-[1000] right-0 left-0 min-h-[4rem] shadow-bottom pt-4;
 }
 
 div.header-container {
@@ -40,20 +40,20 @@ div.logo-container{
 }
 
 svg.logo{
-  @apply h-10
+  @apply h-5 md:h-10
 }
 
 div.header-top {
-    @apply grid-cols-none grid gap-4 grid-flow-col items-end justify-between w-full m-0 p-0 h-auto box-border
+    @apply items-center grid-cols-none grid gap-4 grid-flow-col justify-between w-full m-0 p-0 h-auto box-border
 }
 
 div.multi-utility-nav-group {
-  @apply min-w-[34em] justify-self-end justify-end flex w-full m-0 pr-4 pl-0 py-0 box-border
+  @apply justify-self-end justify-end flex w-full m-0 pl-0 py-0 box-border
 }
 
 ul.multi-utility-nav {
   @apply flex items-center gap-x-3 gap-y-3 m-0 p-0 list-none box-border
-  divide-x divide-black/15
+  divide-x divide-foreground/[.15]
 }
 
 .icon-login, .icon-dark-light-mode {

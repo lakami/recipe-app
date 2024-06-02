@@ -3,7 +3,7 @@
 }
 
 .card-list-container {
-  @apply box-border block
+  @apply box-border block px-3 xl:px-0
 }
 
 .image-conatainer {
@@ -12,8 +12,9 @@
 
 .image-placeholder {
   //@apply w-full bg-gray-300 overflow-hidden box-border h-[612px]
-  @apply w-full bg-lime-50 overflow-hidden box-border flex justify-center px-64
+  @apply w-full bg-foreground/[.05] overflow-hidden box-border flex justify-center md:px-32 lg:px-64
 }
+
 
 img {
   //@apply object-center object-none
@@ -26,11 +27,11 @@ img {
 }
 
 .diet {
-  @apply pb-1 text-sm block mb-2 text-black/[.65] tracking-[.0625rem] font-bold uppercase underline-offset-[.25rem] decoration-1 antialiased
+  @apply pb-1 text-sm block mb-2 text-foreground/[.65] tracking-[.0625rem] font-bold uppercase underline-offset-[.25rem] decoration-1 antialiased
 }
 
 .tag, .dish {
-  @apply text-xs block mb-2 text-black/[.65] tracking-[.0625rem] font-bold uppercase
+  @apply text-xs block mb-2 text-foreground/[.65] tracking-[.0625rem] font-bold uppercase
 }
 
 .recipe-name {
@@ -48,11 +49,11 @@ img {
 }
 
 .recipe-date, .recipe-author, .recipe-time  {
-  @apply flex gap-1 items-center text-sm text-black/[.65] font-normal underline-offset-[.1875rem] antialiased
+  @apply flex gap-1 items-center text-sm text-foreground/[.65] font-normal underline-offset-[.1875rem] antialiased
 }
 
 .recipe-title-ingredients-servings, .recipe-description {
-@apply py-4 text-sm text-black tracking-[.0625rem] font-bold uppercase antialiased
+@apply py-4 text-sm text-foreground tracking-[.0625rem] font-bold uppercase antialiased
 }
 
 .recipe-ingredients {
@@ -60,7 +61,7 @@ img {
 }
 
 .recipe-ingredients-steps-container {
-  @apply flex gap-12 items-start pb-2
+  @apply flex flex-col md:flex-row md:gap-12 items-start pb-2
 }
 
 

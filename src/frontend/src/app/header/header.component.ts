@@ -21,6 +21,7 @@ import {BehaviorSubject, map} from "rxjs";
 import {DishGetModel} from "../shared/dto/dish-get.model";
 import {AsyncPipe} from "@angular/common";
 import {DietGetModel} from "../shared/dto/diet-get.model";
+import {ThemeService} from "../shared/services/theme.service";
 
 @Component({
   selector: 'app-header',
@@ -47,6 +48,7 @@ import {DietGetModel} from "../shared/dto/diet-get.model";
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  private themeService: ThemeService = inject(ThemeService);
   private recipeService: RecipeService = inject(RecipeService);
   private dishes = new BehaviorSubject<DishGetModel[]>([]);
   dishes$ = this.dishes.asObservable();
@@ -67,6 +69,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
           this.diets.next(diets);
         }
       });
+  }
+
+  toggleColor(): void {
+    this.themeService.toggleDarkMode();
   }
 
   ngOnDestroy(): void {

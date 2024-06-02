@@ -1,5 +1,4 @@
 :host {
-  @apply bg-white;
 }
 
 .title {
@@ -11,7 +10,7 @@
   -webkit-text-size-adjust: 100%;
 }
 .card-list-container {
-  @apply box-border block antialiased text-xl
+  @apply box-border block antialiased text-xl px-3 xl:px-0
 }
 
 .card-list {
@@ -20,23 +19,24 @@
 }
 
 .dishes, .diets, .tags {
-  @apply py-2 text-sm block mb-2 text-black/[.65] tracking-[.0625rem] font-bold uppercase antialiased
-  flex flex-wrap gap-4 items-center
+  @apply text-sm block text-foreground/[.65] tracking-[.0625rem] font-bold uppercase antialiased
+  flex flex-wrap items-center
 }
 
 .dish, .diet, .tag {
-  @apply flex flex-wrap gap-1 items-center
+  @apply flex flex-wrap gap-1 items-center pt-1 pr-3
 }
 
 .accordin-text {
-  @apply text-lg text-black/[.65] font-bold antialiased tracking-[.0625rem] font-serif
+  @apply text-lg text-foreground/[.65] font-bold antialiased tracking-[.0625rem] font-serif
+  hover:underline
 }
 .accordin-text {
   text-decoration-skip-ink: none;
 }
 
 .accordin-text-inside {
-  @apply text-base text-black/[.65] font-bold antialiased tracking-[.0625rem] uppercase
+  @apply text-base text-foreground/[.65] font-bold antialiased tracking-[.0625rem] uppercase
 }
 
 .btn-filter {
