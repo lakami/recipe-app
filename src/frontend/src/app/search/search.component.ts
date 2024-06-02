@@ -1,5 +1,5 @@
 import {Component, inject, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
-import {BehaviorSubject, filter, zip} from "rxjs";
+import {BehaviorSubject, debounce, filter, ReplaySubject, zip} from "rxjs";
 import {DishGetModel} from "../shared/dto/dish-get.model";
 import {ActivatedRoute, RouterLink, RouterOutlet} from "@angular/router";
 import {RecipeService} from "../shared/services/recipe.service";
@@ -60,6 +60,8 @@ export class SearchComponent implements OnInit, OnDestroy, OnChanges {
   private route: ActivatedRoute = inject(ActivatedRoute);
   queryParams$ = this.route.queryParams; //wszystkie parametry wyszukiwania przepisu
   private recipe = new BehaviorSubject<RecipeGetModel[]>([]);
+  dietsChanged= new ReplaySubject<string>();
+  dishesChanged= new ReplaySubject<string>();
   recipes$ = this.recipe.asObservable();
   dishes!: DishGetModel[];
   diets!: DietGetModel[];
@@ -72,6 +74,28 @@ export class SearchComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnInit(): void {
 
+    var formLoaded = new BehaviorSubject<boolean>(false);
+    // formLoaded.subscribe(loaded => {
+    //   console.log("Formularz utworzno");
+    // })
+    this.dietsChanged
+      .pipe(debounce(_ => formLoaded
+        .pipe(filter(loaded => loaded)))) //czekam na załadowanie się formularza i biorę ostatnią wartość, która pojawiła się w trakcie oczekiwania
+      .subscribe(diet => {
+        console.log(diet);
+        this.form.reset();
+        this.form.controls["diets"].setValue(this.diets.map(d => d.name === diet));
+    })
+
+    this.dishesChanged
+      .pipe(debounce(_ => formLoaded
+        .pipe(filter(loaded => loaded)))) //czekam na załadowanie się formularza i biorę ostatnią wartość, która pojawiła się w trakcie oczekiwania
+      .subscribe(dish =>{
+        console.log(dish);
+        this.form.reset();
+        this.form.controls["dishes"].setValue(this.dishes.map(d => d.name === dish));
+        }
+      )
     // this.queryParams$.subscribe(params => {
     //   console.log(params);
     //   this.recipeService.getRecipes(
@@ -106,6 +130,7 @@ export class SearchComponent implements OnInit, OnDestroy, OnChanges {
           diets: new FormArray(this.diets.map(diet => new FormControl( false))),
           tags: new FormArray(this.tags.map(tag => new FormControl( false)))
         })
+        formLoaded.next(true);
       })
 
     this.recipeService.getDishes().subscribe({
@@ -128,22 +153,26 @@ export class SearchComponent implements OnInit, OnDestroy, OnChanges {
         tagsLoaded.next(true);
       }
     });
-
   }
 
   ngOnDestroy() {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
+    if (changes["diet"] && changes["diet"].currentValue) {
+      let currentlySelectedDiet = changes["diet"].currentValue;
+      this.dietsChanged.next(currentlySelectedDiet);
+      console.log(currentlySelectedDiet);
+    }
+    if (changes["dish"] && changes["dish"].currentValue) {
+      let currentlySelectedDish = changes["dish"].currentValue;
+      this.dishesChanged.next(currentlySelectedDish);
+      console.log(currentlySelectedDish);
+    }
   }
 
   get dishesFormArray() {
     return this.form.controls["dishes"] as FormArray;
-  }
-
-  get dishesFormArrayIterate() {
-    return (this.form.controls["dishes"] as FormArray).controls as FormControl[];
   }
 
   get dietsFormArray() {
