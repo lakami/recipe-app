@@ -1,11 +1,8 @@
 package dev.pjatk.recipeapp.service;
 
 import dev.pjatk.recipeapp.dto.request.NewRecipeDTO;
-import dev.pjatk.recipeapp.dto.response.*;
-import dev.pjatk.recipeapp.entity.recipe.Category;
-import dev.pjatk.recipeapp.entity.recipe.Dish;
-import dev.pjatk.recipeapp.entity.recipe.Recipe;
-import dev.pjatk.recipeapp.entity.recipe.Tag;
+import dev.pjatk.recipeapp.dto.response.RecipeDTO;
+import dev.pjatk.recipeapp.entity.recipe.*;
 import dev.pjatk.recipeapp.exception.ResourceNotFoundException;
 import dev.pjatk.recipeapp.repository.CategoryRepository;
 import dev.pjatk.recipeapp.repository.DishRepository;
@@ -20,10 +17,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -95,21 +89,41 @@ public class RecipeService {
         recipe.setCategories(getCategories(dto.categories()));
         recipe.setTags(getTags(dto.tags()));
         recipe.setDishes(getDishes(dto.dishes()));
-        recipe.setSteps(dto.steps().stream().map(StepDTO::toEntity).collect(Collectors.toSet()));
-        recipe.setIngredients(dto.ingredients().stream().map(IngredientDTO::toEntity).collect(Collectors.toSet()));
+        recipe.setSteps(getSteps(dto.steps()));
+        recipe.setIngredients(getIngredients(dto.ingredients()));
         return recipeRepository.save(recipe);
     }
 
-    private Set<Category> getCategories(Collection<CategoryDTO> categories) {
-        return categoryRepository.findByNameIn(categories.stream().map(CategoryDTO::name).toList());
+    private Set<Ingredient> getIngredients(List<String> ingredients) {
+        return ingredients.stream()
+                .map(text -> {
+                    var ingredient = new Ingredient();
+                    ingredient.setName(text);
+                    return ingredient;
+                }).collect(Collectors.toSet());
     }
 
-    private Set<Dish> getDishes(Collection<DishDTO> dishes) {
-        return dishRepository.findByNameIn(dishes.stream().map(DishDTO::name).toList());
+    private Set<Step> getSteps(List<String> steps) {
+        var set = new HashSet<Step>();
+        for (int i = 0; i < steps.size(); i++) {
+            var step = new Step();
+            step.setDescription(steps.get(i));
+            step.setNumber(i + 1);
+            set.add(step);
+        }
+        return set;
     }
 
-    private Set<Tag> getTags(Collection<TagDTO> tags) {
-        return tagRepository.findByNameIn(tags.stream().map(TagDTO::name).toList());
+    private Set<Category> getCategories(Collection<String> categories) {
+        return categoryRepository.findByNameIn(categories);
+    }
+
+    private Set<Dish> getDishes(Collection<String> dishes) {
+        return dishRepository.findByNameIn(dishes);
+    }
+
+    private Set<Tag> getTags(Collection<String> tags) {
+        return tagRepository.findByNameIn(tags);
     }
 
     /**
@@ -133,8 +147,9 @@ public class RecipeService {
         recipe.setCategories(getCategories(recipeDTO.categories()));
         recipe.setTags(getTags(recipeDTO.tags()));
         recipe.setDishes(getDishes(recipeDTO.dishes()));
-        recipe.setSteps(recipeDTO.steps().stream().map(StepDTO::toEntity).collect(Collectors.toSet()));
-        recipe.setIngredients(recipeDTO.ingredients().stream().map(IngredientDTO::toEntity).collect(Collectors.toSet()));
+        // TODO: update steps and ingredients
+//        recipe.setSteps(recipeDTO.steps().stream().map(StepDTO::toEntity).collect(Collectors.toSet()));
+//        recipe.setIngredients(recipeDTO.ingredients().stream().map(IngredientDTO::toEntity).collect(Collectors.toSet()));
         recipeRepository.save(recipe);
     }
 
