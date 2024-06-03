@@ -6,6 +6,8 @@ import dev.pjatk.recipeapp.entity.User;
 import dev.pjatk.recipeapp.repository.AuthorityRepository;
 import dev.pjatk.recipeapp.repository.UserRepository;
 import dev.pjatk.recipeapp.security.Authorities;
+import dev.pjatk.recipeapp.usecase.NoUserFoundException;
+import dev.pjatk.recipeapp.util.Loggable;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,7 +24,7 @@ import java.util.UUID;
 @Transactional
 @RequiredArgsConstructor
 @Service
-class UserService implements IUserService {
+class UserService implements IUserService, Loggable {
 
     private static final SecureRandom SECURE_RANDOM;
 
@@ -55,15 +57,27 @@ class UserService implements IUserService {
     }
 
     @Override
-    public Optional<User> activate(String activationToken, ActivationDTO missingData) {
-        return userRepository.findByActivationToken(activationToken)
+    public void activate(String token, ActivationDTO missingData) {
+        userRepository.findByActivationToken(token)
                 .map(user -> {
                     user.setActivated(true);
                     user.setActivationToken(null); // very important to remove token after activation
                     user.setFirstName(missingData.firstName());
                     user.setLastName(missingData.lastName());
                     return user;
+                })
+                .ifPresentOrElse(activated -> {
+                    log().info("User activated: {}", activated.getEmail());
+                    // TODO: decide whether authenticate user automatically or not
+                    // TODO: update profile url
+                    var profileUrl = findNextProfileUrl(activated.getFirstName(),
+                                                        activated.getLastName());
+                    updateProfileUrl(activated.getEmail(), profileUrl);
+                }, () -> {
+                    log().warn("No user found for token: {}", token);
+                    throw new NoUserFoundException();
                 });
+        ;
     }
 
     @Override

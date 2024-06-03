@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping(CategoryController.CATEGORY)
 @RequiredArgsConstructor
 public class CategoryController {
-    protected static final String CATEGORY = "/api/v1/category";
+    protected static final String CATEGORY = "/api/v1/diet";
 
     private final CategoryService categoryService;
 
