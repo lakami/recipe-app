@@ -1,0 +1,147 @@
+<form
+[formGroup]="form"
+class="flex flex-col"
+>
+  <div class="flex flex-col gap-4 xl:px-0 px-3">
+        <div class="flex flex-col md:items-center items-start">
+          <label class="recipe-add-title" translate="recipe-add.title"></label>
+          <label class="recipe-add-subtitle" translate="recipe-add.subtitle"></label>
+        </div>
+
+      <div class="recipe-add-component">
+          <label for="name" translate="recipe-add.name.label" class="recipe-add-component-label"></label>
+          <input
+            class="recipe-add-component-input"
+            type="text"
+            id="name"
+            hlmInput
+            formControlName="name"
+            [error]='hasNameError()'
+            [placeholder]="'recipe-add.name.placeholder' | translation | async"
+          />
+      </div>
+
+      <div class="recipe-add-component">
+          <label for="description" translate="recipe-add.description.label" class="recipe-add-component-label"></label>
+          <input
+            class="recipe-add-component-input"
+            type="text"
+            id="description"
+            hlmInput
+            formControlName="description"
+            [error]='hasDescriptionError()'
+            [placeholder]="'recipe-add.description.placeholder' | translation | async"
+          />
+      </div>
+
+      <div class="recipe-add-component">
+          <label for="preparationTime" translate="recipe-add.preparation-time" class="recipe-add-component-label"></label>
+          <input
+            class="recipe-add-component-input"
+            type="text"
+            id="preparationTime"
+            hlmInput
+            formControlName="preparationTime"
+            [error]='hasPreparationTimeError()'
+          />
+      </div>
+
+       <div class="recipe-add-component">
+          <label for="servings" translate="recipe-add.servings" class="recipe-add-component-label"></label>
+          <input
+            class="recipe-add-component-input"
+            type="text"
+            id="servings"
+            hlmInput
+            formControlName="servings"
+            [error]='hasServingsError()'
+          />
+        </div>
+
+       <div class="recipe-add-component">
+          <label for="steps" translate="recipe-add.steps.label" class="recipe-add-component-label"></label>
+
+          <textarea
+            class="min-h-20 recipe-add-component-input"
+            id="steps"
+            hlmInput
+            [placeholder]="'recipe-add.steps.placeholder' | translation | async"
+           ></textarea>
+        </div>
+
+       <div class="recipe-add-component">
+          <label for="ingredients" translate="recipe-add.ingredients.label" class="recipe-add-component-label"></label>
+
+           <textarea
+             class="min-h-20 recipe-add-component-input"
+             id="ingredients"
+             hlmInput
+             [placeholder]="'recipe-add.ingredients.placeholder' | translation | async"
+            ></textarea>
+        </div>
+
+       <div class="recipe-add-component">
+          <label for="dishes" translate="recipe-add.dishes.label" class="recipe-add-component-label"></label>
+
+          <brn-select
+            class="recipe-add-component-input"
+            formControlName="dishes"
+            id="dishes"
+            [multiple]="true"
+            [placeholder]="'recipe-add.dishes.placeholder' | translation | async"
+          >
+            <hlm-select-trigger>
+             <hlm-select-value/>
+            </hlm-select-trigger>
+            <hlm-select-content>
+              @for (d of dishes; track d.name) {
+                <hlm-option [value]="d.name">{{d.name}}</hlm-option>
+              }
+            </hlm-select-content>
+           </brn-select>
+        </div>
+
+         <div class="recipe-add-component">
+            <label for="diets" translate="recipe-add.diets.label" class="recipe-add-component-label"></label>
+
+            <brn-select
+              class="recipe-add-component-input"
+              formControlName="diets"
+              id="diets"
+              [multiple]="true"
+              [placeholder]="'recipe-add.diets.placeholder' | translation | async"
+            >
+              <hlm-select-trigger>
+               <hlm-select-value/>
+              </hlm-select-trigger>
+              <hlm-select-content>
+                @for (d of diets; track d.name) {
+                  <hlm-option [value]="d.name">{{d.name}}</hlm-option>
+                }
+              </hlm-select-content>
+             </brn-select>
+          </div>
+
+           <div class="recipe-add-component">
+              <label for="tags" translate="recipe-add.tags.label" class="recipe-add-component-label"></label>
+
+              <brn-select
+                class="recipe-add-component-input"
+                formControlName="tags"
+                id="tags"
+                [multiple]="true"
+                [placeholder]="'recipe-add.tags.placeholder' | translation | async"
+              >
+                <hlm-select-trigger>
+                 <hlm-select-value/>
+                </hlm-select-trigger>
+                <hlm-select-content>
+                  @for (t of tags; track t.name) {
+                    <hlm-option [value]="t.name">{{t.name}}</hlm-option>
+                  }
+                </hlm-select-content>
+               </brn-select>
+            </div>
+  </div>
+
+</form>

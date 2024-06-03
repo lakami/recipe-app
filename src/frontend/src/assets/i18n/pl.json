@@ -4,13 +4,13 @@
   },
   "header": {
     "multi-utility-nav": {
-      "search": "Szukajka",
-      "login": "Logowanie",
+      "search": "Szukaj",
+      "login": "LogIn",
       "register": "Rejestracja"
     },
     "nav": {
       "recipes": "Przepisy",
-      "meals": "Posiłki",
+      "meals": "Dania",
       "diet": "Dieta",
       "about": "O nas"
     }
@@ -62,5 +62,45 @@
     "title-diets": "Czego nie możesz jeść?",
     "diets": "Dieta:",
     "placeholder": "Na co masz ochotę?"
+  },
+  "dish": {
+    "title": "Danie"
+  },
+  "diet": {
+    "title": "Dieta"
+  },
+  "recipe-add": {
+    "title": "Dodaj przepis",
+    "subtitle": "Tutaj możesz podzielić się swoimi ulubionymi przepisami.",
+    "name": {
+      "label": "Tytuł",
+      "placeholder": "Wpisz tytuł przepisu"
+    },
+    "description": {
+      "label": "Podtytuł",
+      "placeholder": "Wpisz podtytuł przepisu"
+    },
+    "preparation-time": "Czas gotowania [min]",
+    "servings": "Ilość porcji",
+    "dishes": {
+      "label": "Tagi Dań",
+      "placeholder": "Oznacz dania"
+    },
+    "diets": {
+      "label": "Tagi Diet",
+      "placeholder": "Oznacz diety"
+    },
+    "tags": {
+      "label": "Tagi Produktów",
+      "placeholder": "Oznacz produkty"
+    },
+    "steps": {
+      "label": "Kroki",
+      "placeholder": "Wpisz kroki (rozdziel je znakiem enter)"
+    },
+    "ingredients": {
+      "label": "Składniki potrawy",
+      "placeholder": "Wpisz składniki (rozdziel je znakiem enter)"
+    }
   }
 }

@@ -35,7 +35,7 @@ export class HlmSelectOptionComponent {
   protected readonly _brnSelectOption = inject(BrnSelectOptionDirective, {host: true});
   protected readonly _computedClass = computed(() =>
     hlm(
-      'relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2  rtl:flex-reverse rtl:pr-8 rtl:pl-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+      'relative flex w-full cursor-default select-none items-center rounded-none py-1.5 pl-8 pr-2  rtl:flex-reverse rtl:pr-8 rtl:pl-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       this.userClass(),
     ),
   );

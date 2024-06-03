@@ -9,6 +9,7 @@ import {RegisterSuccessComponent} from "./register-success/register-success.comp
 import {RecipeDetailsComponent} from "./recipe-details/recipe-details.component";
 import {DishComponent} from "./dish/dish.component";
 import {DietComponent} from "./diet/diet.component";
+import {RecipeAddComponent} from "./recipe-add/recipe-add.component";
 
 export const routes: Routes = [
   {
@@ -52,10 +53,17 @@ export const routes: Routes = [
   {
     path: 'dish/:dishName',
     component: DishComponent,
+    title: 'dish.title'
   },
   {
     path: 'diet/:dietName',
     component: DietComponent,
+    title: 'diet.title'
+  },
+  {
+    path: 'recipe-add',
+    component: RecipeAddComponent,
+    title: 'recipe-add.title'
   },
   ...errorRoute
 ];
