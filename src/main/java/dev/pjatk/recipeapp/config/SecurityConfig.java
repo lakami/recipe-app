@@ -15,8 +15,6 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
-import org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler;
-import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
@@ -66,9 +64,9 @@ public class SecurityConfig {
         return http
                 .cors(Customizer.withDefaults())
                 // TODO: let it stay for now this way
-                .csrf(csrf -> csrf
-                        .csrfTokenRepository(new HttpSessionCsrfTokenRepository())
-                        .csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler())
+                .csrf(csrf -> csrf.disable()
+//                        .csrfTokenRepository(new HttpSessionCsrfTokenRepository())
+//                        .csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler())
                 )
 //                .addFilterAfter(new CookieCsrfFilter(), BasicAuthenticationFilter.class)
                 // TODO: evaluate what is needed
