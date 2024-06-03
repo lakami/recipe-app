@@ -88,17 +88,15 @@ export class RecipeService {
             image: File): Observable<number> {
     const recipe = new FormData();
     recipe.append('image', image);
-    recipe.append('recipe', JSON.stringify({
-      name: name,
-      description: description,
-      preparationTime: preparationTime,
-      servings: servings,
-      dishes: dishes,
-      diets: diets,
-      tags: tags,
-      steps: steps,
-      ingredients: ingredients
-    }));
+    recipe.append('name', name);
+    recipe.append('description', description);
+    recipe.append('preparationTime', preparationTime.toString());
+    recipe.append('servings', servings.toString());
+    recipe.append('dishes', dishes.join(','));
+    recipe.append('diets', diets.join(','));
+    recipe.append('tags', tags.join(','));
+    recipe.append('steps', steps.join(','));
+    recipe.append('ingredients', ingredients.join(','));
     return this.http.post<number>(environment.recipe, recipe)
   }
 
