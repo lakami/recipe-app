@@ -84,9 +84,9 @@ public class SecurityConfig {
                         .requestMatchers(mvc.pattern("/api/v1/activate")).permitAll()
                         .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/tag")).permitAll()
                         .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/v1/tag")).hasAnyAuthority(Authorities.ADMIN)
-                        .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/category")).permitAll()
+                        .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/diet")).permitAll()
                         .requestMatchers(mvc.pattern(HttpMethod.POST,
-                                                     "/api/v1/category")).hasAnyAuthority(Authorities.ADMIN)
+                                                     "/api/v1/diet")).hasAnyAuthority(Authorities.ADMIN)
                         .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/dish")).permitAll()
                         .requestMatchers(mvc.pattern(HttpMethod.POST,
                                                      "/api/v1/dish")).hasAnyAuthority(Authorities.ADMIN)
