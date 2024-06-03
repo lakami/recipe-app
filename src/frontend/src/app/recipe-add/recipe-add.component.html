@@ -142,6 +142,24 @@ class="flex flex-col"
                 </hlm-select-content>
                </brn-select>
             </div>
+
+            <div class="recipe-add-component">
+              <label for="image" translate="recipe-add.image.label" class="recipe-add-component-label"></label>
+
+            <div class="recipe-add-component-input">
+             <input
+                    #imageInput
+                    hlmInput
+                    id="image"
+                    type="file"
+                    accept="image/*"
+                    (change)="processFile(imageInput)"/>
+
+              @if (selectedFile) {
+                <img [src]="selectedFile.src" class="recipe-add-image"/>
+              }
+            </div>
+            </div>
   </div>
 
 </form>

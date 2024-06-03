@@ -16,6 +16,10 @@ import {lucideChevronDown, lucideChevronUp} from "@ng-icons/lucide";
 import {TranslationPipe} from "../shared/translation/translation.pipe";
 import {AsyncPipe} from "@angular/common";
 
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
+}
+
 @Component({
   selector: 'app-recipe-add',
   standalone: true,
@@ -63,6 +67,7 @@ export class RecipeAddComponent implements OnInit {
   dishes!: DishGetModel[];
   diets!: DietGetModel[];
   tags!: TagGetModel[];
+  selectedFile?: ImageSnippet;
 
   ngOnInit(): void {
     this.form.get('dishes')!.valueChanges.subscribe((value) => {
@@ -127,18 +132,6 @@ export class RecipeAddComponent implements OnInit {
     });
   }
 
-  // get dishesFormArray() {
-  //   return this.form.controls["dishes"] as FormArray;
-  // }
-  //
-  // get dietsFormArray() {
-  //   return this.form.controls["diets"] as FormArray;
-  // }
-  //
-  // get tagsFormArray() {
-  //   return this.form.controls["tags"] as FormArray;
-  // }
-
   hasNameError(): boolean {
     let nameControl = this.form.get('name');
     return nameControl!.invalid && (nameControl!.touched || nameControl!.dirty);
@@ -157,6 +150,16 @@ export class RecipeAddComponent implements OnInit {
   hasServingsError(): boolean {
     let servingsControl = this.form.get('servings');
     return servingsControl!.invalid && (servingsControl!.touched || servingsControl!.dirty);
+  }
+
+  processFile(imageInput: any) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+    reader.addEventListener('load', (event: any) => {
+      this.selectedFile = new ImageSnippet(event.target.result, file);
+      console.log(this.selectedFile);
+    })
+    reader.readAsDataURL(file);
   }
 
 }

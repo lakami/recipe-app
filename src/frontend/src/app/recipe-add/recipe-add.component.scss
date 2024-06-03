@@ -17,3 +17,7 @@
 .recipe-add-component-input {
   @apply md:flex-1 md:select-auto self-stretch
 }
+
+.recipe-add-image {
+  @apply w-full bg-background overflow-hidden box-border flex justify-center py-4
+}

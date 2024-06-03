@@ -101,6 +101,9 @@
     "ingredients": {
       "label": "Składniki potrawy",
       "placeholder": "Wpisz składniki (rozdziel je znakiem enter)"
+    },
+    "image": {
+      "label": "Zdjęcie potrawy"
     }
   }
 }

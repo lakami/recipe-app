@@ -11,14 +11,11 @@
 }
 
 .image-placeholder {
-  //@apply w-full bg-gray-300 overflow-hidden box-border h-[612px]
   @apply w-full bg-foreground/[.05] overflow-hidden box-border flex justify-center md:px-32 lg:px-64
 }
 
 
 img {
-  //@apply object-center object-none
-  //@apply object-cover h-[560px]
   @apply object-cover h-auto w-full
 }
 
