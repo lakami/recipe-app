@@ -7,6 +7,8 @@ import dev.pjatk.recipeapp.service.ForbiddenModificationException;
 import dev.pjatk.recipeapp.service.RecipeService;
 import dev.pjatk.recipeapp.usecase.AddRecipeUseCase;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -58,8 +60,25 @@ public class RecipeController {
     @PostMapping
     @RequestMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public Long createRecipe(@Valid @RequestPart("recipe") NewRecipeDTO recipeDTO,
+    public Long createRecipe(@Valid @RequestPart("name") @Size(min = 1, max = 100) String name,
+                             @Valid @RequestPart("name") @Size(min = 1, max = 1000) String description,
+                             @Valid @RequestPart("name") @Size(min = 1, max = 10000) Integer preparationTime,
+                             @Valid @RequestPart("name") @Size(min = 1, max = 100) Integer servings,
+                             @Valid @RequestPart("name") @NotEmpty List<String> diets,
+                             @Valid @RequestPart("name") @NotEmpty List<String> tags,
+                             @Valid @RequestPart("name") @NotEmpty List<String> dishes,
+                             @Valid @RequestPart("name") @NotEmpty List<String> steps,
+                             @Valid @RequestPart("name") @NotEmpty List<String> ingredients,
                              @RequestParam("image") MultipartFile image) {
+        var recipeDTO = new NewRecipeDTO(name,
+                                         description,
+                                         preparationTime,
+                                         servings,
+                                         diets,
+                                         tags,
+                                         dishes,
+                                         steps,
+                                         ingredients);
         return addRecipeUseCase.addRecipe(recipeDTO, image);
     }
 
