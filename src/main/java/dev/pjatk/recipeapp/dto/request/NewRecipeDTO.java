@@ -10,7 +10,7 @@ public record NewRecipeDTO(
         @Size(min = 1, max = 1000) String description,
         @Size(min = 1, max = 10000) Integer preparationTime,
         @Size(min = 1, max = 100) Integer servings,
-        @NotEmpty List<String> categories,
+        @NotEmpty List<String> diets,
         @NotEmpty List<String> tags,
         @NotEmpty List<String> dishes,
         @NotEmpty List<String> steps,

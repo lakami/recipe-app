@@ -86,7 +86,7 @@ public class RecipeService {
         recipe.setDescription(dto.description());
         recipe.setPreparationTime(dto.preparationTime());
         recipe.setServings(dto.servings());
-        recipe.setCategories(getCategories(dto.categories()));
+        recipe.setCategories(getCategories(dto.diets()));
         recipe.setTags(getTags(dto.tags()));
         recipe.setDishes(getDishes(dto.dishes()));
         recipe.setSteps(getSteps(dto.steps()));
@@ -144,7 +144,7 @@ public class RecipeService {
         recipe.setDescription(recipeDTO.description());
         recipe.setPreparationTime(recipeDTO.preparationTime());
         recipe.setServings(recipeDTO.servings());
-        recipe.setCategories(getCategories(recipeDTO.categories()));
+        recipe.setCategories(getCategories(recipeDTO.diets()));
         recipe.setTags(getTags(recipeDTO.tags()));
         recipe.setDishes(getDishes(recipeDTO.dishes()));
         // TODO: update steps and ingredients
