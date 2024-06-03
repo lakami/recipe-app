@@ -1,7 +1,7 @@
 package dev.pjatk.recipeapp.controller;
 
 import dev.pjatk.recipeapp.dto.request.ActivationDTO;
-import dev.pjatk.recipeapp.usecase.ActivateUseCase;
+import dev.pjatk.recipeapp.service.IUserService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class ActivationController {
     static final String ACTIVATE = "/api/v1/activate";
-    private final ActivateUseCase activateUseCase;
+    private final IUserService userService;
 
     @PostMapping
     public void activate(@RequestParam(value="token") @Size(max = 20) String token,
                          @Valid @RequestBody ActivationDTO activationDTO) {
-        activateUseCase.activate(activationDTO, token);
+        userService.activate(token, activationDTO);
     }
 }

@@ -8,7 +8,8 @@ import java.util.Optional;
 
 public interface IUserService {
     User register(String email, String password) throws EmailAlreadyUsedException;
-    Optional<User> activate(String activationToken, ActivationDTO missingData);
+
+    void activate(String activationToken, ActivationDTO missingData);
     String findNextProfileUrl(String firstName, String lastName);
     Optional<User> updateProfileUrl(String email, String profileUrl);
 
