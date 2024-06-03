@@ -61,14 +61,14 @@ public class RecipeController {
     @RequestMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public Long createRecipe(@Valid @RequestPart("name") @Size(min = 1, max = 100) String name,
-                             @Valid @RequestPart("name") @Size(min = 1, max = 1000) String description,
-                             @Valid @RequestPart("name") @Size(min = 1, max = 10000) Integer preparationTime,
-                             @Valid @RequestPart("name") @Size(min = 1, max = 100) Integer servings,
-                             @Valid @RequestPart("name") @NotEmpty List<String> diets,
-                             @Valid @RequestPart("name") @NotEmpty List<String> tags,
-                             @Valid @RequestPart("name") @NotEmpty List<String> dishes,
-                             @Valid @RequestPart("name") @NotEmpty List<String> steps,
-                             @Valid @RequestPart("name") @NotEmpty List<String> ingredients,
+                             @Valid @RequestPart("description") @Size(min = 1, max = 1000) String description,
+                             @Valid @RequestPart("preparationTime") @Size(min = 1, max = 10000) Integer preparationTime,
+                             @Valid @RequestPart("servings") @Size(min = 1, max = 100) Integer servings,
+                             @Valid @RequestPart("diets") @NotEmpty List<String> diets,
+                             @Valid @RequestPart("tags") @NotEmpty List<String> tags,
+                             @Valid @RequestPart("dishes") @NotEmpty List<String> dishes,
+                             @Valid @RequestPart("steps") @NotEmpty List<String> steps,
+                             @Valid @RequestPart("ingredients") @NotEmpty List<String> ingredients,
                              @RequestParam("image") MultipartFile image) {
         var recipeDTO = new NewRecipeDTO(name,
                                          description,
