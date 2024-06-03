@@ -43,11 +43,11 @@ public class RecipeController {
 
     @GetMapping
     public Page<RecipeDTO> getAllRecipes(Pageable pageable,
-                                         @RequestParam(required = false) List<String> categories,
+                                         @RequestParam(required = false) List<String> diets,
                                          @RequestParam(required = false) List<String> dishes,
                                          @RequestParam(required = false) List<String> tags,
                                          @RequestParam(required = false) String search) {
-        return recipeService.findAllMatchingRecipesForPage(pageable, categories, dishes, tags, search);
+        return recipeService.findAllMatchingRecipesForPage(pageable, diets, dishes, tags, search);
     }
 
     @GetMapping("/{id}")

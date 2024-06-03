@@ -64,10 +64,10 @@ public class SecurityConfig {
         return http
                 .cors(Customizer.withDefaults())
                 // TODO: let it stay for now this way
-                .csrf(csrf -> csrf.disable())
-//                        .csrfTokenRepository(new org.springframework.security.web.csrf.CookieCsrfTokenRepository())
+                .csrf(csrf -> csrf.disable()
+//                        .csrfTokenRepository(new HttpSessionCsrfTokenRepository())
 //                        .csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler())
-//                )
+                )
 //                .addFilterAfter(new CookieCsrfFilter(), BasicAuthenticationFilter.class)
                 // TODO: evaluate what is needed
 //                .headers(headers -> headers
@@ -82,9 +82,9 @@ public class SecurityConfig {
                         .requestMatchers(mvc.pattern("/api/v1/activate")).permitAll()
                         .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/tag")).permitAll()
                         .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/v1/tag")).hasAnyAuthority(Authorities.ADMIN)
-                        .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/category")).permitAll()
+                        .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/diet")).permitAll()
                         .requestMatchers(mvc.pattern(HttpMethod.POST,
-                                                     "/api/v1/category")).hasAnyAuthority(Authorities.ADMIN)
+                                                     "/api/v1/diet")).hasAnyAuthority(Authorities.ADMIN)
                         .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/dish")).permitAll()
                         .requestMatchers(mvc.pattern(HttpMethod.POST,
                                                      "/api/v1/dish")).hasAnyAuthority(Authorities.ADMIN)
