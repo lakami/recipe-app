@@ -107,7 +107,7 @@ export class SearchComponent implements OnInit, OnDestroy, OnChanges {
     //   console.log(params);
     //   this.recipeService.getRecipes(
     //     params["dishes"],
-    //     params["categories"],
+    //     params["diets"],
     //     params["tags"],
     //     params["search"],
     //     params["page"],

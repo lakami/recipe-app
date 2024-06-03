@@ -16,7 +16,7 @@ export class RecipeGetModel {
         public ingredients: IngredientGetModel[],
         public steps: StepGetModel[],
         public tags: TagGetModel[],
-        public categories: DietGetModel[], // TODO: fix when backend is changed to diets
+        public diets: DietGetModel[],
         public dishes: DishGetModel[],
         public author: AuthorGetModel,
         public createdDate: number,

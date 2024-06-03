@@ -65,7 +65,7 @@ export class RecipeService {
     console.log(dishes, diets, tags, search, page, size, sort);
     var params = new HttpParams();
     dishes.length > 0 ? params = params.set('dishes', dishes.replaceAll(" ", "+")) : null;
-    diets.length > 0 ? params = params.set('categories', diets.replaceAll(" ", "+")) : null; // TODO: categories -> diets, when backend is fixed
+    diets.length > 0 ? params = params.set('diets', diets.replaceAll(" ", "+")) : null;
     tags.length > 0 ? params = params.set('tags', tags.replaceAll(" ", "+")) : null;
     search ? params = params.set('search', search.replaceAll(" ", "+")) : null;
     page ? params = params.set('page', page.toString()) : null;
@@ -74,6 +74,32 @@ export class RecipeService {
     return this.http.get<PageGetModel<RecipeGetModel>>(environment.recipe, {
       params: params
     })
+  }
+
+  addRecipe(name: string,
+            description: string,
+            preparationTime: number,
+            servings: number,
+            dishes: string[],
+            diets: string[],
+            tags: string[],
+            steps: string[],
+            ingredients: string[],
+            image: File): Observable<number> {
+    const recipe = new FormData();
+    recipe.append('image', image);
+    recipe.append('recipe', JSON.stringify({
+      name: name,
+      description: description,
+      preparationTime: preparationTime,
+      servings: servings,
+      dishes: dishes,
+      diets: diets,
+      tags: tags,
+      steps: steps,
+      ingredients: ingredients
+    }));
+    return this.http.post<number>(environment.recipe, recipe)
   }
 
 }

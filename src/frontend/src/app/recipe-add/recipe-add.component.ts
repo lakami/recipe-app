@@ -59,8 +59,12 @@ export class RecipeAddComponent implements OnInit {
     dishes: new FormControl([]),
     diets: new FormControl([]),
     tags: new FormControl([]),
-    steps: new FormControl([]),
-    ingredients: new FormControl([]),
+    steps: new FormControl('', {
+      validators: [Validators.required]
+    }),
+    ingredients: new FormControl('', {
+      validators: [Validators.required]
+    }),
   });
 
   private recipeService: RecipeService = inject(RecipeService);
@@ -121,6 +125,7 @@ export class RecipeAddComponent implements OnInit {
       next: (diets) => {
         this.diets = diets
         dietsLoaded.next(true);
+        console.log(diets);
       }
     });
 
@@ -160,6 +165,26 @@ export class RecipeAddComponent implements OnInit {
       console.log(this.selectedFile);
     })
     reader.readAsDataURL(file);
+  }
+
+  submit() {
+    console.log(this.form.value);
+    this.recipeService.addRecipe(
+      this.form.get('name')!.value,
+      this.form.get('description')!.value,
+      this.form.get('preparationTime')!.value,
+      this.form.get('servings')!.value,
+      this.form.get('dishes')!.value,
+      this.form.get('diets')!.value,
+      this.form.get('tags')!.value,
+      this.form.get('steps')!.value.split('\n'),
+      this.form.get('ingredients')!.value.split('\n'),
+      this.selectedFile!.file
+    ).subscribe({
+      next: (id) => {
+        console.log(id);
+      }
+    });
   }
 
 }

@@ -9,6 +9,6 @@ export const environment = {
   activate: base('/activate?token='),
   recipe: base('/recipe'),
   dish: base('/dish'),
-  diet: base('/category'),
+  diet: base('/diet'),
   tag: base('/tag'),
 }

@@ -2,7 +2,7 @@
   @if (recipe$ | async; as recipe) {
 
     <div class="diet">
-      @for (diet of recipe.categories; track diet.id; let last = $last) {
+      @for (diet of recipe.diets; track diet.id; let last = $last) {
               @if (!last) {
                 <span>{{diet.name}} > </span>
               }
