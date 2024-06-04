@@ -104,6 +104,7 @@ public class SecurityConfig {
                         .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/v1/comment/**")).authenticated()
                         .requestMatchers(mvc.pattern(HttpMethod.DELETE, "/api/v1/comment/**")).authenticated()
                         .requestMatchers(mvc.pattern(HttpMethod.PUT, "/api/v1/comment/**")).authenticated()
+                        .requestMatchers(mvc.pattern("/api/v1/account")).authenticated()
                         .requestMatchers(mvc.pattern("/api/v1/**")).authenticated()
                         .requestMatchers(mvc.pattern("/error")).permitAll()
                 )
