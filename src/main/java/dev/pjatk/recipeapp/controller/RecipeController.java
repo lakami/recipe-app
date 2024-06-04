@@ -7,8 +7,6 @@ import dev.pjatk.recipeapp.service.ForbiddenModificationException;
 import dev.pjatk.recipeapp.service.RecipeService;
 import dev.pjatk.recipeapp.usecase.AddRecipeUseCase;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -57,29 +55,11 @@ public class RecipeController {
         return recipeService.getRecipeById(id);
     }
 
-    @PostMapping
-    @RequestMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     @ResponseStatus(HttpStatus.CREATED)
-    public Long createRecipe(@Valid @RequestPart("name") @Size(min = 1, max = 100) String name,
-                             @Valid @RequestPart("description") @Size(min = 1, max = 1000) String description,
-                             @Valid @RequestPart("preparationTime") @Size(min = 1, max = 10000) Integer preparationTime,
-                             @Valid @RequestPart("servings") @Size(min = 1, max = 100) Integer servings,
-                             @Valid @RequestPart("diets") @NotEmpty List<String> diets,
-                             @Valid @RequestPart("tags") @NotEmpty List<String> tags,
-                             @Valid @RequestPart("dishes") @NotEmpty List<String> dishes,
-                             @Valid @RequestPart("steps") @NotEmpty List<String> steps,
-                             @Valid @RequestPart("ingredients") @NotEmpty List<String> ingredients,
+    public Long createRecipe(@Valid @RequestPart("recipe") NewRecipeDTO recipe,
                              @RequestParam("image") MultipartFile image) {
-        var recipeDTO = new NewRecipeDTO(name,
-                                         description,
-                                         preparationTime,
-                                         servings,
-                                         diets,
-                                         tags,
-                                         dishes,
-                                         steps,
-                                         ingredients);
-        return addRecipeUseCase.addRecipe(recipeDTO, image);
+        return addRecipeUseCase.addRecipe(recipe, image);
     }
 
     /**

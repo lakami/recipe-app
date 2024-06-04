@@ -4,10 +4,7 @@ import dev.pjatk.recipeapp.dto.request.NewRecipeDTO;
 import dev.pjatk.recipeapp.dto.response.RecipeDTO;
 import dev.pjatk.recipeapp.entity.recipe.*;
 import dev.pjatk.recipeapp.exception.ResourceNotFoundException;
-import dev.pjatk.recipeapp.repository.CategoryRepository;
-import dev.pjatk.recipeapp.repository.DishRepository;
-import dev.pjatk.recipeapp.repository.RecipeRepository;
-import dev.pjatk.recipeapp.repository.TagRepository;
+import dev.pjatk.recipeapp.repository.*;
 import dev.pjatk.recipeapp.security.Authorities;
 import dev.pjatk.recipeapp.security.SecurityUtils;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +25,8 @@ public class RecipeService {
     private final TagRepository tagRepository;
     private final CategoryRepository categoryRepository;
     private final DishRepository dishRepository;
+    private final IngredientRepository ingredientRepository;
+    private final StepRepository stepRepository;
 
     private static boolean isAdmin() {
         return SecurityUtils.hasCurrentUserAnyOfAuthorities(Authorities.ADMIN);
@@ -89,26 +88,33 @@ public class RecipeService {
         recipe.setCategories(getCategories(dto.diets()));
         recipe.setTags(getTags(dto.tags()));
         recipe.setDishes(getDishes(dto.dishes()));
-        recipe.setSteps(getSteps(dto.steps()));
-        recipe.setIngredients(getIngredients(dto.ingredients()));
-        return recipeRepository.save(recipe);
+        recipe.setPromoted(false);
+        Recipe saved = recipeRepository.save(recipe);
+        Set<Step> steps = getSteps(dto.steps(), saved);
+        recipe.setSteps(steps);
+        Set<Ingredient> ingredients = getIngredients(dto.ingredients(), saved);
+        recipe.setIngredients(ingredients);
+        saved = recipeRepository.save(recipe);
+        return saved;
     }
 
-    private Set<Ingredient> getIngredients(List<String> ingredients) {
+    private Set<Ingredient> getIngredients(List<String> ingredients, Recipe recipe) {
         return ingredients.stream()
                 .map(text -> {
                     var ingredient = new Ingredient();
                     ingredient.setName(text);
+                    ingredient.setRecipe(recipe);
                     return ingredient;
                 }).collect(Collectors.toSet());
     }
 
-    private Set<Step> getSteps(List<String> steps) {
+    private Set<Step> getSteps(List<String> steps, Recipe recipe) {
         var set = new HashSet<Step>();
         for (int i = 0; i < steps.size(); i++) {
             var step = new Step();
             step.setDescription(steps.get(i));
             step.setNumber(i + 1);
+            step.setRecipe(recipe);
             set.add(step);
         }
         return set;
