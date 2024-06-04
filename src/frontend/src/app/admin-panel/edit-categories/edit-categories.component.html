@@ -1,0 +1,79 @@
+<form [formGroup]="formAddDiet" (ngSubmit)="submitDiet()">
+  <div class="admin-panel-edit-categories-add-component-container">
+
+    <div class="flex flex-col md:items-center items-start">
+          <label class="admin-panel-edit-categories-subtitle" translate="admin-panel.edit-categories.subtitle"></label>
+    </div>
+
+    <div class="admin-panel-edit-categories-add-component">
+      <label class="admin-panel-edit-categories-add-component-label"
+        for="dietName"
+        translate="admin-panel.edit-categories.diet.label">
+      </label>
+      <input class="admin-panel-edit-categories-add-component-input"
+        type="text"
+        id="dietName"
+        hlmInput
+        [placeholder]="'admin-panel.edit-categories.diet.placeholder' | translation | async"
+        formControlName="name"/>
+
+       <div class="admin-panel-edit-categories-add-btn-container">
+             <button hlmBtn variant='ghost' type="submit">
+                      <hlm-icon size="sm" class="mr-2" name="lucidePlus" strokeWidth="3"/>
+                      <span translate="admin-panel.edit-categories.add" class="admin-panel-edit-categories-add-btn"></span>
+              </button>
+        </div>
+    </div>
+  </div>
+</form>
+
+<form [formGroup]="formAddDish" (ngSubmit)="submitDish()">
+  <div class="admin-panel-edit-categories-add-component-container">
+    <div class="admin-panel-edit-categories-add-component">
+      <label class="admin-panel-edit-categories-add-component-label"
+        for="dishName"
+        translate="admin-panel.edit-categories.dish.label">
+      </label>
+      <input class="admin-panel-edit-categories-add-component-input"
+        type="text"
+        id="dishName"
+        hlmInput
+        [placeholder]="'admin-panel.edit-categories.dish.placeholder' | translation | async"
+        formControlName="name"/>
+
+        <div class="admin-panel-edit-categories-add-btn-container">
+            <button hlmBtn variant='ghost' type="submit">
+                     <hlm-icon size="sm" class="mr-2" name="lucidePlus" strokeWidth="3"/>
+                     <span translate="admin-panel.edit-categories.add" class="admin-panel-edit-categories-add-btn"></span>
+             </button>
+       </div>
+    </div>
+  </div>
+ </form>
+
+<form [formGroup]="formAddTag" (ngSubmit)="submitTag()">
+  <div class="admin-panel-edit-categories-add-component-container">
+    <div class="admin-panel-edit-categories-add-component">
+      <label class="admin-panel-edit-categories-add-component-label"
+        for="tagName"
+        translate="admin-panel.edit-categories.tag.label">
+      </label>
+      <input class="admin-panel-edit-categories-add-component-input"
+        type="text"
+        id="tagName"
+        hlmInput
+        [placeholder]="'admin-panel.edit-categories.tag.placeholder' | translation | async"
+        formControlName="name"/>
+
+        <div class="admin-panel-edit-categories-add-btn-container">
+            <button hlmBtn variant='ghost' type="submit">
+                     <hlm-icon size="sm" class="mr-2" name="lucidePlus" strokeWidth="3"/>
+                     <span translate="admin-panel.edit-categories.add" class="admin-panel-edit-categories-add-btn"></span>
+             </button>
+       </div>
+    </div>
+  </div>
+</form>
+
+
+

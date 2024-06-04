@@ -17,7 +17,7 @@ import {
 } from "@spartan-ng/ui-menu-helm";
 import {BrnMenuTriggerDirective} from "@spartan-ng/ui-menu-brain";
 import {RecipeService} from "../shared/services/recipe.service";
-import {BehaviorSubject, map} from "rxjs";
+import {BehaviorSubject} from "rxjs";
 import {DishGetModel} from "../shared/dto/dish-get.model";
 import {AsyncPipe} from "@angular/common";
 import {DietGetModel} from "../shared/dto/diet-get.model";
@@ -57,7 +57,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private  diets = new BehaviorSubject<DietGetModel[]>([]);
     diets$ = this.diets.asObservable();
   private route: ActivatedRoute = inject(ActivatedRoute);
-  dishId$ = this.route.params.pipe(map(params => params['dishId']));
   private accountService = inject(AccountService);
   currentUser$ = this.accountService.trackCurrentAccount();
   private loginService = inject(LoginService);
@@ -87,5 +86,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   logout(): void {
     this.loginService.logout();
     this.router.navigate(['']);
+  }
+
+  isAdmin() {
+    return this.accountService.hasAnyAuthority('ROLE_ADMIN');
   }
 }

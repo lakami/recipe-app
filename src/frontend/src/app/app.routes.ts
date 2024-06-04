@@ -67,5 +67,9 @@ export const routes: Routes = [
     component: RecipeAddComponent,
     title: 'recipe-add.title'
   },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin-panel/admin.routes')
+  },
   ...errorRoute
 ];

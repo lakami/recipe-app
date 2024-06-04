@@ -13,7 +13,8 @@
       "recipes": "Przepisy",
       "meals": "Dania",
       "diet": "Dieta",
-      "about": "O nas"
+      "about": "O nas",
+      "admin-panel": "Admin"
     }
   },
   "login": {
@@ -107,5 +108,25 @@
       "label": "Zdjęcie potrawy"
     },
     "send": "Dodaj przepis"
+  },
+  "admin-panel": {
+    "title": "Panel administratora",
+    "edit-categories": {
+      "menu": "Dodaj kategorie",
+      "subtitle": "Tutaj możesz dodawać nowe kategorie.",
+      "add": "Dodaj",
+      "diet": {
+        "label": "Nazwa nowej diety",
+        "placeholder": "Wpisz tutaj nazwę diety."
+      },
+      "dish": {
+        "label": "Nazwa nowego dania",
+        "placeholder": "Wpisz tutaj nazwę dania."
+      },
+      "tag": {
+        "label": "Nazwa nowego taga",
+        "placeholder": "Wpisz tutaj nazwę taga."
+      }
+    }
   }
 }
