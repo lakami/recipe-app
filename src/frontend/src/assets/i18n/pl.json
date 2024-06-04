@@ -104,6 +104,7 @@
     },
     "image": {
       "label": "Zdjęcie potrawy"
-    }
+    },
+    "send": "Dodaj przepis"
   }
 }

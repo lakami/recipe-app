@@ -19,5 +19,9 @@
 }
 
 .recipe-add-image {
-  @apply w-full bg-background overflow-hidden box-border flex justify-center py-4
+  @apply w-full bg-background overflow-hidden box-border flex justify-center pt-4
+}
+
+.recipe-add-btn-send {
+  @apply tracking-[.0625rem] uppercase p-1 text-base font-bold
 }

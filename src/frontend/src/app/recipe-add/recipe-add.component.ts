@@ -11,8 +11,8 @@ import {BehaviorSubject, filter, zip} from "rxjs";
 import {RecipeService} from "../shared/services/recipe.service";
 import {BrnSelectImports} from "@spartan-ng/ui-select-brain";
 import {HlmSelectImports} from "@spartan-ng/ui-select-helm";
-import {provideIcons} from "@spartan-ng/ui-icon-helm";
-import {lucideChevronDown, lucideChevronUp} from "@ng-icons/lucide";
+import {HlmIconComponent, provideIcons} from "@spartan-ng/ui-icon-helm";
+import {lucideChevronDown, lucideChevronUp, lucidePlus} from "@ng-icons/lucide";
 import {TranslationPipe} from "../shared/translation/translation.pipe";
 import {AsyncPipe} from "@angular/common";
 
@@ -32,9 +32,11 @@ class ImageSnippet {
     HlmSelectImports,
     BrnSelectImports,
     TranslationPipe,
-    AsyncPipe
+    AsyncPipe,
+    HlmButtonDirective,
+    [HlmIconComponent],
   ],
-  providers: [provideIcons({lucideChevronUp, lucideChevronDown})],
+  providers: [provideIcons({lucideChevronUp, lucideChevronDown, lucidePlus})],
   templateUrl: './recipe-add.component.html',
   styleUrl: './recipe-add.component.scss'
 })
