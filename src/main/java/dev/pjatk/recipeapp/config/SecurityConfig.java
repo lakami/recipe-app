@@ -93,7 +93,7 @@ public class SecurityConfig {
                                 Authorities.ADMIN)
                         .requestMatchers(mvc.pattern(HttpMethod.DELETE, "/api/v1/recipe/promote/**")).hasAnyAuthority(
                                 Authorities.ADMIN)
-                        .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/v1/recipe/**")).authenticated()
+                        .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/v1/recipe/**")).permitAll() // TODO
                         .requestMatchers(mvc.pattern(HttpMethod.PUT, "/api/v1/recipe/**")).authenticated()
                         .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/images/**")).permitAll()
                         .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/v1/images/**")).authenticated()

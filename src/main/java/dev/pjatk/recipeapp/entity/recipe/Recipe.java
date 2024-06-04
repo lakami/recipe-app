@@ -3,6 +3,8 @@ package dev.pjatk.recipeapp.entity.recipe;
 import dev.pjatk.recipeapp.entity.AuditedEntityBase;
 import dev.pjatk.recipeapp.entity.Comment;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,11 +30,13 @@ public class Recipe extends AuditedEntityBase<Long> {
     @Column(nullable = false, length = 1000)
     private String description;
 
-    @Size(min = 1, max = 10000)
+    @Min(1)
+    @Max(10000)
     @Column(name = "preparation_time", nullable = false, length = 10000)
     private Integer preparationTime;
 
-    @Size(min = 1, max = 100)
+    @Min(1)
+    @Max(100)
     @Column(nullable = false, length = 100)
     private Integer servings;
 
