@@ -40,10 +40,10 @@ Projekt na inżynierkę
   - [x] Pasek nawigacyjny
   - [x] Wyświetlanie przepisów
 - [ ] Wyświetlanie przepisu po id
-- [ ] Dodawanie przepisu
+- [x] Dodawanie przepisu
 - [ ] Edycja przepisu
 - [x] Logowanie
-- [ ] Wylogowanie
+- [x] Wylogowanie
 - [x] Rejestracja
 - [x] Aktywacja
 - [ ] Resetowanie hasła (opcjonalnie)
@@ -59,3 +59,6 @@ Projekt na inżynierkę
 - [x] Filtrowanie przepisów
 - [ ] Szukaj nav bar
 - [x] Navbar rozwijaki
+- [ ] Footer
+- [ ] Strona o nas
+- [ ] Strona error
