@@ -128,5 +128,13 @@
         "placeholder": "Wpisz tutaj nazwę taga."
       }
     }
+  },
+  "about": {
+    "title": "O nas",
+    "subtitle": "Jesteśmy grupą pasjonatów gotowania, którzy chcą dzielić się swoimi przepisami z innymi."
+  },
+  "error": {
+    "title": "Błąd",
+    "subtitle": "Coś poszło nie tak. Spróbuj ponownie później."
   }
 }

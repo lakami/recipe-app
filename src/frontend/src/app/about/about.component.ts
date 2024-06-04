@@ -4,16 +4,16 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {TranslationDirective} from "../shared/translation/translation.directive";
 
 @Component({
-  selector: 'app-error',
+  selector: 'app-about',
   standalone: true,
   imports: [
     RouterLink,
     ReactiveFormsModule,
     TranslationDirective
   ],
-  templateUrl: './error.component.html',
-  styleUrl: './error.component.scss'
+  templateUrl: './about.component.html',
+  styleUrl: './about.component.scss'
 })
-export class ErrorComponent {
+export class AboutComponent {
 
 }
