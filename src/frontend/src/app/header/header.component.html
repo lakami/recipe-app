@@ -11,11 +11,18 @@
                 <li class="multi-utility-text" (click)="toggleColor()">
                   <hlm-icon class="icon-dark-light-mode" size='sm' name="lucideMoon"/>
                 </li>
-                <li class="multi-utility-text" routerLink="/register" translate="header.multi-utility-nav.register"></li>
-                <li class="multi-utility-text" routerLink="/login">
-                  <hlm-icon class="icon-login" size='sm' name="lucideUserCircle"/>
-                  <span translate="header.multi-utility-nav.login"></span>
-                </li>
+                @if (currentUser$() == null) {
+                  <li class="multi-utility-text" routerLink="/register" translate="header.multi-utility-nav.register"></li>
+                  <li class="multi-utility-text" routerLink="/login">
+                    <hlm-icon class="icon-login" size='sm' name="lucideUserCircle"/>
+                    <span translate="header.multi-utility-nav.login"></span>
+                  </li>
+                  } @else {
+                    <li class="multi-utility-text" (click)="logout()">
+                      <hlm-icon class="icon-login" size='sm' name="lucideUserCircle"/>
+                      <span translate="header.multi-utility-nav.logout"></span>
+                    </li>
+                  }
             </ul>
         </div>
     </div>

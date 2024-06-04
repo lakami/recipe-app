@@ -6,6 +6,7 @@
     "multi-utility-nav": {
       "search": "Szukaj",
       "login": "LogIn",
+      "logout": "LogOut",
       "register": "Rejestracja"
     },
     "nav": {

@@ -1,5 +1,5 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {TranslationDirective} from "../shared/translation/translation.directive";
 import {HlmInputDirective} from "@spartan-ng/ui-input-helm";
@@ -70,6 +70,7 @@ export class RecipeAddComponent implements OnInit {
   });
 
   private recipeService: RecipeService = inject(RecipeService);
+  private router = inject(Router);
   dishes!: DishGetModel[];
   diets!: DietGetModel[];
   tags!: TagGetModel[];
@@ -185,6 +186,7 @@ export class RecipeAddComponent implements OnInit {
     ).subscribe({
       next: (id) => {
         console.log(id);
+        this.router.navigate(['/recipe', id]);
       }
     });
   }

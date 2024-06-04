@@ -1,5 +1,5 @@
 import {Component, inject, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute, RouterLink} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {provideIcons} from '@ng-icons/core';
 import {lucideMoon, lucideUserCircle} from '@ng-icons/lucide';
 import {HlmIconComponent} from '@spartan-ng/ui-icon-helm';
@@ -22,6 +22,8 @@ import {DishGetModel} from "../shared/dto/dish-get.model";
 import {AsyncPipe} from "@angular/common";
 import {DietGetModel} from "../shared/dto/diet-get.model";
 import {ThemeService} from "../shared/services/theme.service";
+import {AccountService} from "../core/auth/account.service";
+import {LoginService} from "../login/login.service";
 
 @Component({
   selector: 'app-header',
@@ -56,6 +58,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     diets$ = this.diets.asObservable();
   private route: ActivatedRoute = inject(ActivatedRoute);
   dishId$ = this.route.params.pipe(map(params => params['dishId']));
+  private accountService = inject(AccountService);
+  currentUser$ = this.accountService.trackCurrentAccount();
+  private loginService = inject(LoginService);
+  private router = inject(Router);
 
   ngOnInit(): void {
       this.recipeService.getDishes().subscribe({
@@ -76,5 +82,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+  }
+
+  logout(): void {
+    this.loginService.logout();
+    this.router.navigate(['']);
   }
 }
