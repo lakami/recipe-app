@@ -36,14 +36,14 @@ Projekt na inżynierkę
 
 ## Frontend
 
-- [ ] Strona główna
+- [x] Strona główna
   - [x] Pasek nawigacyjny
   - [x] Wyświetlanie przepisów
-- [ ] Wyświetlanie przepisu po id
-- [ ] Dodawanie przepisu
+- [x] Wyświetlanie przepisu po id
+- [x] Dodawanie przepisu
 - [ ] Edycja przepisu
 - [x] Logowanie
-- [ ] Wylogowanie
+- [x] Wylogowanie
 - [x] Rejestracja
 - [x] Aktywacja
 - [ ] Resetowanie hasła (opcjonalnie)
@@ -59,3 +59,7 @@ Projekt na inżynierkę
 - [x] Filtrowanie przepisów
 - [ ] Szukaj nav bar
 - [x] Navbar rozwijaki
+- [ ] Footer
+- [x] Strona o nas
+- [x] Strona error
+- [ ] Paging

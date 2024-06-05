@@ -7,13 +7,15 @@
       "search": "Szukaj",
       "login": "LogIn",
       "logout": "LogOut",
-      "register": "Rejestracja"
+      "register": "Rejestracja",
+      "recipe-add": "Dodaj przepis"
     },
     "nav": {
       "recipes": "Przepisy",
       "meals": "Dania",
       "diet": "Dieta",
-      "about": "O nas"
+      "about": "O nas",
+      "admin-panel": "Admin"
     }
   },
   "login": {
@@ -57,7 +59,7 @@
     "btnFilter": "Szukaj",
     "btnDeleteFilters": "Wyczyść",
     "title-tags": "Co masz pod ręką?",
-    "tags": "Składniki:",
+    "tags": "Produkty:",
     "title-dishes": "Na co masz ochotę?",
     "dishes": "Dania:",
     "title-diets": "Czego nie możesz jeść?",
@@ -107,5 +109,33 @@
       "label": "Zdjęcie potrawy"
     },
     "send": "Dodaj przepis"
+  },
+  "admin-panel": {
+    "title": "Panel administratora",
+    "edit-categories": {
+      "menu": "Dodaj kategorie",
+      "subtitle": "Tutaj możesz dodawać nowe kategorie.",
+      "add": "Dodaj",
+      "diet": {
+        "label": "Nazwa diety",
+        "placeholder": "Wpisz tutaj nazwę diety."
+      },
+      "dish": {
+        "label": "Nazwa dania",
+        "placeholder": "Wpisz tutaj nazwę dania."
+      },
+      "tag": {
+        "label": "Nazwa produktu",
+        "placeholder": "Wpisz tutaj nazwę produktu."
+      }
+    }
+  },
+  "about": {
+    "title": "O nas",
+    "subtitle": "Jesteśmy grupą pasjonatów gotowania, którzy chcą dzielić się swoimi przepisami z innymi."
+  },
+  "error": {
+    "title": "Błąd",
+    "subtitle": "Coś poszło nie tak. Spróbuj ponownie później."
   }
 }

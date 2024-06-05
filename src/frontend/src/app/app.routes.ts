@@ -10,6 +10,8 @@ import {RecipeDetailsComponent} from "./recipe-details/recipe-details.component"
 import {DishComponent} from "./dish/dish.component";
 import {DietComponent} from "./diet/diet.component";
 import {RecipeAddComponent} from "./recipe-add/recipe-add.component";
+import {protectedRoutesGuard} from "./core/auth/protectedRoutesGuard";
+import {AboutComponent} from "./about/about.component";
 
 export const routes: Routes = [
   {
@@ -46,10 +48,6 @@ export const routes: Routes = [
     path: 'recipe/:recipeId',
     component: RecipeDetailsComponent,
   },
-  // {
-  //   path: 'search',
-  //   component: SearchComponent,
-  // },
   {
     path: 'dish/:dishName',
     component: DishComponent,
@@ -62,8 +60,19 @@ export const routes: Routes = [
   },
   {
     path: 'recipe-add',
+    canActivate: [protectedRoutesGuard],
     component: RecipeAddComponent,
     title: 'recipe-add.title'
+  },
+  {
+    path: 'admin',
+    title: 'admin-panel.title',
+    loadChildren: () => import('./admin-panel/admin.routes')
+  },
+  {
+    path: 'about',
+    component: AboutComponent,
+    title: 'about.title',
   },
   ...errorRoute
 ];

@@ -114,4 +114,16 @@ export class RecipeService {
     return this.http.post<number>(environment.recipe, recipe)
   }
 
+  addDish(name: any): Observable<DishGetModel> {
+    return this.http.post<DishGetModel>(environment.dish, name)
+  }
+
+  addDiet(name: any): Observable<DietGetModel> {
+    return this.http.post<DietGetModel>(environment.diet, name)
+  }
+
+  addTag(name: any): Observable<TagGetModel> {
+    return this.http.post<TagGetModel>(environment.tag, name)
+  }
+
 }

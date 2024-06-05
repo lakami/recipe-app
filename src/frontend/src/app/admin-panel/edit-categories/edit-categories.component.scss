@@ -1,0 +1,32 @@
+.admin-panel-edit-categories-add-title {
+  @apply font-serif text-3xl font-bold underline-offset-[.5625rem] px-0 pt-0 pb-4
+}
+
+.admin-panel-edit-categories-subtitle {
+  @apply px-0 pt-0 pb-4 text-xl
+}
+
+.admin-panel-edit-categories-add-btn {
+  @apply tracking-[.0625rem] uppercase p-1 text-base font-bold
+}
+
+.admin-panel-edit-categories-add-btn-container {
+  @apply flex justify-center
+}
+
+.admin-panel-edit-categories-add-component-input {
+  @apply md:flex-1 md:select-auto self-stretch
+}
+
+.admin-panel-edit-categories-add-component {
+  @apply flex md:flex-row flex-col md:items-center items-start md:gap-4 gap-0
+}
+
+.admin-panel-edit-categories-add-component-label {
+  @apply w-44
+}
+
+.admin-panel-edit-categories-add-component-container {
+  @apply flex flex-col gap-4 xl:px-0 px-3 pb-4
+}
+

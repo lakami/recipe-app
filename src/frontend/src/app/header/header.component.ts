@@ -1,7 +1,7 @@
 import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {provideIcons} from '@ng-icons/core';
-import {lucideMoon, lucideUserCircle} from '@ng-icons/lucide';
+import {lucideMoon, lucidePlus, lucideUserCircle} from '@ng-icons/lucide';
 import {HlmIconComponent} from '@spartan-ng/ui-icon-helm';
 import {TranslationDirective} from "../shared/translation/translation.directive";
 import {
@@ -17,7 +17,7 @@ import {
 } from "@spartan-ng/ui-menu-helm";
 import {BrnMenuTriggerDirective} from "@spartan-ng/ui-menu-brain";
 import {RecipeService} from "../shared/services/recipe.service";
-import {BehaviorSubject, map} from "rxjs";
+import {BehaviorSubject} from "rxjs";
 import {DishGetModel} from "../shared/dto/dish-get.model";
 import {AsyncPipe} from "@angular/common";
 import {DietGetModel} from "../shared/dto/diet-get.model";
@@ -45,7 +45,7 @@ import {LoginService} from "../login/login.service";
     HlmMenuItemDirective,
     AsyncPipe,
   ],
-  providers: [provideIcons({ lucideUserCircle, lucideMoon })],
+  providers: [provideIcons({ lucideUserCircle, lucideMoon, lucidePlus })],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
@@ -57,7 +57,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private  diets = new BehaviorSubject<DietGetModel[]>([]);
     diets$ = this.diets.asObservable();
   private route: ActivatedRoute = inject(ActivatedRoute);
-  dishId$ = this.route.params.pipe(map(params => params['dishId']));
   private accountService = inject(AccountService);
   currentUser$ = this.accountService.trackCurrentAccount();
   private loginService = inject(LoginService);
@@ -87,5 +86,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   logout(): void {
     this.loginService.logout();
     this.router.navigate(['']);
+  }
+
+  isAdmin() {
+    return this.accountService.hasAnyAuthority('ROLE_ADMIN');
   }
 }
