@@ -1,0 +1,15 @@
+:host {
+  @apply flex h-full w-full justify-center items-center relative;
+}
+
+.btn-text {
+  @apply tracking-[.0625rem] uppercase
+}
+
+.title {
+  @apply font-serif text-3xl font-bold underline-offset-[.5625rem] px-0 pt-0 pb-4
+}
+
+.subtitle {
+  @apply px-0 pt-0 pb-8 text-xl
+}

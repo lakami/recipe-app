@@ -1,0 +1,81 @@
+<div class="card-list-container">
+  @if (recipe$ | async; as recipe) {
+
+    <div class="diet">
+      @for (diet of recipe.diets; track diet.id; let last = $last) {
+              @if (!last) {
+                <span>{{diet.name}} > </span>
+              }
+              @else {
+                <span>{{diet.name}}</span>
+              }
+          }
+    </div>
+
+    <h1 class="recipe-name">{{recipe.name}}</h1>
+
+  <div class="recipe-author">{{recipe.author.firstName + " " + recipe.author.lastName}}</div>
+
+  <div class="create-date">{{recipe.createdDate}}</div>
+
+  <div class="recipe-time">
+   <hlm-icon class="icon-clock" size='sm' name="lucideClock"/>
+   <span>{{recipe.preparationTime}} min</span>
+  </div>
+
+    <div class="content">
+
+      <div class="tag">
+        @for (tag of recipe.tags; track tag.id; let last = $last) {
+           @if (!last) {
+            <span>{{tag.name}} > </span>
+           }
+            @else {
+            <span>{{tag.name}}</span>
+           }
+        }
+      </div>
+
+      <div class="dish">
+        @for (dish of recipe.dishes; track dish.id; let last = $last) {
+          @if (!last) {
+            <span>{{dish.name}} > </span>
+          }
+           @else {
+            <span>{{dish.name}} </span>
+           }
+        }
+      </div>
+
+      <div class="recipe-ingredients-steps-container">
+        <div class="recipe-ingredients">
+          <div class="flex gap-1 recipe-title-ingredients-servings">
+            <span translate="recipe-details.ingredients"></span>
+            <span> / </span>
+            <span>{{recipe.servings}}</span>
+            <span translate="recipe-details.servings"></span>
+        </div>
+          <div class="flex flex-col divide-y divide-foreground/[.15]">
+            @for (ingredient of recipe.ingredients; track ingredient.name; let first = $first) {
+              <span>{{ingredient.name}}</span>
+            }
+          </div>
+        </div>
+        <div>
+          <div class="recipe-description">{{recipe.description}}</div>
+          <div class="flex flex-col divide-y divide-background">
+            @for (step of recipe.steps; track step.number) {
+              <span>{{step.number}}. {{step.description}}</span>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="image-conatainer">
+        <div class="image-placeholder">
+              <img [src]="'/api/v1/images/' + recipe.imageUrl" />
+        </div>
+      </div>
+</div>
+}
+</div>

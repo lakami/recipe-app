@@ -37,22 +37,25 @@ Projekt na inżynierkę
 ## Frontend
 
 - [ ] Strona główna
-  - [ ] Pasek nawigacyjny
-  - [ ] Wyświetlanie przepisów
+  - [x] Pasek nawigacyjny
+  - [x] Wyświetlanie przepisów
 - [ ] Wyświetlanie przepisu po id
 - [ ] Dodawanie przepisu
 - [ ] Edycja przepisu
-- [ ] Logowanie
+- [x] Logowanie
 - [ ] Wylogowanie
-- [ ] Rejestracja
-- [ ] Aktywacja
+- [x] Rejestracja
+- [x] Aktywacja
 - [ ] Resetowanie hasła (opcjonalnie)
 - [ ] Panel administratorski (opcjonalnie)
-- [ ] Wyszukiwarka dań
-- [ ] Dark mode (opcjonalnie)
+- [x] Wyszukiwarka dań i posiłków
+- [x] Dark mode (opcjonalnie)
 - [ ] NgxTranslate (opcjonalnie)
 - [ ] Dodawanie komentarza
 - [ ] Usuwanie komentarza
 - [ ] Edycja komentarza
-- [ ] Dodawanie oceny
+- [ ] Dodawanie oceny (opcjonalnie)
 - [ ] Polubienia przepisu
+- [x] Filtrowanie przepisów
+- [ ] Szukaj nav bar
+- [x] Navbar rozwijaki

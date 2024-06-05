@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'Argos';
+    src: url('Argos-Bold.eot');
+    src: local('Argos Bold'), local('Argos-Bold'),
+        url('Argos-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Argos-Bold.woff2') format('woff2'),
+        url('Argos-Bold.woff') format('woff'),
+        url('Argos-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Argos';
+    src: url('Argos-Italic.eot');
+    src: local('Argos Italic'), local('Argos-Italic'),
+        url('Argos-Italic.eot?#iefix') format('embedded-opentype'),
+        url('Argos-Italic.woff2') format('woff2'),
+        url('Argos-Italic.woff') format('woff'),
+        url('Argos-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Argos';
+    src: url('Argos-LightItalic.eot');
+    src: local('Argos Light Italic'), local('Argos-LightItalic'),
+        url('Argos-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('Argos-LightItalic.woff2') format('woff2'),
+        url('Argos-LightItalic.woff') format('woff'),
+        url('Argos-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Argos';
+    src: url('Argos-BoldItalic.eot');
+    src: local('Argos Bold Italic'), local('Argos-BoldItalic'),
+        url('Argos-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('Argos-BoldItalic.woff2') format('woff2'),
+        url('Argos-BoldItalic.woff') format('woff'),
+        url('Argos-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Argos';
+    src: url('Argos-Regular.eot');
+    src: local('Argos Regular'), local('Argos-Regular'),
+        url('Argos-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Argos-Regular.woff2') format('woff2'),
+        url('Argos-Regular.woff') format('woff'),
+        url('Argos-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Argos';
+    src: url('Argos-Light.eot');
+    src: local('Argos Light'), local('Argos-Light'),
+        url('Argos-Light.eot?#iefix') format('embedded-opentype'),
+        url('Argos-Light.woff2') format('woff2'),
+        url('Argos-Light.woff') format('woff'),
+        url('Argos-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+

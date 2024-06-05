@@ -1,0 +1,62 @@
+:host {
+  @apply w-full bg-background fixed top-0 z-[1000] right-0 left-0 min-h-[4rem] shadow-bottom pt-4;
+}
+
+div.header-container {
+  @apply max-w-[70em] mx-auto
+}
+
+nav {
+  @apply min-w-[70em] items-start justify-start mt-6
+}
+
+ul.navbar {
+  @apply list-none m-0 p-0 flex flex-wrap gap-8
+}
+
+li.navbar-text {
+  @apply py-0 h-11
+  text-sm leading-5 tracking-[.0625rem] font-bold uppercase underline-offset-[.25rem] decoration-1 antialiased cursor-pointer
+  hover:underline
+}
+li.navbar-text {
+  text-decoration-skip-ink: none;
+}
+
+li.multi-utility-text {
+  @apply pl-3 h-6
+  text-sm leading-5 flex items-center gap-1 decoration-1 underline-offset-[.1875rem] antialiased cursor-pointer
+  hover:underline
+}
+li.multi-utility-text {
+  text-decoration-skip-ink: none;
+}
+
+div.logo-container{
+  @apply justify-self-start justify-center flex m-0 p-0 box-border fill-lime-500 cursor-pointer
+}
+div.logo-container{
+  line-height: 0;
+}
+
+svg.logo{
+  @apply h-5 md:h-10
+}
+
+div.header-top {
+    @apply items-center grid-cols-none grid gap-4 grid-flow-col justify-between w-full m-0 p-0 h-auto box-border
+}
+
+div.multi-utility-nav-group {
+  @apply justify-self-end justify-end flex w-full m-0 pl-0 py-0 box-border
+}
+
+ul.multi-utility-nav {
+  @apply flex items-center gap-x-3 gap-y-3 m-0 p-0 list-none box-border
+  divide-x divide-foreground/[.15]
+}
+
+.icon-login, .icon-dark-light-mode {
+  --ng-icon__stroke-width: 1.2;
+}
+

@@ -1,0 +1,26 @@
+:host {
+  @apply flex h-full w-full justify-center items-center relative;
+}
+
+.title {
+  @apply font-serif text-3xl font-bold underline-offset-[.5625rem] px-8 pt-8 pb-4
+}
+
+.subtitle {
+  @apply px-0 pt-0 pb-8 text-xl
+}
+
+div.leaf-container{
+  @apply justify-self-start justify-center flex m-0 p-0 box-border fill-white bg-lime-400 rounded-full
+}
+div.leaf-container{
+  line-height: 0;
+}
+
+svg.leaf{
+  @apply h-64 p-8
+}
+
+.btn-text {
+  @apply bg-lime-500 hover:bg-lime-400 p-4 text-white font-bold text-lg tracking-[.0625rem] uppercase
+}

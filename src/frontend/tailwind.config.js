@@ -6,7 +6,15 @@ module.exports = {
     './spartans/**/*.{html,ts}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        'bottom': '0 .125rem .375rem rgba(var(--header-shadow-color-rgb), .15)',
+      },
+      fontFamily: {
+        'sans': ['Dm Sans', 'Trebuchet MS', 'sans-serif'],
+        'serif': ['Argos', 'Palatino', 'serif']
+      }
+    },
   },
   plugins: [],
 };

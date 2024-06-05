@@ -1,0 +1,64 @@
+:host {
+  @apply w-full block;
+}
+
+.card-list-container {
+  @apply box-border block px-3 xl:px-0
+}
+
+.image-conatainer {
+  @apply box-content block
+}
+
+.image-placeholder {
+  @apply w-full bg-foreground/[.05] overflow-hidden box-border flex justify-center md:px-32 lg:px-64
+}
+
+
+img {
+  @apply object-cover h-auto w-full
+}
+
+.content {
+  @apply px-0 py-3
+}
+
+.diet {
+  @apply pb-1 text-sm block mb-2 text-foreground/[.65] tracking-[.0625rem] font-bold uppercase underline-offset-[.25rem] decoration-1 antialiased
+}
+
+.tag, .dish {
+  @apply text-xs block mb-2 text-foreground/[.65] tracking-[.0625rem] font-bold uppercase
+}
+
+.recipe-name {
+  @apply font-serif font-bold px-0 pt-0 pb-2 text-5xl
+}
+.recipe-name {
+  text-decoration-skip-ink: none;
+}
+
+.icon-clock {
+  --ng-icon__stroke-width: 1.2;
+}
+.icon-clock {
+  @apply text-lime-500
+}
+
+.recipe-author, .recipe-time, .create-date  {
+  @apply flex gap-1 items-center text-sm text-foreground/[.65] font-normal underline-offset-[.1875rem] antialiased
+}
+
+.recipe-title-ingredients-servings, .recipe-description {
+@apply py-4 text-sm text-foreground tracking-[.0625rem] font-bold uppercase antialiased
+}
+
+.recipe-ingredients {
+  @apply pb-2 min-w-72
+}
+
+.recipe-ingredients-steps-container {
+  @apply flex flex-col md:flex-row md:gap-12 items-start pb-2
+}
+
+

@@ -1,5 +1,111 @@
 {
   "home": {
-    "title": "Strona domowa"
+    "title": "Strona główna"
+  },
+  "header": {
+    "multi-utility-nav": {
+      "search": "Szukaj",
+      "login": "LogIn",
+      "logout": "LogOut",
+      "register": "Rejestracja"
+    },
+    "nav": {
+      "recipes": "Przepisy",
+      "meals": "Dania",
+      "diet": "Dieta",
+      "about": "O nas"
+    }
+  },
+  "login": {
+    "title": "Logowanie",
+    "subtitle": "Miło Cię widzieć, zapraszamy.",
+    "username": "Nazwa użytkownika",
+    "password": "Hasło",
+    "remember": "Zapamiętaj mnie",
+    "submit": "Zaloguj"
+  },
+  "register": {
+    "title": "Rejestracja",
+    "subtitle": "Zarejestruj się, aby dodawać swoje ulubione przepisy.",
+    "username": "Nazwa użytkownika",
+    "email": "Email",
+    "password": "Hasło",
+    "submit": "Zarejestruj"
+  },
+  "activate": {
+    "title": "Aktywacja konta",
+    "subtitle": "Podaj dane do aktywacji konta.",
+    "first-name": "Imię",
+    "last-name": "Nazwisko",
+    "submit": "Aktywuj"
+  },
+  "activate-success": {
+      "title": "Udało się!",
+      "subtitle": "Twoje konto zostało aktywowane.",
+      "main-page": "Przejdź do strony głównej"
+  },
+  "register-success": {
+    "title": "Sprawdź pocztę",
+    "subtitle": "Wysłaliśmy link aktywacyjny na podany adres email.",
+    "main-page": "Przejdź do strony głównej"
+  },
+  "recipe-details": {
+    "ingredients": "Składniki",
+    "servings": "Porcje"
+  },
+  "filter": {
+    "btnFilter": "Szukaj",
+    "btnDeleteFilters": "Wyczyść",
+    "title-tags": "Co masz pod ręką?",
+    "tags": "Składniki:",
+    "title-dishes": "Na co masz ochotę?",
+    "dishes": "Dania:",
+    "title-diets": "Czego nie możesz jeść?",
+    "diets": "Dieta:",
+    "placeholder": "Na co masz ochotę?"
+  },
+  "dish": {
+    "title": "Danie"
+  },
+  "diet": {
+    "title": "Dieta"
+  },
+  "recipe-add": {
+    "title": "Dodaj przepis",
+    "subtitle": "Tutaj możesz podzielić się swoimi ulubionymi przepisami.",
+    "name": {
+      "label": "Tytuł",
+      "placeholder": "Wpisz tytuł przepisu"
+    },
+    "description": {
+      "label": "Podtytuł",
+      "placeholder": "Wpisz podtytuł przepisu"
+    },
+    "preparation-time": "Czas gotowania [min]",
+    "servings": "Ilość porcji",
+    "dishes": {
+      "label": "Tagi Dań",
+      "placeholder": "Oznacz dania"
+    },
+    "diets": {
+      "label": "Tagi Diet",
+      "placeholder": "Oznacz diety"
+    },
+    "tags": {
+      "label": "Tagi Produktów",
+      "placeholder": "Oznacz produkty"
+    },
+    "steps": {
+      "label": "Kroki",
+      "placeholder": "Wpisz kroki (rozdziel je znakiem enter)"
+    },
+    "ingredients": {
+      "label": "Składniki potrawy",
+      "placeholder": "Wpisz składniki (rozdziel je znakiem enter)"
+    },
+    "image": {
+      "label": "Zdjęcie potrawy"
+    },
+    "send": "Dodaj przepis"
   }
 }

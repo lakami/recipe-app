@@ -1,0 +1,127 @@
+<div class="title">
+  <a translate="header.nav.recipes"></a>
+</div>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div hlmAccordion>
+        <div hlmAccordionItem>
+            <button hlmAccordionTrigger class="items-start">
+                <span class="accordin-text text-nowrap w-56 text-justify" translate="filter.title-tags"></span>
+                @if (layoutService.md$ | async) {
+                  <div class="tags text-xs ml-3 flex-1 justify-start">
+                    @for (t of selectedTags; track t) {
+                      <span class="tag text-foreground/[.45]">{{t}}</span>
+                    }
+                  </div>
+                } @else if (selectedTags.length > 0) {
+                  <span class="mr-auto my-auto text-sx text-foreground/[0.45]">({{selectedTags.length}})</span>
+                }
+
+                <hlm-icon hlmAccIcon />
+            </button>
+            <div class="accordin-input-container">
+              <brn-accordion-content hlm class="accordin-text-inside">
+                <span translate="filter.tags"></span>
+                <div formArrayName="tags" class="tags">
+                  @for (t of tagsFormArray.controls; track t; let i = $index) {
+                    <span class="tag">
+                      <hlm-checkbox [formControlName]="i"/>
+                      {{tags[i].name}}
+                    </span>
+                  }
+                </div>
+            </brn-accordion-content>
+        </div>
+      </div>
+
+      <div hlmAccordionItem>
+          <button hlmAccordionTrigger class="items-start">
+              <span class="accordin-text text-nowrap w-56 text-justify" translate="filter.title-dishes"></span>
+              @if (layoutService.md$ | async) {
+                <div class="dishes text-xs ml-3 flex-1 justify-start">
+                  @for (d of selectedDishes; track d) {
+                    <span class="dish text-foreground/[.45]">{{d}}</span>
+                  }
+                </div>
+              } @else if (selectedDishes.length > 0) {
+                <span class="mr-auto my-auto text-sx text-foreground/[0.45]">({{selectedDishes.length}})</span>
+              }
+
+              <hlm-icon hlmAccIcon />
+          </button>
+          <div class="accordin-input-container">
+            <brn-accordion-content hlm class="accordin-text-inside">
+                <span translate="filter.dishes"></span>
+                <div formArrayName="dishes" class="dishes">
+                  @for (d of dishesFormArray.controls; track d; let i = $index) {
+                    <span class="dish">
+                      <hlm-checkbox [formControlName]="i"/>
+                      {{dishes[i].name}}
+                    </span>
+                  }
+                </div>
+            </brn-accordion-content>
+          </div>
+      </div>
+
+      <div hlmAccordionItem>
+          <button hlmAccordionTrigger class="items-start">
+              <span class="accordin-text text-nowrap w-56 text-justify" translate="filter.title-diets"></span>
+              @if (layoutService.md$ | async) {
+                <div class="diets text-xs ml-3 flex-1 justify-start">
+                  @for (d of selectedDiets; track d) {
+                    <span class="diet text-foreground/[.45]">{{d}}</span>
+                  }
+                </div>
+              } @else if (selectedDiets.length > 0) {
+                <span class="mr-auto my-auto text-sx text-foreground/[0.45]">({{selectedDiets.length}})</span>
+              }
+
+              <hlm-icon hlmAccIcon />
+          </button>
+          <div class="accordin-input-container">
+            <brn-accordion-content hlm >
+                <span class="accordin-text-inside" translate="filter.diets"></span>
+                <div formArrayName="diets" class="diets">
+                    @for (c of dietsFormArray.controls; track c; let i = $index) {
+                      <span class="diet">
+                        <hlm-checkbox [formControlName]="i"/>
+                        {{diets[i].name}}
+                      </span>
+                    }
+                </div>
+            </brn-accordion-content>
+          </div>
+      </div>
+              <div class="py-3 flex justify-between accordin-text-inside">
+                <div class="flex gap-2">
+                  <input
+                    id="search"
+                    hlmInput
+                    formControlName="search"
+                    (keydown.enter)="submit()"
+                    [placeholder]="'filter.placeholder' | translation | async"
+                  />
+
+                    <button hlmBtn variant='ghost' type="submit" [disabled]="form.invalid">
+                      <hlm-icon size="sm" class="mr-2" name="lucideSearch" strokeWidth="3"/>
+                      <span translate="filter.btnFilter" class="btn-filter"></span>
+                    </button>
+                  </div>
+
+                <button hlmBtn variant='ghost' type="reset" [disabled]="form.invalid">
+                  <hlm-icon size="sm" class="mr-2 rotate-45" name="lucidePlus" strokeWidth="3"/>
+                  <span translate="filter.btnDeleteFilters" class="btn-filter"></span>
+                </button>
+              </div>
+          </div>
+</form>
+
+<div class="card-list-container">
+  <div class="card-list">
+      @if (recipes$ | async; as recipes) {
+          @for (recipe of recipes; track recipe.id) {
+            <app-recipe-card-item [recipe]="recipe" [routerLink]="'/recipe/' + recipe.id"></app-recipe-card-item>
+          }
+      }
+  </div>
+</div>

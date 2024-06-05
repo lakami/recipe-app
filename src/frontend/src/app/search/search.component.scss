@@ -1,0 +1,54 @@
+:host {
+}
+
+.title {
+  @apply font-serif text-4xl font-bold underline-offset-[.5625rem] px-0 pt-0 pb-4 text-center
+}
+
+.card-list-container {
+  unicode-bidi: isolate;
+  -webkit-text-size-adjust: 100%;
+}
+.card-list-container {
+  @apply box-border block antialiased text-xl px-3 xl:px-0
+}
+
+.card-list {
+  @apply lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1
+  gap-6 flex-row flex-wrap grid justify-center box-border antialiased
+}
+
+.dishes, .diets, .tags {
+  @apply text-sm block text-foreground/[.65] tracking-[.0625rem] font-bold uppercase antialiased
+  flex flex-wrap items-center
+}
+
+.dish, .diet, .tag {
+  @apply flex flex-wrap gap-1 items-center pt-1 pr-3
+}
+
+.accordin-text {
+  @apply text-lg text-foreground/[.65] font-bold antialiased tracking-[.0625rem] font-serif
+  hover:underline
+}
+.accordin-text {
+  text-decoration-skip-ink: none;
+}
+
+.accordin-text-inside {
+  @apply text-base text-foreground/[.65] font-bold antialiased tracking-[.0625rem] uppercase
+}
+
+.btn-filter {
+  @apply tracking-[.0625rem] uppercase p-1 text-base font-bold
+}
+
+.accordin-input-container {
+  @apply px-3 flex
+}
+
+
+
+
+
+

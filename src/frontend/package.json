@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --configuration development",
+    "start": "ng serve --configuration=development",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "watch": "ng build --watch --configuration=development",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
@@ -23,6 +23,8 @@
     "@angular/router": "^17.3.0",
     "@ng-icons/core": "^25.1.0",
     "@ng-icons/lucide": "^26.3.0",
+    "@ngx-translate/core": "^15.0.0",
+    "@ngx-translate/http-loader": "^8.0.0",
     "@spartan-ng/ui-accordion-brain": "0.0.1-alpha.347",
     "@spartan-ng/ui-alertdialog-brain": "0.0.1-alpha.347",
     "@spartan-ng/ui-avatar-brain": "0.0.1-alpha.347",
@@ -66,6 +68,7 @@
     "tailwind-merge": "^2.2.0",
     "tailwindcss": "^3.4.3",
     "tailwindcss-animate": "^1.0.6",
-    "typescript": "~5.4.2"
+    "typescript": "~5.4.2",
+    "@testing-library/angular": "^16.0.0"
   }
 }

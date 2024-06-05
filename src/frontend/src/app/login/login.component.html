@@ -1,1 +1,27 @@
-<p>login works!</p>
+<form
+[formGroup]="loginForm"
+(ngSubmit)="onSubmit()"
+class="flex flex-col gap-4 w-80">
+  <div class="flex flex-col gap-2">
+    <label class="title" translate="login.title"></label>
+    <label class="subtitle" translate="login.subtitle"></label>
+    <label for="username" translate="login.username"></label>
+    <input id="username" hlmInput formControlName="username">
+  </div>
+  <div class="flex flex-col gap-2">
+    <label for="password" translate="login.password"></label>
+    <input id="password" hlmInput formControlName="password">
+  </div>
+  <span class="flex gap-4 items-center">
+    <hlm-checkbox id="remember-me" formControlName="rememberMe"/>
+    <label for="remember-me" translate="login.remember"></label>
+  </span>
+  <button
+    [disabled]="loginLoading()"
+    id="sign-in"
+    hlmBtn
+    type="submit"
+    class="relative">
+    <span class="btn-text" translate="login.submit"></span>
+  </button>
+</form>

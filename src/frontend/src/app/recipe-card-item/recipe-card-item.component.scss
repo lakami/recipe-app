@@ -1,0 +1,41 @@
+:host {
+  @apply border border-solid border-foreground/[.15] cursor-pointer
+}
+
+:host:hover .recipe-name {
+  @apply underline
+}
+
+.image-placeholder {
+  @apply w-full bg-gray-300 overflow-hidden box-border
+}
+
+img {
+  @apply w-full object-cover h-[189px]
+}
+
+.content {
+  @apply p-3
+}
+
+.diet {
+  @apply text-xs block mb-2 text-foreground/[.65] tracking-[.0625rem] font-bold uppercase max-h-8 min-h-8
+}
+
+.recipe-name {
+  @apply font-serif font-bold underline-offset-[.5rem] px-0 pt-0 pb-2 text-2xl decoration-1
+}
+.recipe-name {
+  text-decoration-skip-ink: none;
+}
+
+.recipe-info {
+  @apply flex gap-1 items-center text-sm text-foreground/[.65] font-normal underline-offset-[.1875rem] antialiased
+}
+
+.icon-clock {
+  --ng-icon__stroke-width: 1.2;
+}
+.icon-clock {
+  @apply text-lime-500
+}
