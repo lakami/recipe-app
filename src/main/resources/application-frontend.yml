@@ -1,2 +1,3 @@
 recipe:
   base-url: http://localhost:4200
+  allowed-origins: http://localhost:4200, http://localhost:8080

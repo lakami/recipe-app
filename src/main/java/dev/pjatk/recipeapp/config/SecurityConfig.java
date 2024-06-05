@@ -1,13 +1,12 @@
 package dev.pjatk.recipeapp.config;
 
-import dev.pjatk.recipeapp.security.Authorities;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -15,12 +14,25 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler;
+import org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter;
 import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
+import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
+
+import java.util.List;
+
+import static dev.pjatk.recipeapp.security.Authorities.ADMIN;
+import static org.springframework.http.HttpMethod.*;
 
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig {
+
+    @Value("${recipe.allowed-origins}")
+    List<String> allowedOrigins;
 
     private static final String[] ALLOWED_STATIC_PATHS = {
             "/*.js",
@@ -62,48 +74,50 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, MvcRequestMatcher.Builder mvc) throws Exception {
         return http
-                .cors(Customizer.withDefaults())
-                // TODO: let it stay for now this way
-                .csrf(csrf -> csrf.disable()
-//                        .csrfTokenRepository(new HttpSessionCsrfTokenRepository())
-//                        .csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler())
+                .cors(cors -> cors.configurationSource(request -> {
+                    var corsConfiguration = new CorsConfiguration();
+                    corsConfiguration.setAllowedMethods(List.of(
+                            "GET", "POST", "PUT", "DELETE", "OPTIONS"
+                    ));
+                    corsConfiguration.setAllowedOrigins(allowedOrigins);
+                    corsConfiguration.setAllowedHeaders(List.of("*"));
+                    return corsConfiguration;
+                }))
+                .csrf(csrf -> csrf
+                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                        .csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler())
                 )
-//                .addFilterAfter(new CookieCsrfFilter(), BasicAuthenticationFilter.class)
-                // TODO: evaluate what is needed
-//                .headers(headers -> headers
-//                         .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)
-//                         .contentSecurityPolicy(csp -> csp.policyDirectives("default-src 'self'; script-src 'self'"))
-//                         .referrerPolicy(referrerPolicy -> referrerPolicy.policy(ReferrerPolicyHeaderWriter.ReferrerPolicy.STRICT_ORIGIN_WHEN_CROSS_ORIGIN))
-//                )
-                .authorizeHttpRequests(auth -> auth // TODO: add more rules for certain paths
+                .addFilterAfter(new CookieCsrfFilter(), BasicAuthenticationFilter.class)
+                .headers(headers -> headers
+                        .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)
+                        .contentSecurityPolicy(csp -> csp.policyDirectives("default-src 'self'; script-src 'self'"))
+                        .referrerPolicy(referrerPolicy -> referrerPolicy.policy(ReferrerPolicyHeaderWriter.ReferrerPolicy.STRICT_ORIGIN_WHEN_CROSS_ORIGIN))
+                )
+                .authorizeHttpRequests(auth -> auth
                         .requestMatchers(ALLOWED_STATIC_PATHS).permitAll()
                         .requestMatchers(mvc.pattern("/api/v1/register")).permitAll()
                         .requestMatchers(mvc.pattern("/api/v1/login")).permitAll()
                         .requestMatchers(mvc.pattern("/api/v1/activate")).permitAll()
-                        .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/tag")).permitAll()
-                        .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/v1/tag")).hasAnyAuthority(Authorities.ADMIN)
-                        .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/diet")).permitAll()
-                        .requestMatchers(mvc.pattern(HttpMethod.POST,
-                                                     "/api/v1/diet")).hasAnyAuthority(Authorities.ADMIN)
-                        .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/dish")).permitAll()
-                        .requestMatchers(mvc.pattern(HttpMethod.POST,
-                                                     "/api/v1/dish")).hasAnyAuthority(Authorities.ADMIN)
-                        .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/recipe/**")).permitAll()
-                        .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/v1/recipe/promote/**")).hasAnyAuthority(
-                                Authorities.ADMIN)
-                        .requestMatchers(mvc.pattern(HttpMethod.DELETE, "/api/v1/recipe/promote/**")).hasAnyAuthority(
-                                Authorities.ADMIN)
-                        .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/v1/recipe/**")).permitAll() // TODO
-                        .requestMatchers(mvc.pattern(HttpMethod.PUT, "/api/v1/recipe/**")).authenticated()
-                        .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/images/**")).permitAll()
-                        .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/v1/images/**")).authenticated()
-                        .requestMatchers(mvc.pattern(HttpMethod.PUT, "/api/v1/images/**")).authenticated()
+                        .requestMatchers(mvc.pattern(GET, "/api/v1/tag")).permitAll()
+                        .requestMatchers(mvc.pattern(POST, "/api/v1/tag")).hasAnyAuthority(ADMIN)
+                        .requestMatchers(mvc.pattern(GET, "/api/v1/diet")).permitAll()
+                        .requestMatchers(mvc.pattern(POST, "/api/v1/diet")).hasAnyAuthority(ADMIN)
+                        .requestMatchers(mvc.pattern(GET, "/api/v1/dish")).permitAll()
+                        .requestMatchers(mvc.pattern(POST, "/api/v1/dish")).hasAnyAuthority(ADMIN)
+                        .requestMatchers(mvc.pattern(GET, "/api/v1/recipe/**")).permitAll()
+                        .requestMatchers(mvc.pattern(POST, "/api/v1/recipe/promote/**")).hasAnyAuthority(ADMIN)
+                        .requestMatchers(mvc.pattern(DELETE, "/api/v1/recipe/promote/**")).hasAnyAuthority(ADMIN)
+                        .requestMatchers(mvc.pattern(POST, "/api/v1/recipe/**")).authenticated()
+                        .requestMatchers(mvc.pattern(PUT, "/api/v1/recipe/**")).authenticated()
+                        .requestMatchers(mvc.pattern(GET, "/api/v1/images/**")).permitAll()
+                        .requestMatchers(mvc.pattern(POST, "/api/v1/images/**")).authenticated()
+                        .requestMatchers(mvc.pattern(PUT, "/api/v1/images/**")).authenticated()
                         .requestMatchers(mvc.pattern("/api/v1/favourites")).authenticated()
-                        .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/user/**")).permitAll()
-                        .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/v1/comment/**")).permitAll()
-                        .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/v1/comment/**")).authenticated()
-                        .requestMatchers(mvc.pattern(HttpMethod.DELETE, "/api/v1/comment/**")).authenticated()
-                        .requestMatchers(mvc.pattern(HttpMethod.PUT, "/api/v1/comment/**")).authenticated()
+                        .requestMatchers(mvc.pattern(GET, "/api/v1/user/**")).permitAll()
+                        .requestMatchers(mvc.pattern(GET, "/api/v1/comment/**")).permitAll()
+                        .requestMatchers(mvc.pattern(POST, "/api/v1/comment/**")).authenticated()
+                        .requestMatchers(mvc.pattern(DELETE, "/api/v1/comment/**")).authenticated()
+                        .requestMatchers(mvc.pattern(PUT, "/api/v1/comment/**")).authenticated()
                         .requestMatchers(mvc.pattern("/api/v1/account")).authenticated()
                         .requestMatchers(mvc.pattern("/api/v1/**")).authenticated()
                         .requestMatchers(mvc.pattern("/error")).permitAll()
