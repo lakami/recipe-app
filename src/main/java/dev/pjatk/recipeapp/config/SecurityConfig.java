@@ -17,7 +17,6 @@ import org.springframework.security.web.authentication.logout.HttpStatusReturnin
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler;
-import org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter;
 import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
@@ -26,6 +25,7 @@ import java.util.List;
 
 import static dev.pjatk.recipeapp.security.Authorities.ADMIN;
 import static org.springframework.http.HttpMethod.*;
+import static org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter.ReferrerPolicy.STRICT_ORIGIN_WHEN_CROSS_ORIGIN;
 
 @EnableWebSecurity
 @Configuration
@@ -90,8 +90,10 @@ public class SecurityConfig {
                 .addFilterAfter(new CookieCsrfFilter(), BasicAuthenticationFilter.class)
                 .headers(headers -> headers
                         .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)
-                        .contentSecurityPolicy(csp -> csp.policyDirectives("default-src 'self'; script-src 'self'"))
-                        .referrerPolicy(referrerPolicy -> referrerPolicy.policy(ReferrerPolicyHeaderWriter.ReferrerPolicy.STRICT_ORIGIN_WHEN_CROSS_ORIGIN))
+                        .contentSecurityPolicy(csp -> csp
+                                .policyDirectives("default-src 'self'; script-src 'self'"))
+                        .referrerPolicy(referrerPolicy -> referrerPolicy
+                                .policy(STRICT_ORIGIN_WHEN_CROSS_ORIGIN))
                 )
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(ALLOWED_STATIC_PATHS).permitAll()
@@ -122,7 +124,9 @@ public class SecurityConfig {
                         .requestMatchers(mvc.pattern("/api/v1/**")).authenticated()
                         .requestMatchers(mvc.pattern("/error")).permitAll()
                 )
-                .exceptionHandling(eH -> eH.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
+                .exceptionHandling(eH -> eH.authenticationEntryPoint(
+                        new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
+                )
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")
                         .loginProcessingUrl("/api/v1/login")
@@ -132,9 +136,11 @@ public class SecurityConfig {
                 )
                 .logout(logout -> logout
                         .logoutUrl("/api/v1/logout")
-                        .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler(HttpStatus.OK))
+                        .logoutSuccessHandler(
+                                new HttpStatusReturningLogoutSuccessHandler(HttpStatus.OK)
+                        )
                         .permitAll()
                 )
-                .build(); // TODO: rememberMe
+                .build();
     }
 }
