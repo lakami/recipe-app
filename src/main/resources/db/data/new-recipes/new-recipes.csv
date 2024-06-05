@@ -1,0 +1,21 @@
+id,name,preparation_time,servings,image_url,description,created_by_user_id,created_date
+7,Ciasto dyniowe,180,30,ciasto_dyniowe.webp,"Przepyszne ciasto dyniowe",1,CURRENT_TIMESTAMP
+8,Jajecznica,10,1,jajecznica.webp,"Jajecznica",1,CURRENT_TIMESTAMP
+9,Jajecznica,10,1,jajecznica_2.webp,"Jajecznica",1,CURRENT_TIMESTAMP
+10,Jajecznica,10,1,jajecznica_3.webp,"Jajecznica",1,CURRENT_TIMESTAMP
+11,Jajecznica,10,1,jajecznica_4.webp,"Jajecznica",1,CURRENT_TIMESTAMP
+12,Jajecznica,10,1,jajecznica_5.webp,"Jajecznica",1,CURRENT_TIMESTAMP
+13,Jajecznica,10,1,jajecznica_6.webp,"Jajecznica",1,CURRENT_TIMESTAMP
+14,Naleśniki,20,2,nalesniki.webp,"Naleśniki",1,CURRENT_TIMESTAMP
+15,Naleśniki,20,2,nalesniki_2.webp,"Naleśniki",1,CURRENT_TIMESTAMP
+16,Naleśniki,20,2,nalesniki_3.webp,"Naleśniki",1,CURRENT_TIMESTAMP
+17,Naleśniki,20,2,nalesniki_4.webp,"Naleśniki",1,CURRENT_TIMESTAMP
+18,Sernik,150,30,sernik_2.webp,"Sernik",1,CURRENT_TIMESTAMP
+19,Sernik,150,30,sernik_3.webp,"Sernik",1,CURRENT_TIMESTAMP
+20,Sernik,150,30,sernik_4.webp,"Sernik",1,CURRENT_TIMESTAMP
+21,Sernik,150,30,sernik_5.webp,"Sernik",1,CURRENT_TIMESTAMP
+22,Sernik,150,30,sernik_6.webp,"Sernik",1,CURRENT_TIMESTAMP
+23,Spaghetti wegetariańskie,35,4,spaghetti.webp,"Spaghetti",1,CURRENT_TIMESTAMP
+24,Spaghetti,45,4,spaghetti_2.webp,"Spaghetti",1,CURRENT_TIMESTAMP
+25,Złote mleko,5,1,zlote_mleko.webp,"Złote mleko",1,CURRENT_TIMESTAMP
+26,Złote mleko,5,1,zlote_mleko_2.webp,"Złote mleko",1,CURRENT_TIMESTAMP
