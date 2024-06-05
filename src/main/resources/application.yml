@@ -54,3 +54,4 @@ server:
 recipe:
   app-dir: ${user.home}/.recipe-app
   base-url: http://localhost:${server.port}
+  allowed-origins: http://localhost:8080
