@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="00000000000010" author="k.hermann">
+        <loadData tableName="recipe" file="db/data/new-recipes/new-recipes.csv">
+            <column name="id" type="NUMERIC"/>
+            <column name="name" type="STRING"/>
+            <column name="preparation_time" type="NUMERIC"/>
+            <column name="servings" type="NUMERIC"/>
+            <column name="image_url" type="STRING"/>
+            <column name="description" type="STRING"/>
+        </loadData>
+        <loadData tableName="recipe_category" file="db/data/new-recipes/diets.csv" >
+            <column name="recipe_id" type="NUMERIC"/>
+            <column name="category_id" type="NUMERIC"/>
+        </loadData>
+        <loadData tableName="recipe_dish" file="db/data/new-recipes/dishes.csv" >
+            <column name="recipe_id" type="NUMERIC"/>
+            <column name="dish_id" type="NUMERIC"/>
+        </loadData>
+        <loadData tableName="recipe_tag" file="db/data/new-recipes/tags.csv" >
+            <column name="recipe_id" type="NUMERIC"/>
+            <column name="tag_id" type="NUMERIC"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

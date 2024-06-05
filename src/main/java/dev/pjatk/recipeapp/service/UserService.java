@@ -77,7 +77,6 @@ class UserService implements IUserService, Loggable {
                     log().warn("No user found for token: {}", token);
                     throw new NoUserFoundException();
                 });
-        ;
     }
 
     @Override
