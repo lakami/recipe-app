@@ -7,7 +7,7 @@
         </div>
         <div class="multi-utility-nav-group">
             <ul class="multi-utility-nav">
-                <li class="multi-utility-text" translate="header.multi-utility-nav.search"></li>
+<!--                <li class="multi-utility-text" translate="header.multi-utility-nav.search"></li>-->
                 <li class="multi-utility-text" (click)="toggleColor()">
                   <hlm-icon class="icon-dark-light-mode" size='sm' name="lucideMoon"/>
                 </li>
@@ -18,6 +18,10 @@
                     <span translate="header.multi-utility-nav.login"></span>
                   </li>
                   } @else {
+                   <li class="multi-utility-text" routerLink="/recipe-add">
+                      <hlm-icon class="icon-recipe-add" size='sm' name="lucidePlus"/>
+                      <span translate="header.multi-utility-nav.recipe-add"></span>
+                    </li>
                     <li class="multi-utility-text" (click)="logout()">
                       <hlm-icon class="icon-login" size='sm' name="lucideUserCircle"/>
                       <span translate="header.multi-utility-nav.logout"></span>
@@ -69,7 +73,9 @@
 <ng-template #menuAdmin>
   <hlm-menu>
     <hlm-menu-group>
-        <button hlmMenuItem translate="admin-panel.edit-categories.menu"></button>
+        <button hlmMenuItem
+        translate="admin-panel.edit-categories.menu"
+        routerLink="/admin/edit-categories"></button>
     </hlm-menu-group>
   </hlm-menu>
 </ng-template>

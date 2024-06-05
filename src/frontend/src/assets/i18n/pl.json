@@ -7,7 +7,8 @@
       "search": "Szukaj",
       "login": "LogIn",
       "logout": "LogOut",
-      "register": "Rejestracja"
+      "register": "Rejestracja",
+      "recipe-add": "Dodaj przepis"
     },
     "nav": {
       "recipes": "Przepisy",
@@ -58,7 +59,7 @@
     "btnFilter": "Szukaj",
     "btnDeleteFilters": "Wyczyść",
     "title-tags": "Co masz pod ręką?",
-    "tags": "Składniki:",
+    "tags": "Produkty:",
     "title-dishes": "Na co masz ochotę?",
     "dishes": "Dania:",
     "title-diets": "Czego nie możesz jeść?",
@@ -116,16 +117,16 @@
       "subtitle": "Tutaj możesz dodawać nowe kategorie.",
       "add": "Dodaj",
       "diet": {
-        "label": "Nazwa nowej diety",
+        "label": "Nazwa diety",
         "placeholder": "Wpisz tutaj nazwę diety."
       },
       "dish": {
-        "label": "Nazwa nowego dania",
+        "label": "Nazwa dania",
         "placeholder": "Wpisz tutaj nazwę dania."
       },
       "tag": {
-        "label": "Nazwa nowego taga",
-        "placeholder": "Wpisz tutaj nazwę taga."
+        "label": "Nazwa produktu",
+        "placeholder": "Wpisz tutaj nazwę produktu."
       }
     }
   },
