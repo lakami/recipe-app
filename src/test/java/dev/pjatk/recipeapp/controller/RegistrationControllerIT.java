@@ -3,6 +3,8 @@ package dev.pjatk.recipeapp.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.pjatk.recipeapp.SpringIntegrationTest;
 import dev.pjatk.recipeapp.dto.request.RegisterDTO;
+import dev.pjatk.recipeapp.entity.User;
+import dev.pjatk.recipeapp.service.EmailService;
 import dev.pjatk.recipeapp.service.IUserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,6 +21,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import static dev.pjatk.recipeapp.controller.RegistrationController.REGISTER;
+import static org.mockito.Mockito.when;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
@@ -29,7 +32,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringIntegrationTest
 @AutoConfigureMockMvc
-//@WebMvcTest(RegisterController.class)
 @ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
 class RegistrationControllerIT {
 
@@ -43,6 +45,9 @@ class RegistrationControllerIT {
     @MockBean
     private IUserService userService;
 
+    @MockBean
+    private EmailService emailService;
+
     @BeforeEach
     public void setUp(WebApplicationContext webApplicationContext,
                       RestDocumentationContextProvider restDocumentation) {
@@ -53,8 +58,17 @@ class RegistrationControllerIT {
     @Test
     void shouldNotBeSecured() throws Exception {
         // given
-        var body = new RegisterDTO("def@gmail.com", "password123!@#");
+        var body = new RegisterDTO("def@gmail.com", "v3ryStrong@#!@Passw&#$%s");
+        when(userService.register(body.email(), body.password()))
+                .thenAnswer(invocation -> {
+                    var user = new User();
+                    user.setEmail(body.email());
+                    user.setActivationToken("token");
+                    return user;
+                });
 
+        // when
+        // then
         mockMvc.perform(
                 post(REGISTER_PATH)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -68,5 +82,4 @@ class RegistrationControllerIT {
                                         fieldWithPath("password").description("User password")
                                 )));
     }
-
 }
