@@ -46,7 +46,7 @@ public class RecipeService {
                                                          String search) {
         List<Specification<Recipe>> specifications = new LinkedList<>();
         if (categories != null && !categories.isEmpty()) {
-            var spec = (Specification<Recipe>) (root, query, criteriaBuilder) -> root.join("diets").get("name").in(
+            var spec = (Specification<Recipe>) (root, query, criteriaBuilder) -> root.join("categories").get("name").in(
                     categories);
             specifications.add(spec);
         }
@@ -63,10 +63,12 @@ public class RecipeService {
         }
 
         if (search != null && !search.isBlank()) {
-            var spec = (Specification<Recipe>) (root, query, criteriaBuilder) -> criteriaBuilder.or(
-                    criteriaBuilder.like(root.get("name"), "%" + search + "%"),
-                    criteriaBuilder.like(root.get("description"), "%" + search + "%")
-            );
+            var specName = (Specification<Recipe>) (root, query, criteriaBuilder) -> criteriaBuilder.like(
+                    criteriaBuilder.lower(root.get("name")), "%" + search.toLowerCase() + "%");
+            var specDesc = (Specification<Recipe>) (root, query, criteriaBuilder) -> criteriaBuilder.like(
+                    criteriaBuilder.lower(root.get("description")), "%" + search.toLowerCase() + "%");
+
+            var spec = specName.or(specDesc);
             specifications.add(spec);
         }
 
