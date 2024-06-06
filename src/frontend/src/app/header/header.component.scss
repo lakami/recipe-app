@@ -11,7 +11,7 @@ nav {
 }
 
 ul.navbar {
-  @apply list-none m-0 p-0 flex flex-wrap gap-8
+  @apply list-none m-0 p-0 flex flex-wrap md:gap-8 gap-6
 }
 
 li.navbar-text {
