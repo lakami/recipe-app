@@ -1,8 +1,6 @@
 # Read Me First
 The following was discovered as part of building this project:
 
-* The original package name 'dev.pjatk.recipe-app' is invalid and this project uses 'dev.pjatk.recipeapp' instead.
-
 # Getting Started
 
 ### Reference Documentation
