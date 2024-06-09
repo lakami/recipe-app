@@ -21,7 +21,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     boolean existsByProfileUrl(String profileUrl);
 
-    @EntityGraph(attributePaths = "favourites")
+    @EntityGraph(attributePaths = "favouriteRecipes")
     Optional<User> findOneWithFavouriteRecipesByEmail(String email);
 
     Optional<User> findOneWithRecipesByProfileUrl(String profileUrl);
