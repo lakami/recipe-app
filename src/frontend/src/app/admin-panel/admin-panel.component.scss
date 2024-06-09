@@ -1,3 +1,7 @@
 .admin-panel-add-title {
   @apply font-serif text-3xl font-bold underline-offset-[.5625rem] px-0 pt-0 pb-4
 }
+
+.admin-panel-edit-categories-add-component-container {
+  @apply flex flex-col gap-4 xl:px-0 px-3 pb-4
+}
