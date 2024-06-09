@@ -34,4 +34,9 @@ public class FavouritesController {
         addRecipeToFavouritesUseCase.execute(id);
     }
 
+    @GetMapping("/{recipeId}")
+    public boolean isFavourite(@PathVariable Long recipeId) {
+        return getUserFavouriteRecipesUseCase.execute().stream().anyMatch(recipe -> recipe.id().equals(recipeId));
+    }
+
 }
