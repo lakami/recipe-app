@@ -1,4 +1,4 @@
-package dev.pjatk.recipeapp.service;
+package dev.pjatk.recipeapp.usecase.exception;
 
 public class EmailAlreadyUsedException extends Exception {
 }

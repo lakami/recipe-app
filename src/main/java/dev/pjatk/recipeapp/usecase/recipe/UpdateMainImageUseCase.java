@@ -1,4 +1,4 @@
-package dev.pjatk.recipeapp.usecase;
+package dev.pjatk.recipeapp.usecase.recipe;
 
 import dev.pjatk.recipeapp.exception.ResourceNotFoundException;
 import dev.pjatk.recipeapp.repository.RecipeRepository;
@@ -16,7 +16,7 @@ public class UpdateMainImageUseCase {
     private final RecipeRepository recipeRepository;
 
     @Transactional
-    public void updateMainImage(Long id, MultipartFile image) {
+    public void execute(Long id, MultipartFile image) {
         var recipe = recipeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Recipe not found"));
         var oldImage = recipe.getImageUrl();

@@ -1,4 +1,4 @@
-package dev.pjatk.recipeapp.usecase;
+package dev.pjatk.recipeapp.usecase.favourites;
 
 import dev.pjatk.recipeapp.dto.response.RecipeDTO;
 import dev.pjatk.recipeapp.entity.User;
@@ -15,7 +15,7 @@ import java.util.Set;
 public class GetUserFavouriteRecipesUseCase {
     private final UserRepository userRepository;
 
-    public List<RecipeDTO> getUserFavourites() {
+    public List<RecipeDTO> execute() {
         return SecurityUtils.getCurrentUserLogin()
                 .flatMap(userRepository::findOneWithFavouriteRecipesByEmail)
                 .map(User::getFavouriteRecipes)

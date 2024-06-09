@@ -1,4 +1,4 @@
-package dev.pjatk.recipeapp.usecase;
+package dev.pjatk.recipeapp.usecase.favourites;
 
 import dev.pjatk.recipeapp.entity.User;
 import dev.pjatk.recipeapp.entity.recipe.Recipe;
@@ -15,7 +15,7 @@ public class AddRecipeToFavouritesUseCase {
     private final UserRepository userRepository;
     private final RecipeRepository recipeRepository;
 
-    public void addRecipeToFavourites(Long recipeId) {
+    public void execute(Long recipeId) {
         SecurityUtils.getCurrentUserLogin()
                 .flatMap(userRepository::findOneWithFavouriteRecipesByEmail)
                 .map(user -> recipeRepository.findById(recipeId)

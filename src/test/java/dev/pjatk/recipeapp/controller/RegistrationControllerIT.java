@@ -5,7 +5,7 @@ import dev.pjatk.recipeapp.SpringIntegrationTest;
 import dev.pjatk.recipeapp.dto.request.RegisterDTO;
 import dev.pjatk.recipeapp.entity.User;
 import dev.pjatk.recipeapp.service.EmailService;
-import dev.pjatk.recipeapp.service.IUserService;
+import dev.pjatk.recipeapp.usecase.user.CreateUserUseCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -43,7 +43,7 @@ class RegistrationControllerIT {
     private ObjectMapper mapper;
 
     @MockBean
-    private IUserService userService;
+    private CreateUserUseCase createUserUseCase;
 
     @MockBean
     private EmailService emailService;
@@ -59,7 +59,7 @@ class RegistrationControllerIT {
     void shouldNotBeSecured() throws Exception {
         // given
         var body = new RegisterDTO("def@gmail.com", "v3ryStrong@#!@Passw&#$%s");
-        when(userService.register(body.email(), body.password()))
+        when(createUserUseCase.execute(body.email(), body.password()))
                 .thenAnswer(invocation -> {
                     var user = new User();
                     user.setEmail(body.email());

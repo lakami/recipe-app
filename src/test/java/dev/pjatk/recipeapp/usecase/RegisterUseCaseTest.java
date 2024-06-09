@@ -2,9 +2,11 @@ package dev.pjatk.recipeapp.usecase;
 
 import dev.pjatk.recipeapp.dto.request.RegisterDTO;
 import dev.pjatk.recipeapp.entity.User;
-import dev.pjatk.recipeapp.service.EmailAlreadyUsedException;
 import dev.pjatk.recipeapp.service.EmailService;
-import dev.pjatk.recipeapp.service.IUserService;
+import dev.pjatk.recipeapp.usecase.exception.EmailAlreadyUsedException;
+import dev.pjatk.recipeapp.usecase.exception.TooWeakPasswordException;
+import dev.pjatk.recipeapp.usecase.register.RegisterUseCase;
+import dev.pjatk.recipeapp.usecase.user.CreateUserUseCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,12 +20,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 class RegisterUseCaseTest {
-    private IUserService userService;
+    private CreateUserUseCase createUserUseCase;
     private EmailService emailService;
 
     @BeforeEach
     void setUp() {
-        userService = mock(IUserService.class);
+        createUserUseCase = mock(CreateUserUseCase.class);
         emailService = mock(EmailService.class);
     }
 
@@ -32,13 +34,13 @@ class RegisterUseCaseTest {
     void shouldThrowForWeakPassword(String password) {
         // given
         RegisterDTO dto = new RegisterDTO("email", password);
-        RegisterUseCase registerUseCase = new RegisterUseCase(userService, emailService);
+        RegisterUseCase registerUseCase = new RegisterUseCase(createUserUseCase, emailService);
 
         // when
         // then
         assertThrows(
                 TooWeakPasswordException.class,
-                () -> registerUseCase.register(dto));
+                () -> registerUseCase.execute(dto));
         verify(emailService, never()).senActivationEmail(any());
     }
 
@@ -52,8 +54,8 @@ class RegisterUseCaseTest {
         var token = UUID.randomUUID().toString();
         String email = "email";
         RegisterDTO dto = new RegisterDTO(email, password);
-        RegisterUseCase registerUseCase = new RegisterUseCase(userService, emailService);
-        when(userService.register(anyString(), anyString()))
+        RegisterUseCase registerUseCase = new RegisterUseCase(createUserUseCase, emailService);
+        when(createUserUseCase.execute(anyString(), anyString()))
                 .thenAnswer(invocation -> {
                     var user = new User();
                     user.setEmail(invocation.getArgument(0));
@@ -63,10 +65,10 @@ class RegisterUseCaseTest {
         var userCaptor = ArgumentCaptor.forClass(User.class);
 
         // when
-        registerUseCase.register(dto);
+        registerUseCase.execute(dto);
 
         // then
-        verify(userService).register(email, password);
+        verify(createUserUseCase).execute(email, password);
         verify(emailService).senActivationEmail(userCaptor.capture());
         var user = userCaptor.getValue();
         assertEquals(email, user.getEmail());
@@ -79,15 +81,15 @@ class RegisterUseCaseTest {
         RegisterDTO dto = new RegisterDTO(
                 "email",
                 "098b0e81-62f3-432b-9885-178bf8ff43a7");
-        RegisterUseCase registerUseCase = new RegisterUseCase(userService, emailService);
-        when(userService.register(anyString(), anyString()))
+        RegisterUseCase registerUseCase = new RegisterUseCase(createUserUseCase, emailService);
+        when(createUserUseCase.execute(anyString(), anyString()))
                 .thenThrow(EmailAlreadyUsedException.class);
 
         // when
-        registerUseCase.register(dto);
+        registerUseCase.execute(dto);
 
         // then
-        verify(userService).register(anyString(), anyString());
+        verify(createUserUseCase).execute(anyString(), anyString());
         verify(emailService, never()).senActivationEmail(any());
     }
 }

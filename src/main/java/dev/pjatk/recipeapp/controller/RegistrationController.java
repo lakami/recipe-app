@@ -1,8 +1,8 @@
 package dev.pjatk.recipeapp.controller;
 
 import dev.pjatk.recipeapp.dto.request.RegisterDTO;
-import dev.pjatk.recipeapp.usecase.RegisterUseCase;
-import dev.pjatk.recipeapp.usecase.TooWeakPasswordException;
+import dev.pjatk.recipeapp.usecase.exception.TooWeakPasswordException;
+import dev.pjatk.recipeapp.usecase.register.RegisterUseCase;
 import dev.pjatk.recipeapp.util.Loggable;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +28,6 @@ public class RegistrationController implements Loggable {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void register(@Valid @RequestBody RegisterDTO registerDTO) {
-        useCase.register(registerDTO);
+        useCase.execute(registerDTO);
     }
 }

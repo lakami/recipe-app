@@ -1,10 +1,11 @@
-package dev.pjatk.recipeapp.usecase;
+package dev.pjatk.recipeapp.usecase.register;
 
 import com.nulabinc.zxcvbn.Zxcvbn;
 import dev.pjatk.recipeapp.dto.request.RegisterDTO;
-import dev.pjatk.recipeapp.service.EmailAlreadyUsedException;
 import dev.pjatk.recipeapp.service.EmailService;
-import dev.pjatk.recipeapp.service.IUserService;
+import dev.pjatk.recipeapp.usecase.exception.EmailAlreadyUsedException;
+import dev.pjatk.recipeapp.usecase.exception.TooWeakPasswordException;
+import dev.pjatk.recipeapp.usecase.user.CreateUserUseCase;
 import dev.pjatk.recipeapp.util.Loggable;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -12,17 +13,18 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 @Component
 public class RegisterUseCase implements Loggable {
-    private final IUserService userService;
+    private final CreateUserUseCase createUserUseCase;
     private final EmailService emailService;
 
-    public void register(RegisterDTO registerDTO) {
+
+    public void execute(RegisterDTO registerDTO) {
         try {
             log().info("Registering user with email: {}", registerDTO.email());
             checkPassword(registerDTO.password());
-            var user = userService.register(registerDTO.email(), registerDTO.password());
+            var user = createUserUseCase.execute(registerDTO.email(), registerDTO.password());
             log().info("User registered: {}", user.getEmail());
-            log().info("Activation token: {}", user.getActivationToken()); // TODO: send email, logging activation token for now
-            emailService.senActivationEmail(user);
+            log().info("Activation token: {}", user.getActivationToken());
+            emailService.senActivationEmail(user); // TODO: might be async in the future
         } catch (EmailAlreadyUsedException e) {
             log().warn("Someone tried to register with an already used email: {}", registerDTO.email());
         }

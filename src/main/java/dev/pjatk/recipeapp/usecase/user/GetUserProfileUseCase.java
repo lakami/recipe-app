@@ -1,21 +1,27 @@
-package dev.pjatk.recipeapp.usecase;
+package dev.pjatk.recipeapp.usecase.user;
 
 import dev.pjatk.recipeapp.dto.response.RecipeDTO;
 import dev.pjatk.recipeapp.dto.response.UserProfileDTO;
 import dev.pjatk.recipeapp.exception.ResourceNotFoundException;
-import dev.pjatk.recipeapp.service.IUserService;
+import dev.pjatk.recipeapp.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Component
+@Transactional
 public class GetUserProfileUseCase {
-    private final IUserService userService;
+    private final UserRepository userRepository;
 
-    public UserProfileDTO getUser(String profileUrl) {
-        return userService.getUserWithRecipes(profileUrl)
+    public UserProfileDTO execute(String profileUrl) {
+        return userRepository.findOneWithRecipesByProfileUrl(profileUrl)
+                .map(user -> {
+                    user.getRecipes().size(); // force fetch
+                    return user;
+                })
                 .map(user -> new UserProfileDTO(
                         user.getFirstName(),
                         user.getLastName(),

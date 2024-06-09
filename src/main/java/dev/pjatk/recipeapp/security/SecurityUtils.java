@@ -84,4 +84,9 @@ public final class SecurityUtils {
     private static Stream<String> getAuthorities(Authentication authentication) {
         return authentication.getAuthorities().stream().map(GrantedAuthority::getAuthority);
     }
+
+    public static boolean isAdminOrCurrentUser(String email) {
+        return SecurityUtils.hasCurrentUserAnyOfAuthorities(Authorities.ADMIN) ||
+               getCurrentUserLogin().map(email::equals).orElse(false);
+    }
 }

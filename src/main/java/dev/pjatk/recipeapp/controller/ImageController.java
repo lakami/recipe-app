@@ -1,6 +1,6 @@
 package dev.pjatk.recipeapp.controller;
 
-import dev.pjatk.recipeapp.usecase.UpdateMainImageUseCase;
+import dev.pjatk.recipeapp.usecase.recipe.UpdateMainImageUseCase;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -46,7 +46,7 @@ public class ImageController {
 
     @PutMapping("/{id}")
     public void updateMainImage(@PathVariable Long id, @RequestParam("image") MultipartFile image) {
-        updateMainImageUseCase.updateMainImage(id, image);
+        updateMainImageUseCase.execute(id, image);
     }
 
 //    // TODO: Implement this endpoint when multi-image support will be added

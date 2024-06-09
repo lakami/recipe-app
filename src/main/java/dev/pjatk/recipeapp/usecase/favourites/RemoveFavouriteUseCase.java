@@ -1,4 +1,4 @@
-package dev.pjatk.recipeapp.usecase;
+package dev.pjatk.recipeapp.usecase.favourites;
 
 import dev.pjatk.recipeapp.repository.UserRepository;
 import dev.pjatk.recipeapp.security.SecurityUtils;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class RemoveFavouriteUseCase {
     private final UserRepository userRepository;
 
-    public void removeFavourite(Long recipeId) {
+    public void execute(Long recipeId) {
         SecurityUtils.getCurrentUserLogin()
                 .flatMap(userRepository::findOneWithFavouriteRecipesByEmail)
                 .ifPresent(user -> {
