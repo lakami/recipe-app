@@ -1,0 +1,9 @@
+<p>comment-section works!</p>
+@if (accountService.isAuthenticated()) {
+  <form [formGroup]="commentForm" (ngSubmit)="sendComment()">
+    <textarea hlmInput formControlName="comment" placeholder="Write a comment"></textarea>
+    <button hlmButton type="submit" [disabled]="commentForm.invalid">Submit</button>
+  </form>
+} @else {
+  <p>Login to comment</p>
+}

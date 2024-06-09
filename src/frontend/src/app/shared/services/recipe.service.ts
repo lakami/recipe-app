@@ -7,6 +7,7 @@ import {environment} from "../../../enviroments/enviroment.development";
 import {DishGetModel} from "../dto/dish-get.model";
 import {TagGetModel} from "../dto/tag-get.model";
 import {DietGetModel} from "../dto/diet-get.model";
+import {CommentGetModel} from "../dto/comment-get.model";
 
 
 @Injectable({
@@ -15,41 +16,17 @@ import {DietGetModel} from "../dto/diet-get.model";
 export class RecipeService {
   private http: HttpClient = inject(HttpClient)
 
-  // getRecipes(): Observable<PageGetModel<RecipeGetModel>> {
-  //   return this.http.get<PageGetModel<RecipeGetModel>>(environment.recipe)
-  // }
-
   getRecipeById(recipeId: number): Observable<RecipeGetModel> {
     return this.http.get<RecipeGetModel>(`${environment.recipe}/${recipeId}`)
   }
-
-  // getRecipesByDish(dish: string[]): Observable<PageGetModel<RecipeGetModel>> {
-  //   return this.http.get<PageGetModel<RecipeGetModel>>(
-  //     `${environment.recipe}?dishes=${dish.join(',').replaceAll(' ', '+')}`
-  //   )
-  // }
 
   getDishes(): Observable<DishGetModel[]> {
     return this.http.get<DishGetModel[]>(`${environment.dish}`)
   }
 
-  // getRecipesByDiet(diet: string[]): Observable<PageGetModel<RecipeGetModel>> {
-  //   return this.http.get<PageGetModel<RecipeGetModel>>(
-  //     `${environment.recipe}?category=${diet.join(',').replaceAll(' ', '+')}`
-  //   )
-  // }
-
   getDiets(): Observable<DietGetModel[]> {
     return this.http.get<DietGetModel[]>(`${environment.diet}`)
   }
-
-  // getDishById(dishId: any) {
-  //
-  // }
-
-  // getRecipesByTag(tag: string): Observable<PageGetModel<RecipeGetModel>> {
-  //   return this.http.get<PageGetModel<RecipeGetModel>>(`${environment.recipe}/tag/${tag}`)
-  // }
 
   getTags(): Observable<TagGetModel[]> {
     return this.http.get<TagGetModel[]>(`${environment.tag}`)
@@ -88,15 +65,6 @@ export class RecipeService {
             image: File): Observable<number> {
     const recipe = new FormData();
     recipe.append('image', image);
-    // recipe.append('name', name);
-    // recipe.append('description', description);
-    // recipe.append('preparationTime', preparationTime.toString());
-    // recipe.append('servings', servings.toString());
-    // recipe.append('dishes', dishes.join(','));
-    // recipe.append('diets', diets.join(','));
-    // recipe.append('tags', tags.join(','));
-    // recipe.append('steps', steps.join(','));
-    // recipe.append('ingredients', ingredients.join(','));
     recipe.append('recipe', new Blob([JSON.stringify({
         name: name,
         description: description,
@@ -126,4 +94,38 @@ export class RecipeService {
     return this.http.post<TagGetModel>(environment.tag, name)
   }
 
+  addFavourite(recipeId: number): Observable<any> {
+    return this.http.post<any>(`${environment.favourites}/${recipeId}`, null)
+  }
+
+  deleteFavourite(recipeId: number): Observable<any> {
+    return this.http.delete<any>(`${environment.favourites}/${recipeId}`)
+  }
+
+  getFavourites(): Observable<RecipeGetModel[]> {
+    return this.http.get<RecipeGetModel[]>(`${environment.favourites}`)
+  }
+
+  isFavourite(recipeId: number): Observable<boolean> {
+    return this.http.get<boolean>(`${environment.favourites}/${recipeId}`)
+  }
+
+  getComments(recipeId: number): Observable<CommentGetModel[]> {
+    return this.http.get<CommentGetModel[]>(`${environment.comment}/${recipeId}`)
+  }
+
+  deleteComment(commentId: number, recipeId: number): Observable<any> {
+    return this.http.delete<any>(`${environment.comment}/${recipeId}/${commentId}`)
+  }
+
+  addComment(recipeId: number, content: string): Observable<CommentGetModel> {
+    return this.http.post<CommentGetModel>(`${environment.comment}/${recipeId}`, {content: content})
+  }
+
+  uppdateComment(commentId: number, recipeId: number, content: string): Observable<CommentGetModel> {
+    return this.http.put<CommentGetModel>(
+      `${environment.comment}/${recipeId}/${commentId}`,
+      {content: content}
+    )
+  }
 }

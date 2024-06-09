@@ -11,8 +11,17 @@
               }
           }
     </div>
-
+  <div>
     <h1 class="recipe-name">{{recipe.name}}</h1>
+      @if (accountService.isAuthenticated()) {
+        @if (isFavourite.getValue()) {
+        abc
+        } @else {def}
+          <button hlmBtn (click)="toggleFavourite()">
+            <hlm-icon name="lucideHeart"></hlm-icon>
+          </button>
+      }
+  </div>
 
   <div class="recipe-author">{{recipe.author.firstName + " " + recipe.author.lastName}}</div>
 
@@ -76,6 +85,8 @@
               <img [src]="'/api/v1/images/' + recipe.imageUrl" />
         </div>
       </div>
+
+      <app-comment-section [recipeId]="recipe.id"></app-comment-section>
 </div>
 }
 </div>

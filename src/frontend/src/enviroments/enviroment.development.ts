@@ -11,4 +11,6 @@ export const environment = {
   dish: base('/dish'),
   diet: base('/diet'),
   tag: base('/tag'),
+  favourites: base('/favourites'),
+  comment: base('/comment'),
 }

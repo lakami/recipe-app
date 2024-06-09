@@ -63,3 +63,15 @@ Projekt na inżynierkę
 - [x] Strona o nas
 - [x] Strona error
 - [ ] Paging
+- 
+- [x] Dodaj przepis do ulubionych
+- [ ] Podglądaj przepisy dodane do ulubionych
+- [ ] Edytuj przepis swojego autorstwa
+- [~] Dodaj komentarz
+- [ ] Edytuj swój komentarz
+- [ ] Usuń swój komentarz
+- [ ] Przeglądaj przepisy danego autora
+- [ ] Modyfikuj promowane przepisy admin
+- [ ] Edytuj komentarz użytkownika admin
+- [ ] Usuń komentarz użytkownika admin
+- [ ] Edytuj przepis użytkownika admin
