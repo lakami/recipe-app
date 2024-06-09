@@ -1,4 +1,4 @@
-package dev.pjatk.recipeapp.security;
+package dev.pjatk.recipeapp.util.security;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;

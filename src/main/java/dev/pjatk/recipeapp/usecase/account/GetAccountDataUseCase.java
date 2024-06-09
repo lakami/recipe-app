@@ -3,7 +3,7 @@ package dev.pjatk.recipeapp.usecase.account;
 import dev.pjatk.recipeapp.dto.response.AccountDTO;
 import dev.pjatk.recipeapp.entity.Authority;
 import dev.pjatk.recipeapp.repository.UserRepository;
-import dev.pjatk.recipeapp.security.SecurityUtils;
+import dev.pjatk.recipeapp.util.security.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;

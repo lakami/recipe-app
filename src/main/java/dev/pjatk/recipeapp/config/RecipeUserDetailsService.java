@@ -1,5 +1,6 @@
-package dev.pjatk.recipeapp.security;
+package dev.pjatk.recipeapp.config;
 
+import dev.pjatk.recipeapp.config.exception.UserInactiveException;
 import dev.pjatk.recipeapp.entity.Authority;
 import dev.pjatk.recipeapp.entity.User;
 import dev.pjatk.recipeapp.repository.UserRepository;

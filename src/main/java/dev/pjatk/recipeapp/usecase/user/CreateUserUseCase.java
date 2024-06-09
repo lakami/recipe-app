@@ -5,7 +5,7 @@ import dev.pjatk.recipeapp.entity.User;
 import dev.pjatk.recipeapp.exception.EmailAlreadyUsedException;
 import dev.pjatk.recipeapp.repository.AuthorityRepository;
 import dev.pjatk.recipeapp.repository.UserRepository;
-import dev.pjatk.recipeapp.security.Authorities;
+import dev.pjatk.recipeapp.util.security.Authorities;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;

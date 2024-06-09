@@ -5,7 +5,7 @@ import dev.pjatk.recipeapp.exception.ForbiddenModificationException;
 import dev.pjatk.recipeapp.exception.ResourceNotFoundException;
 import dev.pjatk.recipeapp.repository.CommentRepository;
 import dev.pjatk.recipeapp.repository.RecipeRepository;
-import dev.pjatk.recipeapp.security.SecurityUtils;
+import dev.pjatk.recipeapp.util.security.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

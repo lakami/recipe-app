@@ -1,4 +1,4 @@
-package dev.pjatk.recipeapp.security;
+package dev.pjatk.recipeapp.util.security;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

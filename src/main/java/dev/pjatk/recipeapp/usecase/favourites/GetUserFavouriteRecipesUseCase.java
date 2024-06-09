@@ -3,7 +3,7 @@ package dev.pjatk.recipeapp.usecase.favourites;
 import dev.pjatk.recipeapp.dto.response.RecipeDTO;
 import dev.pjatk.recipeapp.entity.User;
 import dev.pjatk.recipeapp.repository.UserRepository;
-import dev.pjatk.recipeapp.security.SecurityUtils;
+import dev.pjatk.recipeapp.util.security.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

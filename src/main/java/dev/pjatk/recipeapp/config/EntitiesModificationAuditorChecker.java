@@ -1,8 +1,9 @@
-package dev.pjatk.recipeapp.security;
+package dev.pjatk.recipeapp.config;
 
 import dev.pjatk.recipeapp.entity.User;
 import dev.pjatk.recipeapp.repository.UserRepository;
 import dev.pjatk.recipeapp.util.Loggable;
+import dev.pjatk.recipeapp.util.security.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;

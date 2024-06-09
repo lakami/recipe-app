@@ -8,7 +8,7 @@ import dev.pjatk.recipeapp.repository.CategoryRepository;
 import dev.pjatk.recipeapp.repository.DishRepository;
 import dev.pjatk.recipeapp.repository.RecipeRepository;
 import dev.pjatk.recipeapp.repository.TagRepository;
-import dev.pjatk.recipeapp.security.SecurityUtils;
+import dev.pjatk.recipeapp.util.security.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
