@@ -21,7 +21,6 @@ public class ImageService implements Loggable {
 
     public String saveImage(MultipartFile image) {
         try {
-            var fileContent = image.getBytes();
             var extension = Files.getFileExtension(image.getOriginalFilename());
             var name = "%s.%s".formatted(UUID.randomUUID(), extension);
             var path = root.resolve(name);

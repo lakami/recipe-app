@@ -1,9 +1,9 @@
 package dev.pjatk.recipeapp.controller;
 
 import dev.pjatk.recipeapp.dto.response.RecipeDTO;
-import dev.pjatk.recipeapp.usecase.AddRecipeToFavouritesUseCase;
-import dev.pjatk.recipeapp.usecase.GetUserFavouriteRecipesUseCase;
-import dev.pjatk.recipeapp.usecase.RemoveFavouriteUseCase;
+import dev.pjatk.recipeapp.usecase.favourites.AddRecipeToFavouritesUseCase;
+import dev.pjatk.recipeapp.usecase.favourites.GetUserFavouriteRecipesUseCase;
+import dev.pjatk.recipeapp.usecase.favourites.RemoveFavouriteUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,17 +21,17 @@ public class FavouritesController {
 
     @GetMapping
     public List<RecipeDTO> getUserFavourites() {
-        return getUserFavouriteRecipesUseCase.getUserFavourites();
+        return getUserFavouriteRecipesUseCase.execute();
     }
 
     @DeleteMapping("/{id}")
     public void deleteFavourite(@PathVariable Long id) {
-        removeFavouriteUseCase.removeFavourite(id);
+        removeFavouriteUseCase.execute(id);
     }
 
     @PostMapping("/{id}")
     public void addFavourite(@PathVariable Long id) {
-        addRecipeToFavouritesUseCase.addRecipeToFavourites(id);
+        addRecipeToFavouritesUseCase.execute(id);
     }
 
 }

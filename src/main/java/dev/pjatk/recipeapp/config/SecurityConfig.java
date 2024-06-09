@@ -23,7 +23,7 @@ import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 import java.util.List;
 
-import static dev.pjatk.recipeapp.security.Authorities.ADMIN;
+import static dev.pjatk.recipeapp.util.security.Authorities.ADMIN;
 import static org.springframework.http.HttpMethod.*;
 import static org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter.ReferrerPolicy.STRICT_ORIGIN_WHEN_CROSS_ORIGIN;
 

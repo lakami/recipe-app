@@ -1,6 +1,5 @@
 package dev.pjatk.recipeapp.config;
 
-import dev.pjatk.recipeapp.security.EntitiesModificationAuditorChecker;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;

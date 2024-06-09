@@ -9,6 +9,5 @@ import java.util.Set;
 
 public interface DishRepository extends JpaRepository<Dish, Long> {
     List<Dish> findAllByOrderByNameAsc();
-
     Set<Dish> findByNameIn(Collection<String> names);
 }

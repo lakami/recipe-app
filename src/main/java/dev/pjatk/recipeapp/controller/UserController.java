@@ -1,7 +1,7 @@
 package dev.pjatk.recipeapp.controller;
 
 import dev.pjatk.recipeapp.dto.response.UserProfileDTO;
-import dev.pjatk.recipeapp.usecase.GetUserProfileUseCase;
+import dev.pjatk.recipeapp.usecase.user.GetUserProfileUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +17,6 @@ public class UserController {
 
     @GetMapping("/{profileUrl}")
     public UserProfileDTO getUser(@PathVariable String profileUrl) {
-        return getUserProfileUseCase.getUser(profileUrl);
+        return getUserProfileUseCase.execute(profileUrl);
     }
 }

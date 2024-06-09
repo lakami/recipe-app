@@ -1,10 +1,10 @@
 package dev.pjatk.recipeapp.controller.advice;
 
+import dev.pjatk.recipeapp.exception.ForbiddenModificationException;
+import dev.pjatk.recipeapp.exception.NoUserFoundException;
 import dev.pjatk.recipeapp.exception.ResourceNotFoundException;
-import dev.pjatk.recipeapp.service.ForbiddenModificationException;
+import dev.pjatk.recipeapp.exception.TooWeakPasswordException;
 import dev.pjatk.recipeapp.service.ImageService;
-import dev.pjatk.recipeapp.usecase.NoUserFoundException;
-import dev.pjatk.recipeapp.usecase.TooWeakPasswordException;
 import dev.pjatk.recipeapp.util.Loggable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
