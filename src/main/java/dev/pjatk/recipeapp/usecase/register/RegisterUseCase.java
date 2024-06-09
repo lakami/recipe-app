@@ -2,9 +2,9 @@ package dev.pjatk.recipeapp.usecase.register;
 
 import com.nulabinc.zxcvbn.Zxcvbn;
 import dev.pjatk.recipeapp.dto.request.RegisterDTO;
+import dev.pjatk.recipeapp.exception.EmailAlreadyUsedException;
+import dev.pjatk.recipeapp.exception.TooWeakPasswordException;
 import dev.pjatk.recipeapp.service.EmailService;
-import dev.pjatk.recipeapp.usecase.exception.EmailAlreadyUsedException;
-import dev.pjatk.recipeapp.usecase.exception.TooWeakPasswordException;
 import dev.pjatk.recipeapp.usecase.user.CreateUserUseCase;
 import dev.pjatk.recipeapp.util.Loggable;
 import lombok.RequiredArgsConstructor;

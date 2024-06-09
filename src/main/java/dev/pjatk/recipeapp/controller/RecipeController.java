@@ -2,8 +2,8 @@ package dev.pjatk.recipeapp.controller;
 
 import dev.pjatk.recipeapp.dto.request.NewRecipeDTO;
 import dev.pjatk.recipeapp.dto.response.RecipeDTO;
+import dev.pjatk.recipeapp.exception.ForbiddenModificationException;
 import dev.pjatk.recipeapp.exception.ResourceNotFoundException;
-import dev.pjatk.recipeapp.usecase.exception.ForbiddenModificationException;
 import dev.pjatk.recipeapp.usecase.promote.DemoteRecipeUseCase;
 import dev.pjatk.recipeapp.usecase.promote.GetPromotedRecipesUseCase;
 import dev.pjatk.recipeapp.usecase.promote.PromoteRecipeUseCase;

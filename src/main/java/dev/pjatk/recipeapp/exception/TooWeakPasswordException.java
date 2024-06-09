@@ -1,4 +1,4 @@
-package dev.pjatk.recipeapp.usecase.exception;
+package dev.pjatk.recipeapp.exception;
 
 public class TooWeakPasswordException extends RuntimeException {
 }

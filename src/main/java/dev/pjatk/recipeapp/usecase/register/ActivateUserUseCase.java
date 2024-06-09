@@ -2,8 +2,8 @@ package dev.pjatk.recipeapp.usecase.register;
 
 import dev.pjatk.recipeapp.dto.request.ActivationDTO;
 import dev.pjatk.recipeapp.entity.User;
+import dev.pjatk.recipeapp.exception.NoUserFoundException;
 import dev.pjatk.recipeapp.repository.UserRepository;
-import dev.pjatk.recipeapp.usecase.exception.NoUserFoundException;
 import dev.pjatk.recipeapp.usecase.user.FindNextProfileUrlUseCase;
 import dev.pjatk.recipeapp.util.Loggable;
 import lombok.RequiredArgsConstructor;

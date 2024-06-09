@@ -1,11 +1,10 @@
-package dev.pjatk.recipeapp.usecase;
+package dev.pjatk.recipeapp.usecase.register;
 
 import dev.pjatk.recipeapp.dto.request.RegisterDTO;
 import dev.pjatk.recipeapp.entity.User;
+import dev.pjatk.recipeapp.exception.EmailAlreadyUsedException;
+import dev.pjatk.recipeapp.exception.TooWeakPasswordException;
 import dev.pjatk.recipeapp.service.EmailService;
-import dev.pjatk.recipeapp.usecase.exception.EmailAlreadyUsedException;
-import dev.pjatk.recipeapp.usecase.exception.TooWeakPasswordException;
-import dev.pjatk.recipeapp.usecase.register.RegisterUseCase;
 import dev.pjatk.recipeapp.usecase.user.CreateUserUseCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
