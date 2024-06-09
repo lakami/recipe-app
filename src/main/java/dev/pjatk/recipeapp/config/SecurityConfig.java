@@ -116,7 +116,7 @@ public class SecurityConfig {
                         .requestMatchers(mvc.pattern(PUT, "/api/v1/images/**")).authenticated()
                         .requestMatchers(mvc.pattern("/api/v1/favourites")).authenticated()
                         .requestMatchers(mvc.pattern(GET, "/api/v1/user/**")).permitAll()
-                        .requestMatchers(mvc.pattern(GET, "/api/v1/comment/**")).permitAll()
+                        .requestMatchers(mvc.pattern(GET, "/api/v1/comment")).permitAll()
                         .requestMatchers(mvc.pattern(POST, "/api/v1/comment/**")).authenticated()
                         .requestMatchers(mvc.pattern(DELETE, "/api/v1/comment/**")).authenticated()
                         .requestMatchers(mvc.pattern(PUT, "/api/v1/comment/**")).authenticated()
