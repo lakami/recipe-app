@@ -1,4 +1,4 @@
-import {Component, ElementRef, inject, OnInit, signal, ViewChild} from '@angular/core';
+import {Component, inject, OnInit, signal} from '@angular/core';
 import {Router, RouterLink} from "@angular/router";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {LoginService} from "./login.service";
@@ -23,8 +23,6 @@ import {TranslationDirective} from "../shared/translation/translation.directive"
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
-  @ViewChild('username', {static:false})
-  username!: ElementRef;
   authError = signal(false);
   loginLoading = signal(false);
   loginForm : FormGroup = new FormGroup({

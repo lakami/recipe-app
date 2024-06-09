@@ -11,5 +11,4 @@ export class TranslationPipe implements PipeTransform {
   transform(key: string, ...args: unknown[]): Observable<string | any> {
     return this.translateService.get(key, args); //zwracam asynchroniczny strumień
   }
-
 }
