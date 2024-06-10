@@ -1,8 +1,21 @@
-<p>comment-section works!</p>
 @if (accountService.isAuthenticated()) {
   <form [formGroup]="commentForm" (ngSubmit)="sendComment()">
-    <textarea hlmInput formControlName="comment" placeholder="Write a comment"></textarea>
-    <button hlmButton type="submit" [disabled]="commentForm.invalid">Submit</button>
+    <div class="flex flex-col gap-4 pt-4">
+      <div class="flex flex-col px-0">
+        <textarea
+           class="min-h-10 recipe-add-component-input"
+           hlmInput
+           formControlName="comment"
+           [placeholder]="'recipe-details.comment-section.placeholder' | translation | async"
+           ></textarea>
+       </div>
+       <div class="flex justify-center pb-4">
+          <button hlmBtn type="submit" variant='ghost' [disabled]="commentForm.invalid">
+              <hlm-icon size="sm" class="mr-2" name="lucidePlus" strokeWidth="3"/>
+              <span translate="recipe-details.comment-section.btn" class="comment-section-btn-send"></span>
+          </button>
+      </div>
+    </div>
   </form>
 } @else {
   <p>Login to comment</p>

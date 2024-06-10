@@ -5,6 +5,12 @@ import {CommentGetModel} from "../../shared/dto/comment-get.model";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AccountService} from "../../core/auth/account.service";
 import {HlmInputDirective} from "@spartan-ng/ui-input-helm";
+import {TranslationPipe} from "../../shared/translation/translation.pipe";
+import {AsyncPipe} from "@angular/common";
+import {TranslationDirective} from "../../shared/translation/translation.directive";
+import {lucidePlus} from "@ng-icons/lucide";
+import {HlmButtonDirective} from "@spartan-ng/ui-button-helm";
+import {HlmIconComponent, provideIcons} from "@spartan-ng/ui-icon-helm";
 
 @Component({
   selector: 'app-comment-section',
@@ -12,8 +18,14 @@ import {HlmInputDirective} from "@spartan-ng/ui-input-helm";
   imports: [
     HlmInputDirective,
     ReactiveFormsModule,
-    HlmInputDirective
+    HlmInputDirective,
+    TranslationPipe,
+    AsyncPipe,
+    TranslationDirective,
+    HlmButtonDirective,
+    [HlmIconComponent]
   ],
+  providers: [provideIcons({lucidePlus})],
   templateUrl: './comment-section.component.html',
   styleUrl: './comment-section.component.scss'
 })
