@@ -56,7 +56,8 @@
     "servings": "Porcje",
     "comment-section": {
       "placeholder": "Dołącz do dyskusji...",
-      "btn": "Dodaj komentarz"
+      "btn": "Dodaj komentarz",
+      "info-when-user-not-logged": "Zaloguj się, aby dołączyć do dyskusji."
     }
   },
   "filter": {
@@ -68,7 +69,7 @@
     "dishes": "Dania:",
     "title-diets": "Czego nie możesz jeść?",
     "diets": "Dieta:",
-    "placeholder": "Na co masz ochotę?"
+    "placeholder": "Szukaj..."
   },
   "dish": {
     "title": "Danie"

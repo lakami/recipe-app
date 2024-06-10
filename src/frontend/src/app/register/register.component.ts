@@ -6,6 +6,8 @@ import {HlmButtonDirective} from "@spartan-ng/ui-button-helm";
 import {AccountService} from "../core/auth/account.service";
 import {RegisterService} from "./register.service";
 import {TranslationDirective} from "../shared/translation/translation.directive";
+import {AsyncPipe} from "@angular/common";
+import {TranslationPipe} from "../shared/translation/translation.pipe";
 
 @Component({
   selector: 'app-register',
@@ -15,7 +17,9 @@ import {TranslationDirective} from "../shared/translation/translation.directive"
     ReactiveFormsModule,
     HlmInputDirective,
     HlmButtonDirective,
-    TranslationDirective
+    TranslationDirective,
+    AsyncPipe,
+    TranslationPipe
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'

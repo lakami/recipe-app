@@ -12,17 +12,20 @@ class="flex flex-col gap-4 w-80">
       hlmInput
       formControlName="email"
       [error]='hasEmailError()'
+      [placeholder]="'register.password' | translation | async"
+      autofocus
     />
   </div>
   <div class="flex flex-col gap-2">
-    <label for="password" translate="register.password"></label>
+    <label for="password" translate="register.email"></label>
     <input
       type="password"
       id="password"
       hlmInput
       formControlName="password"
       [error]='hasPasswordError()'
-    >
+      [placeholder]="'register.password' | translation | async"
+    />
   </div>
   <button
     [disabled]="registerLoading() || !registerForm.valid"

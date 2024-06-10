@@ -80,9 +80,6 @@ export class SearchComponent implements OnInit, OnDestroy, OnChanges {
   ngOnInit(): void {
 
     var formLoaded = new BehaviorSubject<boolean>(false);
-    // formLoaded.subscribe(loaded => {
-    //   console.log("Formularz utworzno");
-    // })
     this.dietsChanged
       .pipe(debounce(_ => formLoaded
         .pipe(filter(loaded => loaded)))) //czekam na załadowanie się formularza i biorę ostatnią wartość, która pojawiła się w trakcie oczekiwania
@@ -103,24 +100,6 @@ export class SearchComponent implements OnInit, OnDestroy, OnChanges {
         this.submit();
         }
       )
-    // this.queryParams$.subscribe(params => {
-    //   console.log(params);
-    //   this.recipeService.getRecipes(
-    //     params["dishes"],
-    //     params["diets"],
-    //     params["tags"],
-    //     params["search"],
-    //     params["page"],
-    //     params["size"],
-    //     params["sort"]
-    //   )
-    //     .subscribe({
-    //       next: (page) => {
-    //         this.recipe.next(page.content)
-    //         console.log(page.content)
-    //       }
-    //   })
-    // })
 
     var dishesLoaded = new BehaviorSubject<boolean>(false);
     var dietsLoaded = new BehaviorSubject<boolean>(false);
@@ -232,5 +211,4 @@ export class SearchComponent implements OnInit, OnDestroy, OnChanges {
       }
     })
   }
-
 }

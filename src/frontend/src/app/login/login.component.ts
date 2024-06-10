@@ -7,6 +7,8 @@ import {HlmInputDirective} from "@spartan-ng/ui-input-helm";
 import {HlmCheckboxComponent} from "@spartan-ng/ui-checkbox-helm";
 import {HlmButtonDirective} from "@spartan-ng/ui-button-helm";
 import {TranslationDirective} from "../shared/translation/translation.directive";
+import {AsyncPipe} from "@angular/common";
+import {TranslationPipe} from "../shared/translation/translation.pipe";
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,10 @@ import {TranslationDirective} from "../shared/translation/translation.directive"
     HlmInputDirective,
     HlmCheckboxComponent,
     HlmButtonDirective,
-    TranslationDirective
+    TranslationDirective,
+    AsyncPipe,
+    TranslationPipe,
+    HlmInputDirective
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
@@ -62,5 +67,15 @@ export class LoginComponent implements OnInit {
         this.authError.set(true);
       },
     })
+  }
+
+  hasUsernameError(): boolean  {
+    let userNameControl = this.loginForm.get('username');
+    return userNameControl!.invalid && (userNameControl!.touched || userNameControl!.dirty);
+  }
+
+  hasPasswordError(): boolean  {
+    let passwordControl = this.loginForm.get('password');
+    return passwordControl!.invalid && (passwordControl!.touched || passwordControl!.dirty);
   }
 }

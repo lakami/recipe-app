@@ -7,7 +7,7 @@ div.header-container {
 }
 
 nav {
-  @apply min-w-[70em] items-start justify-start mt-6
+  @apply min-w-96 lg:min-w-[70em] items-start justify-start mt-6
 }
 
 ul.navbar {
