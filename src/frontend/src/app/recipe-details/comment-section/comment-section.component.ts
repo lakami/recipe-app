@@ -2,7 +2,7 @@ import {Component, inject, Input, OnInit} from '@angular/core';
 import {ReplaySubject} from "rxjs";
 import {RecipeService} from "../../shared/services/recipe.service";
 import {CommentGetModel} from "../../shared/dto/comment-get.model";
-import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AccountService} from "../../core/auth/account.service";
 import {HlmInputDirective} from "@spartan-ng/ui-input-helm";
 
@@ -29,8 +29,10 @@ export class CommentSectionComponent implements OnInit {
   accountService: AccountService = inject(AccountService);
 
   commentForm: FormGroup = new FormGroup({
-    //todo: add validators
-    comment: new FormControl('')
+    comment: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.minLength(1), Validators.maxLength(1000)]
+    })
   });
 
   ngOnInit(): void {

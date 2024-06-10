@@ -42,7 +42,7 @@ img {
   --ng-icon__stroke-width: 1.2;
 }
 .icon-clock {
-  @apply text-lime-500
+  @apply text-foreground/[.65]
 }
 
 .recipe-author, .recipe-time, .create-date  {
@@ -58,7 +58,27 @@ img {
 }
 
 .recipe-ingredients-steps-container {
-  @apply flex flex-col md:flex-row md:gap-12 items-start pb-2
+  @apply flex flex-col md:flex-row md:gap-12 items-start pb-1.5
 }
+
+.btn-is-favourite-container {
+  @apply flex flex-row items-baseline pt-2
+}
+
+.icon-heart {
+  --ng-icon__stroke-width: 1.2;
+}
+.icon-heart {
+  @apply text-foreground/[.5]
+}
+
+.icon-heart-is-favourite {
+  --ng-icon__stroke-width: 2;
+}
+.icon-heart-is-favourite {
+  @apply text-lime-500
+}
+
+
 
 
