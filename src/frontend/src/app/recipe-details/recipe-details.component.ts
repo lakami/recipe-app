@@ -13,6 +13,7 @@ import {HlmButtonDirective} from "@spartan-ng/ui-button-helm";
 import {AccountService} from "../core/auth/account.service";
 import {toObservable} from "@angular/core/rxjs-interop";
 import {CommentSectionComponent} from "./comment-section/comment-section.component";
+import {ToDatePipe} from "../shared/pipes/to-date.pipe";
 
 @Component({
   selector: 'app-recipe-details',
@@ -27,7 +28,8 @@ import {CommentSectionComponent} from "./comment-section/comment-section.compone
     RouterLink,
     HlmButtonDirective,
     HlmIconComponent,
-    CommentSectionComponent
+    CommentSectionComponent,
+    ToDatePipe
   ],
   providers: [provideIcons({ lucideClock, lucideHeart})],
   templateUrl: './recipe-details.component.html',

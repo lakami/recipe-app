@@ -9,7 +9,7 @@
            [placeholder]="'recipe-details.comment-section.placeholder' | translation | async"
            ></textarea>
        </div>
-       <div class="flex justify-center pb-4">
+       <div class="flex justify-center">
           <button hlmBtn type="submit" variant='ghost' [disabled]="commentForm.invalid">
               <hlm-icon size="sm" class="mr-2" name="lucidePlus" strokeWidth="3"/>
               <span translate="recipe-details.comment-section.btn" class="comment-section-btn-send"></span>
@@ -17,7 +17,17 @@
       </div>
     </div>
   </form>
+
 } @else {
   <p class="pt-4 italic text-foreground/[.65]"
   translate="recipe-details.comment-section.info-when-user-not-logged"></p>
 }
+<div  class="flex flex-col divide-y divide-foreground/[.15]">
+  @for (comment of (comments | async); track comment.id) {
+    <app-comment [comment]="comment"
+      [recipeId]="recipeIdx!"
+      (commentDeleted)="refreshCommentList(recipeIdx!)"
+      (commentChanged)="refreshCommentList(recipeIdx!)">
+    </app-comment>
+  }
+</div>

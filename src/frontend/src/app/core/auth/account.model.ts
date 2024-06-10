@@ -1,10 +1,10 @@
 export class Account {
   constructor(
-    private firstName: string,
-    private lastName: string,
-    private email: string,
-    private imageUrl: string,
-    private profileUrl: string,
+    public firstName: string,
+    public lastName: string,
+    public email: string,
+    public imageUrl: string,
+    public profileUrl: string,
     public authorities: Authority[],
   ) {
   }

@@ -8,7 +8,7 @@
       "login": "LogIn",
       "logout": "LogOut",
       "register": "Rejestracja",
-      "recipe-add": "Dodaj przepis"
+      "recipe-add": "Przepis"
     },
     "nav": {
       "recipes": "Przepisy",
@@ -57,7 +57,9 @@
     "comment-section": {
       "placeholder": "Dołącz do dyskusji...",
       "btn": "Dodaj komentarz",
-      "info-when-user-not-logged": "Zaloguj się, aby dołączyć do dyskusji."
+      "info-when-user-not-logged": "Zaloguj się, aby dołączyć do dyskusji.",
+      "last-modified-by": "Zmodyfikowane przez: ",
+      "last-modified-date": "Ostatnio zmodyfikowano: "
     }
   },
   "filter": {

@@ -7,7 +7,7 @@ export class CommentGetModel {
         public content: string,
         public createdDate: number,
         public createdBy: AuthorGetModel,
-        public lastModifyDate: number,
-        public lastModifyBy: AuthorGetModel,
+        public lastModifiedDate: number,
+        public lastModifiedBy: AuthorGetModel,
     ) {}
 }

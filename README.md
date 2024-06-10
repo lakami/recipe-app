@@ -47,31 +47,31 @@ Projekt na inżynierkę
 - [x] Rejestracja
 - [x] Aktywacja
 - [ ] Resetowanie hasła (opcjonalnie)
-- [ ] Panel administratorski (opcjonalnie)
+- [x] Panel administratorski (opcjonalnie)
 - [x] Wyszukiwarka dań i posiłków
 - [x] Dark mode (opcjonalnie)
-- [ ] NgxTranslate (opcjonalnie)
-- [ ] Dodawanie komentarza
-- [ ] Usuwanie komentarza
-- [ ] Edycja komentarza
+- [x] NgxTranslate (opcjonalnie)
+- [x] Dodawanie komentarza
+- [x] Usuwanie komentarza
+- [x] Edycja komentarza
 - [ ] Dodawanie oceny (opcjonalnie)
-- [ ] Polubienia przepisu
+- [x] Polubienia przepisu
 - [x] Filtrowanie przepisów
 - [ ] Szukaj nav bar
 - [x] Navbar rozwijaki
 - [ ] Footer
 - [x] Strona o nas
 - [x] Strona error
-- [ ] Paging
+- [ ] 4 Paging !!!
 - 
 - [x] Dodaj przepis do ulubionych
-- [ ] Podglądaj przepisy dodane do ulubionych
-- [ ] Edytuj przepis swojego autorstwa
-- [~] Dodaj komentarz
-- [ ] Edytuj swój komentarz
-- [ ] Usuń swój komentarz
+- [ ] 2 Podglądaj przepisy dodane do ulubionych
+- [ ] 3 Edytuj przepis swojego autorstwa
+- [x] Dodaj komentarz
+- [x] Edytuj swój komentarz
+- [x] Usuń swój komentarz
 - [ ] Przeglądaj przepisy danego autora
-- [ ] Modyfikuj promowane przepisy admin
-- [ ] Edytuj komentarz użytkownika admin
-- [ ] Usuń komentarz użytkownika admin
+- [ ] 1 Modyfikuj promowane przepisy admin 
+- [x] Edytuj komentarz użytkownika admin
+- [x] Usuń komentarz użytkownika admin
 - [ ] Edytuj przepis użytkownika admin

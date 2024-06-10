@@ -33,7 +33,7 @@
 
   <div class="recipe-author">{{recipe.author.firstName + " " + recipe.author.lastName}}</div>
 
-  <div class="create-date">{{recipe.createdDate}}</div>
+  <div class="create-date">{{recipe.createdDate | toDate}}</div>
 
   <div class="recipe-time">
    <hlm-icon class="icon-clock" size='sm' name="lucideClock"/>

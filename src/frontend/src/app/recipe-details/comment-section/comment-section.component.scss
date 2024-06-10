@@ -1,3 +1,14 @@
 .comment-section-btn-send {
   @apply tracking-[.0625rem] uppercase p-1 text-base font-bold
 }
+
+.comment-section-created-by,
+.comment-section-last-created-by,
+.comment-section-create-date,
+.comment-section-last-modify-date {
+  @apply font-normal flex gap-1 items-center text-sm text-foreground/[.65] underline-offset-[.1875rem] antialiased
+}
+
+.comment-section-content {
+
+}
