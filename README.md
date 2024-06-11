@@ -71,7 +71,7 @@ Projekt na inżynierkę
 - [x] Edytuj swój komentarz
 - [x] Usuń swój komentarz
 - [ ] Przeglądaj przepisy danego autora
-- [ ] 1 Modyfikuj promowane przepisy admin 
+- [x] 1 Modyfikuj promowane przepisy admin 
 - [x] Edytuj komentarz użytkownika admin
 - [x] Usuń komentarz użytkownika admin
 - [ ] Edytuj przepis użytkownika admin

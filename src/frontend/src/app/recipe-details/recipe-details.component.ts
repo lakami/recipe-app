@@ -3,7 +3,7 @@ import {ActivatedRoute, RouterLink, RouterOutlet} from "@angular/router";
 import {AsyncPipe, CommonModule} from "@angular/common";
 import {HlmIconComponent} from "@spartan-ng/ui-icon-helm";
 import {provideIcons} from "@ng-icons/core";
-import {lucideClock, lucideHeart} from "@ng-icons/lucide";
+import {lucideClock, lucideHeart, lucideStar} from "@ng-icons/lucide";
 import {RecipeGetModel} from "../shared/dto/recipe-get.model";
 import {RecipeService} from "../shared/services/recipe.service";
 import {BehaviorSubject, map, Subscription} from "rxjs";
@@ -31,7 +31,7 @@ import {ToDatePipe} from "../shared/pipes/to-date.pipe";
     CommentSectionComponent,
     ToDatePipe
   ],
-  providers: [provideIcons({ lucideClock, lucideHeart})],
+  providers: [provideIcons({ lucideClock, lucideHeart, lucideStar})],
   templateUrl: './recipe-details.component.html',
   styleUrl: './recipe-details.component.scss'
 })
@@ -43,6 +43,7 @@ export class RecipeDetailsComponent implements OnInit, OnDestroy {
   recipeId$ = this.route.params.pipe(map(params => params['recipeId']));
   accountService: AccountService = inject(AccountService);
   isFavourite: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isPromoted: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private accountSubscription?: Subscription;
   private account$ = toObservable(this.accountService.trackCurrentAccount());
 
@@ -55,6 +56,11 @@ export class RecipeDetailsComponent implements OnInit, OnDestroy {
       this.accountSubscription?.unsubscribe(); //usuwanie starych listenerów
       this.accountSubscription = this.account$.subscribe(account => {
         if (account) {
+          if (this.accountService.hasAnyAuthority('ROLE_ADMIN')) {
+            this.recipeService.isPromoted(recipeId).subscribe(isPromoted => {
+              this.isPromoted.next(isPromoted);
+            });
+          }
           this.recipeService.isFavourite(recipeId).subscribe(isFavourite => {
             this.isFavourite.next(isFavourite);
           });
@@ -85,7 +91,19 @@ export class RecipeDetailsComponent implements OnInit, OnDestroy {
     if (!this.recipe.value) {
       return;
     }
+    if (this.isPromoted.value) {
+      this.recipeService.deletePromoted(this.recipe.value.id).subscribe(() => {
+        this.isPromoted.next(false);
+      })
+    } else {
+      this.recipeService.addPromoted(this.recipe.value.id).subscribe(() => {
+        this.isPromoted.next(true);
+      })
+    }
+  }
 
+  isAdmin() {
+    return this.accountService.hasAnyAuthority('ROLE_ADMIN');
   }
 
 }

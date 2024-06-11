@@ -13,21 +13,37 @@
     </div>
   <div class="flex flex-row gap-2">
     <h1 class="recipe-name">{{recipe.name}}</h1>
+
       @if (accountService.isAuthenticated()) {
         @if (isFavourite.getValue()) {
           <div class="btn-is-favourite-container">
             <button hlmBtn variant='ghost' (click)="toggleFavourite()">
-              <hlm-icon class="icon-heart-is-favourite" size='lg' name="lucideHeart"></hlm-icon>
+              <hlm-icon class="icon-favourite-checked" size='lg' name="lucideHeart"></hlm-icon>
             </button>
           </div>
         } @else {
           <div class="btn-is-favourite-container">
             <button hlmBtn variant='ghost' (click)="toggleFavourite()">
-              <hlm-icon class="icon-heart" size='lg' name="lucideHeart"></hlm-icon>
+              <hlm-icon class="icon-favourite-unchecked" size='lg' name="lucideHeart"></hlm-icon>
             </button>
           </div>
         }
+      }
 
+      @if (isAdmin()) {
+        @if (isPromoted.getValue()) {
+          <div class="btn-is-promoted-container">
+            <button hlmBtn variant='ghost' (click)="togglePromoted()">
+              <hlm-icon class="icon-promoted-checked" size='lg' name="lucideStar"></hlm-icon>
+            </button>
+          </div>
+        } @else {
+          <div class="btn-is-promoted-container">
+            <button hlmBtn variant='ghost' (click)="togglePromoted()">
+              <hlm-icon class="icon-promoted-unchecked" size='lg' name="lucideStar"></hlm-icon>
+            </button>
+          </div>
+        }
       }
   </div>
 

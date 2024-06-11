@@ -61,21 +61,21 @@ img {
   @apply flex flex-col md:flex-row md:gap-12 items-start pb-1.5
 }
 
-.btn-is-favourite-container {
+.btn-is-favourite-container, .btn-is-promoted-container {
   @apply flex flex-row items-baseline pt-2
 }
 
-.icon-heart {
+.icon-favourite-unchecked, .icon-promoted-unchecked {
   --ng-icon__stroke-width: 1.2;
 }
-.icon-heart {
+.icon-favourite-unchecked, .icon-promoted-unchecked {
   @apply text-foreground/[.5]
 }
 
-.icon-heart-is-favourite {
+.icon-favourite-checked, icon-promoted-checked {
   --ng-icon__stroke-width: 2;
 }
-.icon-heart-is-favourite {
+.icon-favourite-checked, .icon-promoted-checked {
   @apply text-lime-500
 }
 
