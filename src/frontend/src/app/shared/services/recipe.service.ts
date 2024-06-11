@@ -110,6 +110,22 @@ export class RecipeService {
     return this.http.get<boolean>(`${environment.favourites}/${recipeId}`)
   }
 
+  addPromoted(recipeId: number): Observable<any> {
+    return this.http.post<any>(`${environment.promoted}/${recipeId}`, null)
+  }
+
+  deletePromoted(recipeId: number): Observable<any> {
+    return this.http.delete<any>(`${environment.promoted}/${recipeId}`)
+  }
+
+  getAllPromoted(): Observable<RecipeGetModel[]> {
+    return this.http.get<RecipeGetModel[]>(`${environment.promoted}`)
+  }
+
+  isPromoted(recipeId: number): Observable<boolean> {
+    return this.http.get<boolean>(`${environment.promoted}/${recipeId}`)
+  }
+
   getComments(recipeId: number): Observable<CommentGetModel[]> {
     return this.http.get<CommentGetModel[]>(`${environment.comment}/${recipeId}`)
   }

@@ -80,4 +80,12 @@ export class RecipeDetailsComponent implements OnInit, OnDestroy {
       })
     }
   }
+
+  togglePromoted() {
+    if (!this.recipe.value) {
+      return;
+    }
+
+  }
+
 }

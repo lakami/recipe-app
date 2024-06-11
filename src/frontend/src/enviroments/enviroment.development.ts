@@ -12,5 +12,6 @@ export const environment = {
   diet: base('/diet'),
   tag: base('/tag'),
   favourites: base('/favourites'),
+  promoted: base('/promoted'),
   comment: base('/comment'),
 }
