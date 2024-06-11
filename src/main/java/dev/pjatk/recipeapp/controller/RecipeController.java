@@ -4,9 +4,6 @@ import dev.pjatk.recipeapp.dto.request.NewRecipeDTO;
 import dev.pjatk.recipeapp.dto.response.RecipeDTO;
 import dev.pjatk.recipeapp.exception.ForbiddenModificationException;
 import dev.pjatk.recipeapp.exception.ResourceNotFoundException;
-import dev.pjatk.recipeapp.usecase.promote.DemoteRecipeUseCase;
-import dev.pjatk.recipeapp.usecase.promote.GetPromotedRecipesUseCase;
-import dev.pjatk.recipeapp.usecase.promote.PromoteRecipeUseCase;
 import dev.pjatk.recipeapp.usecase.recipe.AddRecipeUseCase;
 import dev.pjatk.recipeapp.usecase.recipe.FindRecipesUseCase;
 import dev.pjatk.recipeapp.usecase.recipe.GetRecipeByIdUseCase;
@@ -28,29 +25,10 @@ import java.util.List;
 public class RecipeController {
     protected static final String RECIPE = "/api/v1/recipe";
 
-    //    private final RecipeService recipeService;
     private final AddRecipeUseCase addRecipeUseCase;
-    private final PromoteRecipeUseCase promoteRecipeUseCase;
-    private final DemoteRecipeUseCase demoteRecipeUseCase;
-    private final GetPromotedRecipesUseCase getPromotedRecipesUseCase;
     private final UpdateRecipeUseCase updateRecipeUseCase;
     private final GetRecipeByIdUseCase getRecipeByIdUseCase;
     private final FindRecipesUseCase findRecipesUseCase;
-
-    @GetMapping("/promoted")
-    public List<RecipeDTO> getPromotedRecipes() {
-        return getPromotedRecipesUseCase.execute();
-    }
-
-    @PostMapping("/promote/{id}")
-    public void promoteRecipe(@PathVariable Long id) {
-        promoteRecipeUseCase.execute(id);
-    }
-
-    @DeleteMapping("/promote/{id}")
-    public void demoteRecipe(@PathVariable Long id) {
-        demoteRecipeUseCase.execute(id);
-    }
 
     @GetMapping
     public Page<RecipeDTO> getAllRecipes(Pageable pageable,
