@@ -65,10 +65,10 @@ img {
   @apply flex flex-row items-baseline pt-2
 }
 
-.icon-favourite-unchecked, .icon-promoted-unchecked {
+.icon-favourite-unchecked, .icon-promoted-unchecked, .icon-edit {
   --ng-icon__stroke-width: 1.2;
 }
-.icon-favourite-unchecked, .icon-promoted-unchecked {
+.icon-favourite-unchecked, .icon-promoted-unchecked, .icon-edit {
   @apply text-foreground/[.5]
 }
 

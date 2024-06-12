@@ -45,6 +45,14 @@
           </div>
         }
       }
+
+      @if (isAdminOrAuthor()) {
+        <div class="btn-is-promoted-container">
+          <button hlmBtn variant='ghost' [routerLink]="'/recipe-edit/' + recipe.id">
+            <hlm-icon class="icon-edit" size='lg' name="lucideEdit2"></hlm-icon>
+          </button>
+        </div>
+      }
   </div>
 
   <div class="recipe-author">{{recipe.author.firstName + " " + recipe.author.lastName}}</div>
@@ -85,8 +93,8 @@
           <div class="flex gap-1 recipe-title-ingredients-servings">
             <span translate="recipe-details.ingredients"></span>
             <span> / </span>
-            <span>{{recipe.servings}}</span>
             <span translate="recipe-details.servings"></span>
+            <span>{{recipe.servings}}</span>
         </div>
           <div class="flex flex-col divide-y divide-foreground/[.15]">
             @for (ingredient of recipe.ingredients; track ingredient.name; let first = $first) {

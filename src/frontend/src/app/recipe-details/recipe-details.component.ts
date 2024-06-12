@@ -3,7 +3,7 @@ import {ActivatedRoute, RouterLink, RouterOutlet} from "@angular/router";
 import {AsyncPipe, CommonModule} from "@angular/common";
 import {HlmIconComponent} from "@spartan-ng/ui-icon-helm";
 import {provideIcons} from "@ng-icons/core";
-import {lucideClock, lucideHeart, lucideStar} from "@ng-icons/lucide";
+import {lucideClock, lucideEdit2, lucideHeart, lucideStar} from "@ng-icons/lucide";
 import {RecipeGetModel} from "../shared/dto/recipe-get.model";
 import {RecipeService} from "../shared/services/recipe.service";
 import {BehaviorSubject, map, Subscription} from "rxjs";
@@ -31,7 +31,7 @@ import {ToDatePipe} from "../shared/pipes/to-date.pipe";
     CommentSectionComponent,
     ToDatePipe
   ],
-  providers: [provideIcons({ lucideClock, lucideHeart, lucideStar})],
+  providers: [provideIcons({ lucideClock, lucideHeart, lucideStar, lucideEdit2})],
   templateUrl: './recipe-details.component.html',
   styleUrl: './recipe-details.component.scss'
 })
@@ -106,4 +106,8 @@ export class RecipeDetailsComponent implements OnInit, OnDestroy {
     return this.accountService.hasAnyAuthority('ROLE_ADMIN');
   }
 
+  isAdminOrAuthor() {
+    return (this.recipe.value?.author.profileUrl === this.accountService.trackCurrentAccount()()?.profileUrl
+      || this.accountService.hasAnyAuthority('ROLE_ADMIN'));
+  }
 }
