@@ -150,19 +150,19 @@ class="flex flex-col"
             <div class="recipe-add-component">
               <label for="image" translate="recipe-add.image.label" class="recipe-add-component-label"></label>
 
-            <div class="recipe-add-component-input">
-             <input
-                    #imageInput
-                    hlmInput
-                    id="image"
-                    type="file"
-                    accept="image/*"
-                    (change)="processFile(imageInput)"/>
+              <div class="recipe-add-component-input">
+               <input
+                      #imageInput
+                      hlmInput
+                      id="image"
+                      type="file"
+                      accept="image/*"
+                      (change)="processFile(imageInput)"/>
 
-              @if (selectedFile) {
-                <img [src]="selectedFile.src" class="recipe-add-image"/>
-              }
-            </div>
+                @if (selectedFile) {
+                  <img [src]="selectedFile.src" class="recipe-add-image"/>
+                }
+              </div>
             </div>
             <div class="flex justify-center pb-4">
                   <button hlmBtn variant='ghost' type="submit">
@@ -171,6 +171,5 @@ class="flex flex-col"
                   </button>
             </div>
   </div>
-
 
 </form>

@@ -13,6 +13,7 @@ import {RecipeAddComponent} from "./recipe-add/recipe-add.component";
 import {protectedRoutesGuard} from "./core/auth/protectedRoutesGuard";
 import {AboutComponent} from "./about/about.component";
 import {RecipeFavouriteComponent} from "./recipe-favourite/recipe-favourite.component";
+import {RecipeEditComponent} from "./recipe-edit/recipe-edit.component";
 
 export const routes: Routes = [
   {
@@ -48,6 +49,13 @@ export const routes: Routes = [
   {
     path: 'recipe/:recipeId',
     component: RecipeDetailsComponent,
+    title: 'recipe-details.title'
+  },
+  {
+    path: 'recipe-edit/:recipeId',
+    canActivate: [protectedRoutesGuard],
+    component: RecipeEditComponent,
+    title: 'recipe-edit.title'
   },
   {
     path: 'dish/:dishName',

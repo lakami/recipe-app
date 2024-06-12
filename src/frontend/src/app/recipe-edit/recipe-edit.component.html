@@ -1,0 +1,158 @@
+<form
+[formGroup]="form"
+class="flex flex-col"
+(ngSubmit)="submit()"
+>
+  <div class="flex flex-col gap-4 xl:px-0 px-3">
+        <div class="flex flex-col md:items-center items-start">
+          <label class="recipe-edit-title" translate="recipe-edit.title"></label>
+          <label class="recipe-edit-subtitle" translate="recipe-edit.subtitle"></label>
+        </div>
+
+      <div class="recipe-edit-component">
+          <label for="name" translate="recipe-edit.name.label" class="recipe-edit-component-label"></label>
+          <input
+            class="recipe-edit-component-input"
+            type="text"
+            id="name"
+            hlmInput
+            formControlName="name"
+            [error]='hasNameError()'
+            [placeholder]="'recipe-edit.name.placeholder' | translation | async"
+            autofocus
+          />
+      </div>
+
+      <div class="recipe-edit-component">
+          <label for="description" translate="recipe-edit.description.label" class="recipe-edit-component-label"></label>
+          <input
+            class="recipe-edit-component-input"
+            type="text"
+            id="description"
+            hlmInput
+            formControlName="description"
+            [error]='hasDescriptionError()'
+            [placeholder]="'recipe-edit.description.placeholder' | translation | async"
+          />
+      </div>
+
+      <div class="recipe-edit-component">
+          <label for="preparationTime" translate="recipe-edit.preparation-time" class="recipe-edit-component-label"></label>
+          <input
+            class="recipe-edit-component-input"
+            type="text"
+            id="preparationTime"
+            hlmInput
+            formControlName="preparationTime"
+            [error]='hasPreparationTimeError()'
+          />
+      </div>
+
+       <div class="recipe-edit-component">
+          <label for="servings" translate="recipe-edit.servings" class="recipe-edit-component-label"></label>
+          <input
+            class="recipe-edit-component-input"
+            type="text"
+            id="servings"
+            hlmInput
+            formControlName="servings"
+            [error]='hasServingsError()'
+          />
+        </div>
+
+       <div class="recipe-edit-component">
+          <label for="steps" translate="recipe-edit.steps.label" class="recipe-edit-component-label"></label>
+
+          <textarea
+            class="min-h-20 recipe-edit-component-input"
+            id="steps"
+            hlmInput
+            [placeholder]="'recipe-edit.steps.placeholder' | translation | async"
+            formControlName="steps"
+           ></textarea>
+        </div>
+
+       <div class="recipe-edit-component">
+          <label for="ingredients" translate="recipe-edit.ingredients.label" class="recipe-edit-component-label"></label>
+
+           <textarea
+             class="min-h-20 recipe-edit-component-input"
+             id="ingredients"
+             hlmInput
+             [placeholder]="'recipe-edit.ingredients.placeholder' | translation | async"
+             formControlName="ingredients"
+            ></textarea>
+        </div>
+
+       <div class="recipe-edit-component">
+          <label for="dishes" translate="recipe-edit.dishes.label" class="recipe-edit-component-label"></label>
+
+          <brn-select
+            class="recipe-edit-component-input"
+            formControlName="dishes"
+            id="dishes"
+            [multiple]="true"
+            [placeholder]="'recipe-edit.dishes.placeholder' | translation | async"
+          >
+            <hlm-select-trigger>
+             <hlm-select-value/>
+            </hlm-select-trigger>
+            <hlm-select-content>
+              @for (d of dishes; track d.name) {
+                <hlm-option [value]="d.name">{{d.name}}</hlm-option>
+              }
+            </hlm-select-content>
+           </brn-select>
+        </div>
+
+         <div class="recipe-edit-component">
+            <label for="diets" translate="recipe-edit.diets.label" class="recipe-edit-component-label"></label>
+
+            <brn-select
+              class="recipe-edit-component-input"
+              formControlName="diets"
+              id="diets"
+              [multiple]="true"
+              [placeholder]="'recipe-edit.diets.placeholder' | translation | async"
+            >
+              <hlm-select-trigger>
+               <hlm-select-value/>
+              </hlm-select-trigger>
+              <hlm-select-content>
+                @for (d of diets; track d.name) {
+                  <hlm-option [value]="d.name">{{d.name}}</hlm-option>
+                }
+              </hlm-select-content>
+             </brn-select>
+          </div>
+
+           <div class="recipe-edit-component">
+              <label for="tags" translate="recipe-edit.tags.label" class="recipe-edit-component-label"></label>
+
+              <brn-select
+                class="recipe-edit-component-input"
+                formControlName="tags"
+                id="tags"
+                [multiple]="true"
+                [placeholder]="'recipe-edit.tags.placeholder' | translation | async"
+              >
+                <hlm-select-trigger>
+                 <hlm-select-value/>
+                </hlm-select-trigger>
+                <hlm-select-content>
+                  @for (t of tags; track t.name) {
+                    <hlm-option [value]="t.name">{{t.name}}</hlm-option>
+                  }
+                </hlm-select-content>
+               </brn-select>
+            </div>
+
+            <div class="flex justify-center pb-4">
+                  <button hlmBtn variant='ghost' type="submit">
+                          <hlm-icon size="sm" class="mr-2" name="lucideSave" strokeWidth="2"/>
+                          <span translate="recipe-edit.save" class="recipe-edit-btn-save"></span>
+                  </button>
+            </div>
+  </div>
+
+</form>

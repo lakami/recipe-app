@@ -82,6 +82,29 @@ export class RecipeService {
     return this.http.post<number>(environment.recipe, recipe)
   }
 
+  updateRecipe(id: number,
+               name: string,
+               description: string,
+               preparationTime: number,
+               servings: number,
+               dishes: string[],
+               diets: string[],
+               tags: string[],
+               steps: string[],
+               ingredients: string[]): Observable<any> {
+    return this.http.put<any>(environment.recipe + `/${id}`,{
+        name: name,
+        description: description,
+        preparationTime: preparationTime,
+        servings: servings,
+        dishes: dishes,
+        diets: diets,
+        tags: tags,
+        steps: steps,
+        ingredients: ingredients
+      })
+  }
+
   addDish(name: any): Observable<DishGetModel> {
     return this.http.post<DishGetModel>(environment.dish, name)
   }

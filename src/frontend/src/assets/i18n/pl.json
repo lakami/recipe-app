@@ -52,6 +52,7 @@
     "main-page": "Przejdź do strony głównej"
   },
   "recipe-details": {
+    "title": "Szczegóły przepisu",
     "ingredients": "Składniki",
     "servings": "Porcje",
     "comment-section": {
@@ -130,9 +131,48 @@
     },
     "send": "Dodaj przepis"
   },
+  "recipe-edit": {
+    "title": "Edytuj przepis",
+    "subtitle": "Tutaj możesz edytować przepis.",
+    "name": {
+      "label": "Tytuł",
+      "placeholder": "Wpisz tytuł przepisu"
+    },
+    "description": {
+      "label": "Podtytuł",
+      "placeholder": "Wpisz podtytuł przepisu"
+    },
+    "preparation-time": "Czas gotowania [min]",
+    "servings": "Ilość porcji",
+    "dishes": {
+      "label": "Tagi Dań",
+      "placeholder": "Oznacz dania"
+    },
+    "diets": {
+      "label": "Tagi Diet",
+      "placeholder": "Oznacz diety"
+    },
+    "tags": {
+      "label": "Tagi Produktów",
+      "placeholder": "Oznacz produkty"
+    },
+    "steps": {
+      "label": "Kroki",
+      "placeholder": "Wpisz kroki (rozdziel je znakiem enter)"
+    },
+    "ingredients": {
+      "label": "Składniki potrawy",
+      "placeholder": "Wpisz składniki (rozdziel je znakiem enter)"
+    },
+    "image": {
+      "label": "Zdjęcie potrawy"
+    },
+    "save": "Zapisz"
+  },
   "admin-panel": {
     "title": "Panel administratora",
     "edit-categories": {
+      "title": "Dodaj kategorie",
       "menu": "Dodaj kategorie",
       "subtitle": "Tutaj możesz dodawać nowe kategorie.",
       "add": "Dodaj",
