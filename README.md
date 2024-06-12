@@ -65,7 +65,8 @@ Projekt na inżynierkę
 - [ ] 4 Paging !!!
 - 
 - [x] Dodaj przepis do ulubionych
-- [ ] 2 Podglądaj przepisy dodane do ulubionych
+- [x] 2 Podglądaj przepisy dodane do ulubionych
+- [x] 2 Podglądaj przepisy promowane
 - [ ] 3 Edytuj przepis swojego autorstwa
 - [x] Dodaj komentarz
 - [x] Edytuj swój komentarz

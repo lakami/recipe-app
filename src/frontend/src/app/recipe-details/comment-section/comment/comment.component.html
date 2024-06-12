@@ -1,9 +1,9 @@
 <div class="flex justify-between">
   <div class="flex flex-col gap-1">
-        <p class="comment-section-created-by">
+        <p class="comment-section-comment-created-by">
           <span class="font-bold">{{comment.createdBy.firstName + " " + comment.createdBy.lastName}}</span>
         </p>
-        <p class="comment-section-create-date">{{comment.createdDate | toDate}}</p>
+        <p class="comment-section-comment-create-date">{{comment.createdDate | toDate}}</p>
   </div>
   <button hlmBtn variant="ghost" [brnMenuTriggerFor]="menuComment">
     <hlm-icon size="sm" class="mr-2" name="lucideMoreHorizontal"></hlm-icon>
@@ -11,12 +11,12 @@
 </div>
 @if (comment.lastModifiedBy) {
   <div class="flex flex-col gap-1">
-         <p class="comment-section-last-created-by">
-            <span translate="recipe-details.comment-section.last-modified-by"></span>
+         <p class="comment-section-comment-last-created-by">
+            <span translate="recipe-details.comment-section.comment.last-modified-by"></span>
             <span>{{comment.lastModifiedBy.firstName + " " + comment.lastModifiedBy.lastName}}</span>
         </p>
-        <p class="comment-section-last-modify-date">
-          <span translate="recipe-details.comment-section.last-modified-date"></span>
+        <p class="comment-section-comment-last-modify-date">
+          <span translate="recipe-details.comment-section.comment.last-modified-date"></span>
           <span>{{comment.lastModifiedDate | toDate}}</span>
         </p>
   </div>
@@ -39,7 +39,7 @@
     </button>
   </form>
 } @else {
-  <p class="comment-section-content pt-2 text-justify">{{comment.content}}</p>
+  <p class="comment-section-comment-content ">{{comment.content}}</p>
 }
 
 <ng-template #menuComment>

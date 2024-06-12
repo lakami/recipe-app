@@ -1,3 +1,15 @@
 :host {
   @apply flex flex-col py-4 gap-1 justify-between
 }
+
+.comment-section-comment-created-by,
+.comment-section-comment-last-created-by,
+.comment-section-comment-create-date,
+.comment-section-comment-last-modify-date {
+  @apply font-normal flex gap-1 items-center text-sm text-foreground/[.65] underline-offset-[.1875rem] antialiased
+}
+
+.comment-section-comment-content {
+  @apply pt-2 text-justify
+}
+

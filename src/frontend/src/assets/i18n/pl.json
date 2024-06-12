@@ -58,8 +58,10 @@
       "placeholder": "Dołącz do dyskusji...",
       "btn": "Dodaj komentarz",
       "info-when-user-not-logged": "Zaloguj się, aby dołączyć do dyskusji.",
-      "last-modified-by": "Zmodyfikowane przez: ",
-      "last-modified-date": "Ostatnio zmodyfikowano: "
+      "comment": {
+        "last-modified-by": "Zmodyfikowane przez: ",
+        "last-modified-date": "Ostatnio zmodyfikowano: "
+      }
     }
   },
   "filter": {
