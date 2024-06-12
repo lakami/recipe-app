@@ -13,3 +13,19 @@
   @apply pt-2 text-justify
 }
 
+.comment-section-comment-edit {
+  @apply flex md:flex-col flex-col md:items-center items-start gap-2 pt-4
+}
+
+.comment-section-comment-edit-input {
+  @apply md:flex-1 md:select-auto self-stretch
+}
+
+.comment-section-comment-btn-edit {
+  @apply tracking-[.0625rem] uppercase p-1 text-base font-bold
+}
+
+.comment-section-comment-escape {
+  @apply font-normal flex gap-1 items-center text-sm text-foreground/[.65] underline-offset-[.1875rem] antialiased italic
+}
+

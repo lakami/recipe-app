@@ -1,7 +1,7 @@
 import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import {TranslationDirective} from "../../../shared/translation/translation.directive";
 import {CommentGetModel} from "../../../shared/dto/comment-get.model";
-import {lucideMoreHorizontal, lucidePlus} from "@ng-icons/lucide";
+import {lucideMoreHorizontal, lucidePlus, lucideSave} from "@ng-icons/lucide";
 import {HlmIconComponent, provideIcons} from "@spartan-ng/ui-icon-helm";
 import {RecipeService} from "../../../shared/services/recipe.service";
 import {BrnMenuTriggerDirective} from "@spartan-ng/ui-menu-brain";
@@ -15,6 +15,7 @@ import {TranslationPipe} from "../../../shared/translation/translation.pipe";
 import {AsyncPipe} from "@angular/common";
 import {HlmInputDirective} from "@spartan-ng/ui-input-helm";
 import {ToDatePipe} from "../../../shared/pipes/to-date.pipe";
+import {HlmButtonDirective} from "@spartan-ng/ui-button-helm";
 
 @Component({
   selector: 'app-comment',
@@ -32,9 +33,10 @@ import {ToDatePipe} from "../../../shared/pipes/to-date.pipe";
     ReactiveFormsModule,
     HlmInputDirective,
     AsyncPipe,
-    ToDatePipe
+    ToDatePipe,
+    HlmButtonDirective
   ],
-  providers: [provideIcons({lucidePlus, lucideMoreHorizontal})],
+  providers: [provideIcons({lucidePlus, lucideMoreHorizontal, lucideSave})],
   templateUrl: './comment.component.html',
   styleUrl: './comment.component.scss'
 })

@@ -9,7 +9,7 @@
            [placeholder]="'recipe-details.comment-section.placeholder' | translation | async"
            ></textarea>
        </div>
-       <div class="flex justify-center">
+       <div class="flex md:justify-center justify-start">
           <button hlmBtn type="submit" variant='ghost' [disabled]="commentForm.invalid">
               <hlm-icon size="sm" class="mr-2" name="lucidePlus" strokeWidth="3"/>
               <span translate="recipe-details.comment-section.btn" class="comment-section-btn-send"></span>

@@ -6,37 +6,47 @@
         <p class="comment-section-comment-create-date">{{comment.createdDate | toDate}}</p>
   </div>
   <button hlmBtn variant="ghost" [brnMenuTriggerFor]="menuComment">
-    <hlm-icon size="sm" class="mr-2" name="lucideMoreHorizontal"></hlm-icon>
+    <hlm-icon size="sm" name="lucideMoreHorizontal"></hlm-icon>
   </button>
 </div>
 @if (comment.lastModifiedBy) {
   <div class="flex flex-col gap-1">
-         <p class="comment-section-comment-last-created-by">
-            <span translate="recipe-details.comment-section.comment.last-modified-by"></span>
-            <span>{{comment.lastModifiedBy.firstName + " " + comment.lastModifiedBy.lastName}}</span>
-        </p>
-        <p class="comment-section-comment-last-modify-date">
-          <span translate="recipe-details.comment-section.comment.last-modified-date"></span>
-          <span>{{comment.lastModifiedDate | toDate}}</span>
-        </p>
+    <p class="comment-section-comment-last-created-by">
+      <span translate="recipe-details.comment-section.comment.last-modified-by"></span>
+      <span>{{comment.lastModifiedBy.firstName + " " + comment.lastModifiedBy.lastName}}</span>
+    </p>
+    <p class="comment-section-comment-last-modify-date">
+      <span translate="recipe-details.comment-section.comment.last-modified-date"></span>
+      <span>{{comment.lastModifiedDate | toDate}}</span>
+    </p>
   </div>
 }
 
 @if (isEditing.value) {
   <form [formGroup]="form" (ngSubmit)="editComment()">
-    <textarea
-      class="min-h-10 recipe-add-component-input"
-      hlmInput
-      formControlName="comment"
-      [placeholder]="'recipe-details.comment-section.placeholder' | translation | async"
-      (keydown.escape)="toggleEdit()"
-      (keydown.enter)="editComment()"
-    ></textarea>
-    <span>Naciśnij escape, aby wyjść z trybu edycji</span>
-    <button hlmBtn type="submit" variant='ghost' [disabled]="form.invalid">
-      <hlm-icon size="sm" class="mr-2" name="lucidePlus" strokeWidth="3"/>
-      <span translate="recipe-details.comment-section.btn" class="comment-section-btn-send"></span>
-    </button>
+    <div class="comment-section-comment-edit">
+      <textarea
+        class="min-h-10 comment-section-comment-edit-input"
+        hlmInput
+        formControlName="comment"
+        [placeholder]="'recipe-details.comment-section.placeholder' | translation | async"
+        (keydown.escape)="toggleEdit()"
+        (keydown.enter)="editComment()"
+      ></textarea>
+
+      <span
+        class="comment-section-comment-escape"
+        translate="recipe-details.comment-section.comment.edit.hint">
+      </span>
+
+      <button hlmBtn type="submit" variant='ghost' [disabled]="form.invalid">
+        <hlm-icon size="sm" class="mr-2" name="lucideSave" strokeWidth="3"/>
+        <span
+          translate="recipe-details.comment-section.comment.edit.btn"
+          class="comment-section-comment-btn-edit">
+        </span>
+      </button>
+    </div>
   </form>
 } @else {
   <p class="comment-section-comment-content ">{{comment.content}}</p>
@@ -47,16 +57,15 @@
     <hlm-menu-group>
       @if (canUserModifyComment()) {
         <button hlmMenuItem (click)="toggleEdit()">
-                <span>Edytuj</span>
+          <span translate="recipe-details.comment-section.comment.edit.menu"></span>
         </button>
         <button hlmMenuItem (click)="deleteComment()">
-          <span>Usuń</span>
+          <span translate="recipe-details.comment-section.comment.delete.menu"></span>
         </button>
       }
         <button hlmMenuItem (click)="copy()">
-          <span>Kopiuj</span>
+          <span translate="recipe-details.comment-section.comment.copy.menu"></span>
         </button>
-
     </hlm-menu-group>
   </hlm-menu>
 </ng-template>

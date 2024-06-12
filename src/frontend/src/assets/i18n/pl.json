@@ -60,7 +60,18 @@
       "info-when-user-not-logged": "Zaloguj się, aby dołączyć do dyskusji.",
       "comment": {
         "last-modified-by": "Zmodyfikowane przez: ",
-        "last-modified-date": "Ostatnio zmodyfikowano: "
+        "last-modified-date": "Ostatnio zmodyfikowano: ",
+        "edit": {
+          "menu": "Edytuj",
+          "hint": "Naciśnij escape, aby wyjść z trybu edycji.",
+          "btn": "Zapisz"
+        },
+        "delete": {
+          "menu": "Usuń"
+        },
+        "copy": {
+          "menu": "Kopiuj"
+        }
       }
     }
   },
