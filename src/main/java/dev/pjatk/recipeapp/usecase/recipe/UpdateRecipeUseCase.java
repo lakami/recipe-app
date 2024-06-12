@@ -49,8 +49,10 @@ public class UpdateRecipeUseCase {
         recipe.setCategories(getCategories(recipeDTO.diets()));
         recipe.setTags(getTags(recipeDTO.tags()));
         recipe.setDishes(getDishes(recipeDTO.dishes()));
-        recipe.setIngredients(getIngredients(recipeDTO.ingredients(), recipe));
-        recipe.setSteps(getSteps(recipeDTO.steps(), recipe));
+        recipe.getIngredients().stream().toList().forEach(ingredient -> recipe.removeIngredient(ingredient));
+        recipe.getSteps().stream().toList().forEach(step -> recipe.removeStep(step));
+        getIngredients(recipeDTO.ingredients(), recipe).forEach(recipe::addIngredient);
+        getSteps(recipeDTO.steps(), recipe).forEach(recipe::addStep);
         recipeRepository.save(recipe);
     }
 
