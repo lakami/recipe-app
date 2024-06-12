@@ -4,10 +4,7 @@ import dev.pjatk.recipeapp.dto.request.NewRecipeDTO;
 import dev.pjatk.recipeapp.dto.response.RecipeDTO;
 import dev.pjatk.recipeapp.exception.ForbiddenModificationException;
 import dev.pjatk.recipeapp.exception.ResourceNotFoundException;
-import dev.pjatk.recipeapp.usecase.recipe.AddRecipeUseCase;
-import dev.pjatk.recipeapp.usecase.recipe.FindRecipesUseCase;
-import dev.pjatk.recipeapp.usecase.recipe.GetRecipeByIdUseCase;
-import dev.pjatk.recipeapp.usecase.recipe.UpdateRecipeUseCase;
+import dev.pjatk.recipeapp.usecase.recipe.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -29,6 +26,7 @@ public class RecipeController {
     private final UpdateRecipeUseCase updateRecipeUseCase;
     private final GetRecipeByIdUseCase getRecipeByIdUseCase;
     private final FindRecipesUseCase findRecipesUseCase;
+    private final UpdateRecipeImageUseCase updateRecipeImageUseCase;
 
     @GetMapping
     public Page<RecipeDTO> getAllRecipes(Pageable pageable,
@@ -61,5 +59,11 @@ public class RecipeController {
     @ResponseStatus(HttpStatus.OK)
     public void updateRecipe(@PathVariable Long id, @Valid @RequestBody NewRecipeDTO recipeDTO) {
         updateRecipeUseCase.execute(id, recipeDTO);
+    }
+
+    @PutMapping("/{id}/image")
+    @ResponseStatus(HttpStatus.OK)
+    public void updateRecipeImage(@PathVariable Long id, @RequestParam("image") MultipartFile image) {
+        updateRecipeImageUseCase.execute(id, image);
     }
 }
