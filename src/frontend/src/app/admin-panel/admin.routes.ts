@@ -2,6 +2,7 @@ import {Routes} from "@angular/router";
 import {AdminPanelComponent} from "./admin-panel.component";
 import {protectedRoutesGuard} from "../core/auth/protectedRoutesGuard";
 import {EditCategoriesComponent} from "./edit-categories/edit-categories.component";
+import {RecipePromotedComponent} from "../recipe-promoted/recipe-promoted.component";
 
 const adminRoutes: Routes = [
     {
@@ -17,6 +18,11 @@ const adminRoutes: Routes = [
           path: 'edit-categories',
           component: EditCategoriesComponent,
           title: 'admin-panel.edit-categories.title'
+        },
+        {
+          path: 'recipe-promoted',
+          component: RecipePromotedComponent,
+          title: 'admin-panel.recipe-promoted.title'
         }
       ]
     }

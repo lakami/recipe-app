@@ -1,0 +1,13 @@
+<div class="recipe-favourite-title">
+  <a translate="recipe-favourite.title"></a>
+</div>
+
+<div class="recipe-favourite-card-list-container">
+  <div class="recipe-favourite-card-list">
+      @if (recipes$ | async; as recipes) {
+          @for (recipe of recipes; track recipe.id) {
+            <app-recipe-card-item [recipe]="recipe" [routerLink]="'/recipe/' + recipe.id"></app-recipe-card-item>
+          }
+      }
+  </div>
+</div>

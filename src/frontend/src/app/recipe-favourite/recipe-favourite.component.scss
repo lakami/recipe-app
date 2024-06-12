@@ -1,0 +1,16 @@
+.recipe-favourite-title {
+  @apply font-serif text-4xl font-bold underline-offset-[.5625rem] px-0 pt-0 pb-4 text-center
+}
+
+.recipe-favourite-card-list-container {
+  unicode-bidi: isolate;
+  -webkit-text-size-adjust: 100%;
+}
+.recipe-favourite-card-list-container {
+  @apply box-border block antialiased text-xl px-3 xl:px-0 pb-6
+}
+
+.recipe-favourite-card-list {
+  @apply lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1
+  gap-6 flex-row flex-wrap grid justify-center box-border antialiased
+}

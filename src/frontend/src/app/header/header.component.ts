@@ -1,7 +1,7 @@
 import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {provideIcons} from '@ng-icons/core';
-import {lucideMoon, lucidePlus, lucideUserCircle} from '@ng-icons/lucide';
+import {lucideHeart, lucideMoon, lucidePlus, lucideStar, lucideUserCircle} from '@ng-icons/lucide';
 import {HlmIconComponent} from '@spartan-ng/ui-icon-helm';
 import {TranslationDirective} from "../shared/translation/translation.directive";
 import {
@@ -46,7 +46,7 @@ import {LoginService} from "../login/login.service";
     HlmMenuComponent,
     HlmMenuComponent,
   ],
-  providers: [provideIcons({ lucideUserCircle, lucideMoon, lucidePlus })],
+  providers: [provideIcons({ lucideUserCircle, lucideMoon, lucidePlus, lucideHeart, lucideStar})],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

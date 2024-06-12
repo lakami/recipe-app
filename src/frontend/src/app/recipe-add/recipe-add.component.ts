@@ -91,29 +91,6 @@ export class RecipeAddComponent implements OnInit {
       tagsLoaded.pipe(filter(loaded => loaded))
     ).subscribe(loaded => {
       console.log(loaded)
-      // this.form = new FormGroup({
-      //   name: new FormControl('', {
-      //     nonNullable: true,
-      //     validators: [Validators.required, Validators.minLength(1), Validators.maxLength(100)]
-      //   }),
-      //   description: new FormControl('', {
-      //     nonNullable: true,
-      //     validators: [Validators.required, Validators.minLength(1), Validators.maxLength(100)]
-      //   }),
-      //   preparationTime: new FormControl(0, {
-      //     nonNullable: true,
-      //     validators: [Validators.required, Validators.min(1), Validators.max(10000)]
-      //   }),
-      //   servings: new FormControl(0, {
-      //     nonNullable: true,
-      //     validators: [Validators.required, Validators.min(1), Validators.max(100)]
-      //   }),
-      //   dishes: new FormArray(this.dishes.map(dish => new FormControl( false))),
-      //   diets: new FormArray(this.diets.map(diet => new FormControl( false))),
-      //   tags: new FormArray(this.tags.map(tag => new FormControl( false))),
-      //   steps: new FormArray([]),
-      //   ingredients: new FormArray([]),
-      // })
       formLoaded.next(true);
     })
 

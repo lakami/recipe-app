@@ -12,6 +12,7 @@ import {DietComponent} from "./diet/diet.component";
 import {RecipeAddComponent} from "./recipe-add/recipe-add.component";
 import {protectedRoutesGuard} from "./core/auth/protectedRoutesGuard";
 import {AboutComponent} from "./about/about.component";
+import {RecipeFavouriteComponent} from "./recipe-favourite/recipe-favourite.component";
 
 export const routes: Routes = [
   {
@@ -73,6 +74,12 @@ export const routes: Routes = [
     path: 'about',
     component: AboutComponent,
     title: 'about.title',
+  },
+  {
+    path: 'recipe-favourite',
+    canActivate: [protectedRoutesGuard],
+    component: RecipeFavouriteComponent,
+    title: 'recipe-favourite.title',
   },
   ...errorRoute
 ];

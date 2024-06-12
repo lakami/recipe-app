@@ -1,0 +1,15 @@
+<div class="admin-panel-recipe-promoted-subtitle-container">
+  <div class="flex flex-col md:items-center items-start">
+    <label class="admin-panel-recipe-promoted-subtitle" translate="admin-panel.recipe-promoted.subtitle"></label>
+  </div>
+</div>
+  <div class="admin-panel-recipe-promoted-card-list-container">
+    <div class="admin-panel-recipe-promoted-card-list">
+        @if (recipes$ | async; as recipes) {
+            @for (recipe of recipes; track recipe.id) {
+              <app-recipe-card-item [recipe]="recipe" [routerLink]="'/recipe/' + recipe.id"></app-recipe-card-item>
+            }
+        }
+    </div>
+  </div>
+

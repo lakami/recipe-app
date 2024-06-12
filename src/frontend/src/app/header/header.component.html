@@ -17,7 +17,15 @@
                     <span translate="header.multi-utility-nav.login"></span>
                   </li>
                   } @else {
-                   <li class="multi-utility-text" routerLink="/recipe-add">
+                    @if (isAdmin()) {
+                      <li class="multi-utility-text" routerLink="/admin/recipe-promoted">
+                        <hlm-icon class="icon-promoted" size='sm' name="lucideStar"/>
+                      </li>
+                    }
+                    <li class="multi-utility-text" routerLink="/recipe-favourite">
+                      <hlm-icon class="icon-favourites" size='sm' name="lucideHeart"/>
+                    </li>
+                    <li class="multi-utility-text" routerLink="/recipe-add">
                       <hlm-icon class="icon-recipe-add" size='sm' name="lucidePlus"/>
                       <span translate="header.multi-utility-nav.recipe-add"></span>
                     </li>
@@ -75,6 +83,10 @@
         <button hlmMenuItem
         translate="admin-panel.edit-categories.menu"
         routerLink="/admin/edit-categories"></button>
+
+        <button hlmMenuItem
+        translate="admin-panel.recipe-promoted.menu"
+        routerLink="/admin/recipe-promoted"></button>
     </hlm-menu-group>
   </hlm-menu>
 </ng-template>

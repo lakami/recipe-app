@@ -135,6 +135,11 @@
         "label": "Nazwa produktu",
         "placeholder": "Wpisz tutaj nazwę produktu."
       }
+    },
+    "recipe-promoted": {
+      "title": "Promowane",
+      "subtitle": "Promowane przepisy",
+      "menu": "Promowane"
     }
   },
   "about": {
@@ -144,5 +149,8 @@
   "error": {
     "title": "Błąd",
     "subtitle": "Coś poszło nie tak. Spróbuj ponownie później."
+  },
+  "recipe-favourite": {
+    "title": "Ulubione"
   }
 }
