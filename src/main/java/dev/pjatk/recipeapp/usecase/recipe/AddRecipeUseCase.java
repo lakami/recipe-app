@@ -23,7 +23,13 @@ public class AddRecipeUseCase implements Loggable {
     public Long execute(NewRecipeDTO recipeDTO, MultipartFile image) {
         log().info("Adding recipe with name: {}", recipeDTO.name());
         var imageId = imageService.saveImage(image);
-        var recipe = createRecipeUseCase.execute(recipeDTO, imageId);
-        return recipe.getId();
+        try {
+            var recipe = createRecipeUseCase.execute(recipeDTO, imageId);
+            return recipe.getId();
+        } catch (RuntimeException e) {
+            log().error("Error while adding recipe: {}", e.getMessage());
+            imageService.removeImage(imageId);
+            throw e; // rethrow exception
+        }
     }
 }

@@ -89,4 +89,23 @@ public class Recipe extends AuditedEntityBase<Long> {
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Comment> comments;
 
+    public void addIngredient(Ingredient ingredient) {
+        ingredients.add(ingredient);
+        ingredient.setRecipe(this);
+    }
+
+    public void addStep(Step step) {
+        steps.add(step);
+        step.setRecipe(this);
+    }
+
+    public void removeIngredient(Ingredient ingredient) {
+        ingredients.remove(ingredient);
+        ingredient.setRecipe(null);
+    }
+
+    public void removeStep(Step step) {
+        steps.remove(step);
+        step.setRecipe(null);
+    }
 }
