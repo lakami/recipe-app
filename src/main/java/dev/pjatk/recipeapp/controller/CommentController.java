@@ -42,6 +42,4 @@ public class CommentController {
                               @RequestBody NewCommentDTO commentDTO) {
         updateCommentUseCase.execute(recipeId, commentId, commentDTO);
     }
-
-
 }

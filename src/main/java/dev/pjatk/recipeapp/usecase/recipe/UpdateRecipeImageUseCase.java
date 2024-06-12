@@ -17,7 +17,6 @@ public class UpdateRecipeImageUseCase implements Loggable {
     private final RecipeRepository recipeRepository;
 
     public void execute(Long recipeId, MultipartFile image) {
-
         var recipe = recipeRepository.findById(recipeId)
                 .orElseThrow(() -> new ResourceNotFoundException("Recipe not found"));
         if (!SecurityUtils.isAdminOrCurrentUser(recipe.getCreatedBy().getEmail())) {
@@ -42,7 +41,5 @@ public class UpdateRecipeImageUseCase implements Loggable {
                 log().error("Cannot remove old image", e);
             }
         }
-
-
     }
 }

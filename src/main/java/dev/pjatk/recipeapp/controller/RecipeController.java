@@ -61,6 +61,12 @@ public class RecipeController {
         updateRecipeUseCase.execute(id, recipeDTO);
     }
 
+    /**
+     * @param id    recipe id
+     * @param image new image
+     * @throws ResourceNotFoundException      if recipe with id not found
+     * @throws ForbiddenModificationException if permission denied (recipe is not owned by user or user is not an admin)
+     */
     @PutMapping("/{id}/image")
     @ResponseStatus(HttpStatus.OK)
     public void updateRecipeImage(@PathVariable Long id, @RequestParam("image") MultipartFile image) {
