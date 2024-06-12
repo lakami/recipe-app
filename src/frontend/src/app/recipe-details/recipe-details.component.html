@@ -11,20 +11,19 @@
               }
           }
     </div>
-  <div class="flex flex-row gap-2">
+  <div class="flex flex-row sm:gap-2 gap-x-0.5 gap-y-2">
     <h1 class="recipe-name">{{recipe.name}}</h1>
-
       @if (accountService.isAuthenticated()) {
         @if (isFavourite.getValue()) {
           <div class="btn-is-favourite-container">
             <button hlmBtn variant='ghost' (click)="toggleFavourite()">
-              <hlm-icon class="icon-favourite-checked" size='lg' name="lucideHeart"></hlm-icon>
+              <hlm-icon class="icon-favourite-checked" size='base' name="lucideHeart"></hlm-icon>
             </button>
           </div>
         } @else {
           <div class="btn-is-favourite-container">
             <button hlmBtn variant='ghost' (click)="toggleFavourite()">
-              <hlm-icon class="icon-favourite-unchecked" size='lg' name="lucideHeart"></hlm-icon>
+              <hlm-icon class="icon-favourite-unchecked" size='base' name="lucideHeart"></hlm-icon>
             </button>
           </div>
         }
@@ -34,13 +33,13 @@
         @if (isPromoted.getValue()) {
           <div class="btn-is-promoted-container">
             <button hlmBtn variant='ghost' (click)="togglePromoted()">
-              <hlm-icon class="icon-promoted-checked" size='lg' name="lucideStar"></hlm-icon>
+              <hlm-icon class="icon-promoted-checked" size='base' name="lucideStar"></hlm-icon>
             </button>
           </div>
         } @else {
           <div class="btn-is-promoted-container">
             <button hlmBtn variant='ghost' (click)="togglePromoted()">
-              <hlm-icon class="icon-promoted-unchecked" size='lg' name="lucideStar"></hlm-icon>
+              <hlm-icon class="icon-promoted-unchecked" size='base' name="lucideStar"></hlm-icon>
             </button>
           </div>
         }
@@ -49,7 +48,7 @@
       @if (isAdminOrAuthor()) {
         <div class="btn-is-promoted-container">
           <button hlmBtn variant='ghost' [routerLink]="'/recipe-edit/' + recipe.id">
-            <hlm-icon class="icon-edit" size='lg' name="lucideEdit2"></hlm-icon>
+            <hlm-icon class="icon-edit" size='base' name="lucideEdit2"></hlm-icon>
           </button>
         </div>
       }
