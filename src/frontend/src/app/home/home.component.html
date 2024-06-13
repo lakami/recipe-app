@@ -1,3 +1,6 @@
+<div class="title">
+  <a translate="home.promoted-recipes"></a>
+</div>
 <div class="card-list-container">
   <div class="card-list">
       @if (recipes$ | async; as recipes) {
@@ -5,6 +8,7 @@
             <app-recipe-card-item
               [recipe]="recipe" [routerLink]="'/recipe/' + recipe.id"
               [showDetails]="false"
+              class="bg-none hover:bg-foreground/[0.15]"
             >
             </app-recipe-card-item>
           }

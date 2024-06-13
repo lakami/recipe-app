@@ -1,5 +1,5 @@
 <div class="title">
-  <a translate="header.nav.recipes"></a>
+  <a translate="filter.title"></a>
 </div>
 <form [formGroup]="form" (ngSubmit)="submit()">
   <div hlmAccordion>
@@ -114,7 +114,7 @@
 
         <button hlmBtn variant='ghost' type="reset" [disabled]="form.invalid">
           <hlm-icon size="sm" class="mr-2 rotate-45" name="lucidePlus" strokeWidth="3"/>
-            <span translate="filter.btnDeleteFilters" class="btn-filter"></span>
+          <span translate="filter.btnDeleteFilters" class="btn-filter"></span>
         </button>
       </div>
   </div>
@@ -129,6 +129,11 @@
       }
   </div>
   @if (!isLastPage) {
-    <button hlmBtn variant='ghost' (click)="loadMore()">Załaduj</button>
+    <div class="accordin-text-inside pt-2">
+      <button hlmBtn variant='ghost' (click)="loadMore()" [disabled]="form.invalid">
+        <hlm-icon size="sm" class="mr-2" name="lucideLoader2" strokeWidth="3"/>
+        <span translate="home.load-more" class="btn-load-more"></span>
+      </button>
+    </div>
   }
 </div>

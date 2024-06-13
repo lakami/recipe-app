@@ -14,7 +14,7 @@ import {DietGetModel} from "../shared/dto/diet-get.model";
 import {HlmCheckboxComponent} from "@spartan-ng/ui-checkbox-helm";
 import {HlmButtonDirective} from "@spartan-ng/ui-button-helm";
 import {provideIcons} from "@ng-icons/core";
-import {lucidePlus, lucideSearch} from "@ng-icons/lucide";
+import {lucideLoader2, lucidePlus, lucideSearch} from "@ng-icons/lucide";
 import {
   HlmAccordionContentDirective,
   HlmAccordionDirective,
@@ -30,7 +30,7 @@ import {TranslationPipe} from "../shared/translation/translation.pipe";
 @Component({
   selector: 'app-search',
   standalone: true,
-  providers: [provideIcons({ lucideSearch , lucidePlus})],
+  providers: [provideIcons({ lucideSearch, lucidePlus, lucideLoader2})],
   imports: [
     RouterOutlet,
     AsyncPipe,

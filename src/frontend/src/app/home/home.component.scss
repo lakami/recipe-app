@@ -1,5 +1,6 @@
 .title {
-  @apply font-serif text-4xl font-bold underline-offset-[.5625rem] px-0 pt-0 pb-4 text-center
+  @apply font-serif text-4xl font-bold underline-offset-[.5625rem]
+  px-0 pt-0 pb-4 text-center
 }
 
 .card-list-container {
@@ -7,7 +8,7 @@
   -webkit-text-size-adjust: 100%;
 }
 .card-list-container {
-  @apply box-border block antialiased text-xl
+  @apply box-border block antialiased text-xl mx-3 xl:mx-0
 }
 
 .card-list {

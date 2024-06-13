@@ -1,6 +1,8 @@
 {
   "home": {
-    "title": "Strona główna"
+    "title": "Strona główna",
+    "load-more": "Załaduj więcej",
+    "promoted-recipes": "Polecane"
   },
   "header": {
     "multi-utility-nav": {
@@ -77,6 +79,7 @@
     }
   },
   "filter": {
+    "title": "Szukaj przepisów",
     "btnFilter": "Szukaj",
     "btnDeleteFilters": "Wyczyść",
     "title-tags": "Co masz pod ręką?",
