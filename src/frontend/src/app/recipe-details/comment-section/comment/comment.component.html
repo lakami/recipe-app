@@ -13,7 +13,7 @@
     <hlm-icon size="sm" name="lucideMoreHorizontal"></hlm-icon>
   </button>
 </div>
-@if (comment.lastModifiedBy) {
+@if (comment.lastModifiedDate !== comment.createdDate) {
   <div class="comment-section-comment-author-and-date-container">
     <p class="comment-section-comment-last-created-by">
       <span translate="recipe-details.comment-section.comment.last-modified-by"></span>
