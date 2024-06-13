@@ -1,7 +1,11 @@
 <div class="flex justify-between">
   <div class="flex flex-col gap-1">
         <p class="comment-section-comment-created-by">
-          <span class="font-bold">{{comment.createdBy.firstName + " " + comment.createdBy.lastName}}</span>
+          <span class="comment-section-comment-author"
+            [routerLink]="'/recipe-author/' + comment.createdBy.profileUrl"
+          >
+            {{comment.createdBy.firstName + " " + comment.createdBy.lastName}}
+          </span>
         </p>
         <p class="comment-section-comment-create-date">{{comment.createdDate | toDate}}</p>
   </div>

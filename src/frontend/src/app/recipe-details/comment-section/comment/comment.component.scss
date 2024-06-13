@@ -29,3 +29,7 @@
   @apply font-normal flex gap-1 items-center text-sm text-foreground/[.65] underline-offset-[.1875rem] antialiased italic
 }
 
+.comment-section-comment-author {
+  @apply flex gap-1 items-center text-sm text-foreground/[.65] font-semibold underline-offset-[.1875rem] antialiased cursor-pointer decoration-1 underline pb-1.5
+  hover:underline hover:text-foreground
+}
