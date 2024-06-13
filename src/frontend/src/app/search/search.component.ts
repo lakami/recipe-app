@@ -63,10 +63,17 @@ export class SearchComponent implements OnInit, OnDestroy, OnChanges {
   private recipeService: RecipeService = inject(RecipeService);
   private route: ActivatedRoute = inject(ActivatedRoute);
   queryParams$ = this.route.queryParams; //wszystkie parametry wyszukiwania przepisu
-  private recipe = new BehaviorSubject<RecipeGetModel[]>([]);
+  private recipes = new BehaviorSubject<RecipeGetModel[]>([]);
   dietsChanged= new ReplaySubject<string>();
   dishesChanged= new ReplaySubject<string>();
-  recipes$ = this.recipe.asObservable();
+  recipes$ = this.recipes.asObservable();
+  page: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  lastSelectedDishes: string[] = [];
+  lastSelectedDiets: string[] = [];
+  lastSelectedTags: string[] = [];
+  lastSearch: string = '';
+  pagesSize: number = 4;
+  isLastPage: boolean = true;
   dishes!: DishGetModel[];
   diets!: DietGetModel[];
   tags!: TagGetModel[];
@@ -199,15 +206,42 @@ export class SearchComponent implements OnInit, OnDestroy, OnChanges {
     const selectedTagsNames = this.selectedTags;
     console.log(selectedTagsNames);
 
+    this.lastSelectedDishes = selectedDishesNames;
+    this.lastSelectedDiets = selectedDietsNames;
+    this.lastSelectedTags = selectedTagsNames;
+    this.lastSearch = this.form.value.search;
+    this.page.next(0);
+
     this.recipeService.getRecipes(
       selectedDishesNames.join(','),
       selectedDietsNames.join(','),
       selectedTagsNames.join(','),
-      this.form.value.search
+      this.form.value.search,
+      0,
+      this.pagesSize
     ).subscribe({
-      next: (page) => {
-        this.recipe.next(page.content)
-        console.log(page.content)
+      next: (p) => {
+        this.recipes.next(p.content)
+        console.log(p.content)
+        this.isLastPage = p.last;
+      }
+    })
+  }
+
+  loadMore() {
+    this.recipeService.getRecipes(
+      this.lastSelectedDishes.join(','),
+      this.lastSelectedDiets.join(','),
+      this.lastSelectedTags.join(','),
+      this.lastSearch,
+      this.page.value + 1,
+      this.pagesSize
+    ).subscribe({
+      next: (p) => {
+        this.recipes.next([...this.recipes.value, ...p.content])
+        console.log(p.content)
+        this.page.next(p.number)
+        this.isLastPage = p.last;
       }
     })
   }

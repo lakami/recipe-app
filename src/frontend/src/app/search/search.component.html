@@ -128,4 +128,7 @@
           }
       }
   </div>
+  @if (!isLastPage) {
+    <button hlmBtn variant='ghost' (click)="loadMore()">Załaduj</button>
+  }
 </div>

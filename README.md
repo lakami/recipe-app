@@ -71,11 +71,11 @@ Projekt na inżynierkę
 - [x] Dodaj komentarz
 - [x] Edytuj swój komentarz
 - [x] Usuń swój komentarz
-- [ ] Przeglądaj przepisy danego autora
+- [x] Przeglądaj przepisy danego autora
 - [x] 1 Modyfikuj promowane przepisy admin 
 - [x] Edytuj komentarz użytkownika admin
 - [x] Usuń komentarz użytkownika admin
 - [x] Edytuj przepis użytkownika admin
-- [ ] zamiana zdjecia podczas edycji przepisu
-- [ ] komentarze link do autora
+- [x] zamiana zdjecia podczas edycji przepisu
+- [x] komentarze link do autora
 - [ ] promowane przepisy strona główna
