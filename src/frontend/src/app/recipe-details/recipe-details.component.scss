@@ -45,8 +45,16 @@ img {
   @apply text-foreground/[.65]
 }
 
-.recipe-author, .recipe-time, .create-date  {
+.recipe-time, .create-date  {
   @apply flex gap-1 items-center text-sm text-foreground/[.65] font-normal underline-offset-[.1875rem] antialiased
+}
+
+.recipe-author {
+  @apply flex gap-1 items-center text-sm text-foreground/[.65] font-semibold underline-offset-[.1875rem] antialiased cursor-pointer decoration-1 underline pb-1.5
+  hover:underline hover:text-foreground
+}
+.recipe-author {
+  text-decoration-skip-ink: none;
 }
 
 .recipe-title-ingredients-servings, .recipe-description {

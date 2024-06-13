@@ -14,6 +14,7 @@ import {protectedRoutesGuard} from "./core/auth/protectedRoutesGuard";
 import {AboutComponent} from "./about/about.component";
 import {RecipeFavouriteComponent} from "./recipe-favourite/recipe-favourite.component";
 import {RecipeEditComponent} from "./recipe-edit/recipe-edit.component";
+import {RecipeAuthorComponent} from "./recipe-author/recipe-author.component";
 
 export const routes: Routes = [
   {
@@ -88,6 +89,11 @@ export const routes: Routes = [
     canActivate: [protectedRoutesGuard],
     component: RecipeFavouriteComponent,
     title: 'recipe-favourite.title',
+  },
+  {
+    path: 'recipe-author/:profileUrl',
+    component: RecipeAuthorComponent,
+    title: 'recipe-author.title',
   },
   ...errorRoute
 ];

@@ -67,7 +67,7 @@ Projekt na inżynierkę
 - [x] Dodaj przepis do ulubionych
 - [x] 2 Podglądaj przepisy dodane do ulubionych
 - [x] 2 Podglądaj przepisy promowane
-- [ ] 3 Edytuj przepis swojego autorstwa
+- [x] 3 Edytuj przepis swojego autorstwa
 - [x] Dodaj komentarz
 - [x] Edytuj swój komentarz
 - [x] Usuń swój komentarz
@@ -75,4 +75,7 @@ Projekt na inżynierkę
 - [x] 1 Modyfikuj promowane przepisy admin 
 - [x] Edytuj komentarz użytkownika admin
 - [x] Usuń komentarz użytkownika admin
-- [ ] Edytuj przepis użytkownika admin
+- [x] Edytuj przepis użytkownika admin
+- [ ] zamiana zdjecia podczas edycji przepisu
+- [ ] komentarze link do autora
+- [ ] promowane strona główna

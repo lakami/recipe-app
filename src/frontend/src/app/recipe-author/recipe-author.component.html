@@ -1,0 +1,19 @@
+<div class="recipe-author-title">
+  <a translate="recipe-author.title"></a>
+</div>
+<div class="recipe-author-subtitle-container">
+  <div class="flex flex-col md:items-center items-start">
+    <label class="recipe-author-subtitle">
+    {{(user$ | async)?.firstName}} {{(user$ | async)?.lastName}}
+    </label>
+  </div>
+</div>
+  <div class="recipe-author-card-list-container">
+    <div class="recipe-author-card-list">
+        @if (user$ | async; as user) {
+           @for (recipe of user.authoredRecipes; track recipe.id) {
+             <app-recipe-card-item [recipe]="recipe" [routerLink]="'/recipe/' + recipe.id"></app-recipe-card-item>
+           }
+        }
+    </div>
+  </div>

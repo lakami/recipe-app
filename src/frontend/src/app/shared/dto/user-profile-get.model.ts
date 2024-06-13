@@ -1,4 +1,4 @@
-import {ShortRecipeGetModel} from "./short-recipe-get.model";
+import {RecipeGetModel} from "./recipe-get.model";
 
 export class UserProfileGetModel {
     constructor(
@@ -6,6 +6,6 @@ export class UserProfileGetModel {
         public lastName: string,
         public profileUrl: string,
         public imageUrl: string,
-        public authorRecipes: ShortRecipeGetModel[],
+        public authoredRecipes: RecipeGetModel[],
     ) {}
 }

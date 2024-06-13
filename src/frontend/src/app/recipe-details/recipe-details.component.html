@@ -1,18 +1,7 @@
 <div class="card-list-container">
   @if (recipe$ | async; as recipe) {
 
-    <div class="diet">
-      @for (diet of recipe.diets; track diet.id; let last = $last) {
-              @if (!last) {
-                <span>{{diet.name}} > </span>
-              }
-              @else {
-                <span>{{diet.name}}</span>
-              }
-          }
-    </div>
-  <div class="flex flex-row sm:gap-2 gap-x-0.5 gap-y-2">
-    <h1 class="recipe-name">{{recipe.name}}</h1>
+  <div class="flex flex-row gap-x-2 md:justify-end justify-start">
       @if (accountService.isAuthenticated()) {
         @if (isFavourite.getValue()) {
           <div class="btn-is-favourite-container">
@@ -54,7 +43,20 @@
       }
   </div>
 
-  <div class="recipe-author">{{recipe.author.firstName + " " + recipe.author.lastName}}</div>
+  <div class="diet">
+    @for (diet of recipe.diets; track diet.id; let last = $last) {
+            @if (!last) {
+              <span>{{diet.name}} > </span>
+            }
+            @else {
+              <span>{{diet.name}}</span>
+            }
+        }
+  </div>
+
+  <h1 class="recipe-name">{{recipe.name}}</h1>
+
+  <div class="recipe-author" [routerLink]="'/recipe-author/' + recipe.author.profileUrl">{{recipe.author.firstName + " " + recipe.author.lastName}}</div>
 
   <div class="create-date">{{recipe.createdDate | toDate}}</div>
 

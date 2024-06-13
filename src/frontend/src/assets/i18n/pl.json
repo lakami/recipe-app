@@ -205,5 +205,8 @@
   },
   "recipe-favourite": {
     "title": "Ulubione"
+  },
+  "recipe-author": {
+    "title": "Przepisy"
   }
 }

@@ -14,4 +14,5 @@ export const environment = {
   favourites: base('/favourites'),
   promoted: base('/promoted'),
   comment: base('/comment'),
+  user: base('/user'),
 }
