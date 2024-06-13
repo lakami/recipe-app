@@ -21,4 +21,5 @@ import {provideIcons} from "@ng-icons/core";
 })
 export class RecipeCardItemComponent {
   @Input({required: true}) recipe!: RecipeGetModel;
+  @Input() showDetails: boolean = true;
 }

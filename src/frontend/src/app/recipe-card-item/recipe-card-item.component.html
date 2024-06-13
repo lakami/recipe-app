@@ -1,22 +1,24 @@
 <div class="image-placeholder">
   <img [src]="'/api/v1/images/' + recipe.imageUrl" />
 </div>
-<div class="content">
-  <div class="diet">
-    @for (diet of recipe.diets; track diet.id; let last = $last) {
-        @if (!last) {
-          <span>{{diet.name}} > </span>
-        }
-        @else {
-          <span>{{diet.name}}</span>
-        }
-    }
+@if (showDetails) {
+  <div class="content">
+    <div class="diet">
+      @for (diet of recipe.diets; track diet.id; let last = $last) {
+          @if (!last) {
+            <span>{{diet.name}} > </span>
+          }
+          @else {
+            <span>{{diet.name}}</span>
+          }
+      }
+    </div>
+    <h1 class="recipe-name">{{recipe.name}}</h1>
+    <div class="recipe-info">
+     <hlm-icon class="icon-clock" size='sm' name="lucideClock"/>
+     <span>{{recipe.preparationTime}} min</span>
+    </div>
+    <div class="recipe-info">{{recipe.author.firstName + " " + recipe.author.lastName}}</div>
   </div>
-  <h1 class="recipe-name">{{recipe.name}}</h1>
-  <div class="recipe-info">
-   <hlm-icon class="icon-clock" size='sm' name="lucideClock"/>
-   <span>{{recipe.preparationTime}} min</span>
-  </div>
-  <div class="recipe-info">{{recipe.author.firstName + " " + recipe.author.lastName}}</div>
-</div>
+}
 

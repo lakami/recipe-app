@@ -1,3 +1,16 @@
+<div class="card-list-container">
+  <div class="card-list">
+      @if (recipes$ | async; as recipes) {
+          @for (recipe of recipes; track recipe.id) {
+            <app-recipe-card-item
+              [recipe]="recipe" [routerLink]="'/recipe/' + recipe.id"
+              [showDetails]="false"
+            >
+            </app-recipe-card-item>
+          }
+      }
+  </div>
+</div>
 <app-search></app-search>
 
 

@@ -1,6 +1,5 @@
 import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {RouterLink, RouterOutlet} from "@angular/router";
-import {ExampleService} from "../shared/services/example.service";
 import {BehaviorSubject} from "rxjs";
 import {AsyncPipe, CommonModule} from "@angular/common";
 import {RecipeService} from "../shared/services/recipe.service";
@@ -29,13 +28,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   private recipes = new BehaviorSubject<RecipeGetModel[]>([]);
   recipes$ = this.recipes.asObservable();
 
-  constructor(private exampleService: ExampleService) {
-  }
-
   ngOnInit() {
-    this.recipeService.getRecipes("", "", "").subscribe({
-      next: (page) => {
-        this.recipes.next(page.content);
+    this.recipeService.getAllPromoted().subscribe({
+      next: (recipes) => {
+        this.recipes.next(recipes.slice(0, 4));
       },
       error: (error) => {
         console.error(error);
@@ -44,7 +40,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         console.log('complete');
       }
     })
-
   }
 
   ngOnDestroy() {
