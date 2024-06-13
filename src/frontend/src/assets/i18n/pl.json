@@ -133,7 +133,8 @@
   },
   "recipe-edit": {
     "title": "Edytuj przepis",
-    "subtitle": "Tutaj możesz edytować przepis.",
+    "subtitle-text": "Tutaj możesz edytować tekst przepisu.",
+    "subtitle-image": "Tutaj możesz zmienić zdjęcie potrawy.",
     "name": {
       "label": "Tytuł",
       "placeholder": "Wpisz tytuł przepisu"
@@ -167,7 +168,8 @@
     "image": {
       "label": "Zdjęcie potrawy"
     },
-    "save": "Zapisz"
+    "save": "Zapisz tekst",
+    "save-image": "Zapisz zdjęcie"
   },
   "admin-panel": {
     "title": "Panel administratora",

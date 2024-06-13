@@ -86,7 +86,7 @@ export class CommentComponent {
 
   editComment() {
       if (this.form.valid) {
-      this.recipeService.uppdateComment(this.comment.id, this.recipeId, this.form.value.comment).subscribe(() => {
+      this.recipeService.updateComment(this.comment.id, this.recipeId, this.form.value.comment).subscribe(() => {
         this.commentChanged.emit();
         this.isEditing.next(false);
       });

@@ -78,4 +78,4 @@ Projekt na inżynierkę
 - [x] Edytuj przepis użytkownika admin
 - [ ] zamiana zdjecia podczas edycji przepisu
 - [ ] komentarze link do autora
-- [ ] promowane strona główna
+- [ ] promowane przepisy strona główna

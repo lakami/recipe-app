@@ -161,10 +161,17 @@ export class RecipeService {
     return this.http.post<CommentGetModel>(`${environment.comment}/${recipeId}`, {content: content})
   }
 
-  uppdateComment(commentId: number, recipeId: number, content: string): Observable<CommentGetModel> {
+  updateComment(commentId: number, recipeId: number, content: string): Observable<CommentGetModel> {
     return this.http.put<CommentGetModel>(
       `${environment.comment}/${recipeId}/${commentId}`,
       {content: content}
     )
   }
+
+  updateImage(recipeId: number, image: File): Observable<any> {
+    const formImage = new FormData();
+    formImage.append('image', image);
+    return this.http.put<any>(`${environment.images}/${recipeId}`, formImage)
+  }
+
 }

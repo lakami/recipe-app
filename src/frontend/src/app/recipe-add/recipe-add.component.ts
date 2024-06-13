@@ -16,7 +16,7 @@ import {lucideChevronDown, lucideChevronUp, lucidePlus} from "@ng-icons/lucide";
 import {TranslationPipe} from "../shared/translation/translation.pipe";
 import {AsyncPipe} from "@angular/common";
 
-class ImageSnippet {
+export class ImageSnippet {
   constructor(public src: string, public file: File) {}
 }
 
@@ -74,7 +74,7 @@ export class RecipeAddComponent implements OnInit {
   dishes!: DishGetModel[];
   diets!: DietGetModel[];
   tags!: TagGetModel[];
-  selectedFile?: ImageSnippet;
+  selectedFile?: ImageSnippet; //definicja wybranego zdjęcia
 
   ngOnInit(): void {
     var formLoaded = new BehaviorSubject<boolean>(false);

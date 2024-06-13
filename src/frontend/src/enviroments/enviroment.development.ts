@@ -15,4 +15,5 @@ export const environment = {
   promoted: base('/promoted'),
   comment: base('/comment'),
   user: base('/user'),
+  images: base('/images'),
 }

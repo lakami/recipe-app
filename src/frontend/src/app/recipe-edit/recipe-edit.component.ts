@@ -3,7 +3,7 @@ import {BehaviorSubject, filter, map, zip} from "rxjs";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {RecipeService} from "../shared/services/recipe.service";
 import {AsyncPipe} from "@angular/common";
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {TranslationDirective} from "../shared/translation/translation.directive";
 import {HlmIconComponent} from "@spartan-ng/ui-icon-helm";
 import {HlmButtonDirective} from "@spartan-ng/ui-button-helm";
@@ -17,6 +17,9 @@ import {BrnSelectImports} from "@spartan-ng/ui-select-brain";
 import {TranslationPipe} from "../shared/translation/translation.pipe";
 import {HlmSelectImports} from "@spartan-ng/ui-select-helm";
 import {HlmInputDirective} from "@spartan-ng/ui-input-helm";
+import {ImageSnippet} from "../recipe-add/recipe-add.component";
+import {environment} from "../../enviroments/enviroment.development";
+
 
 @Component({
   selector: 'app-recipe-edit',
@@ -33,6 +36,7 @@ import {HlmInputDirective} from "@spartan-ng/ui-input-helm";
     AsyncPipe,
     HlmButtonDirective,
     [HlmIconComponent],
+    FormsModule,
   ],
   providers: [provideIcons({lucideChevronUp, lucideChevronDown, lucidePlus, lucideSave})],
   templateUrl: './recipe-edit.component.html',
@@ -47,6 +51,9 @@ export class RecipeEditComponent implements OnInit {
   dishes!: DishGetModel[];
   diets!: DietGetModel[];
   tags!: TagGetModel[];
+  selectedFile: ImageSnippet | null = null; //definicja wybranego zdjęcia
+  originImageUrl?: string;
+  readonly imageBasePath: string = environment.images;
 
   form: FormGroup = new FormGroup({
     name: new FormControl('', {
@@ -115,26 +122,27 @@ export class RecipeEditComponent implements OnInit {
 
     this.recipeId$.subscribe(recipeId => {
       console.log(recipeId);
-      this.recipeService.getRecipeById(recipeId).subscribe(data => {
-        if (!(data.author.profileUrl === this.accountService.trackCurrentAccount()()?.profileUrl
+      this.recipeService.getRecipeById(recipeId).subscribe(recipe => {
+        if (!(recipe.author.profileUrl === this.accountService.trackCurrentAccount()()?.profileUrl
           || this.accountService.hasAnyAuthority('ROLE_ADMIN'))) {
           this.router.navigate(['/recipe', recipeId]); //przekierowanie na stronę przepisu
         }
         //wczytanie danych do formularza
+        this.originImageUrl = recipe.imageUrl;
         formLoaded.pipe(filter(loaded => loaded)).subscribe(() => {
           this.form.patchValue({
-            name: data.name,
-            description: data.description,
-            preparationTime: data.preparationTime,
-            servings: data.servings,
-            dishes: data.dishes.map(dish => dish.name),
-            diets: data.diets.map(diet => diet.name),
-            tags: data.tags.map(tag => tag.name),
-            steps: data.steps
+            name: recipe.name,
+            description: recipe.description,
+            preparationTime: recipe.preparationTime,
+            servings: recipe.servings,
+            dishes: recipe.dishes.map(dish => dish.name),
+            diets: recipe.diets.map(diet => diet.name),
+            tags: recipe.tags.map(tag => tag.name),
+            steps: recipe.steps
               .sort((s1, s2) => s1.number-s2.number)
               .map(step => step.description)
               .join('\n'),
-            ingredients: data.ingredients.map(ingredient => ingredient.name).join('\n')
+            ingredients: recipe.ingredients.map(ingredient => ingredient.name).join('\n')
           });
         });
       });
@@ -180,4 +188,33 @@ export class RecipeEditComponent implements OnInit {
       }
     });
   }
+
+  processFile(imageInput: any) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+    reader.addEventListener('load', (event: any) => {
+      this.selectedFile = new ImageSnippet(event.target.result, file);
+      console.log(this.selectedFile);
+    })
+    reader.readAsDataURL(file);
+  }
+
+  updateImage() {
+    if (this.selectedFile) {
+      this.recipeService.updateImage(this.route.snapshot.params['recipeId'], this.selectedFile.file).subscribe({
+        next: () => {
+          this.recipeService.getRecipeById(this.route.snapshot.params['recipeId']).subscribe(recipe => {
+            if (!(recipe.author.profileUrl === this.accountService.trackCurrentAccount()()?.profileUrl
+              || this.accountService.hasAnyAuthority('ROLE_ADMIN'))) {
+              this.router.navigate(['/recipe', recipe.id]); //przekierowanie na stronę przepisu
+            }
+            this.selectedFile = null; //czyszczenie zdjęcia
+            //wczytanie danych do formularza
+            this.originImageUrl = recipe.imageUrl;
+            });
+        }
+      });
+    }
+  }
+
 }

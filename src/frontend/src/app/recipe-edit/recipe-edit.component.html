@@ -3,10 +3,10 @@
 class="flex flex-col"
 (ngSubmit)="submit()"
 >
-  <div class="flex flex-col gap-4 xl:px-0 px-3">
-        <div class="flex flex-col md:items-center items-start">
+  <div class="recipe-edit-form-container">
+        <div class="recipe-edit-title-subtitle-container">
           <label class="recipe-edit-title" translate="recipe-edit.title"></label>
-          <label class="recipe-edit-subtitle" translate="recipe-edit.subtitle"></label>
+          <label class="recipe-edit-subtitle" translate="recipe-edit.subtitle-text"></label>
         </div>
 
       <div class="recipe-edit-component">
@@ -64,7 +64,7 @@ class="flex flex-col"
           <label for="steps" translate="recipe-edit.steps.label" class="recipe-edit-component-label"></label>
 
           <textarea
-            class="min-h-20 recipe-edit-component-input"
+            class="min-h-32 recipe-edit-component-input"
             id="steps"
             hlmInput
             [placeholder]="'recipe-edit.steps.placeholder' | translation | async"
@@ -147,12 +147,46 @@ class="flex flex-col"
                </brn-select>
             </div>
 
-            <div class="flex justify-center pb-4">
+            <div class="recipe-edit-btn-save-container">
                   <button hlmBtn variant='ghost' type="submit">
                           <hlm-icon size="sm" class="mr-2" name="lucideSave" strokeWidth="2"/>
                           <span translate="recipe-edit.save" class="recipe-edit-btn-save"></span>
                   </button>
             </div>
   </div>
+</form>
 
+<form (ngSubmit)="updateImage()">
+  <div class="recipe-edit-form-container">
+    <div class="recipe-edit-title-subtitle-container pt-4">
+      <label class="recipe-edit-subtitle" translate="recipe-edit.subtitle-image"></label>
+    </div>
+
+    <div class="recipe-edit-component">
+      <label for="image" translate="recipe-edit.image.label" class="recipe-edit-component-label"></label>
+
+      <div class="recipe-edit-component-input">
+          <input
+                #imageInput
+                hlmInput
+                id="image"
+                type="file"
+                accept="image/*"
+                (change)="processFile(imageInput)"/>
+
+          @if (selectedFile) {
+            <img [src]="selectedFile.src" class="recipe-edit-image"/>
+          } @else if (originImageUrl) {
+            <img [src]="imageBasePath + '/' + originImageUrl" class="recipe-edit-image"/>
+          }
+
+         <div class="recipe-edit-btn-save-container">
+                <button hlmBtn variant='ghost' type="submit">
+                        <hlm-icon size="sm" class="mr-2" name="lucideSave" strokeWidth="2"/>
+                        <span translate="recipe-edit.save-image" class="recipe-edit-btn-save"></span>
+                </button>
+          </div>
+      </div>
+    </div>
+  </div>
 </form>
