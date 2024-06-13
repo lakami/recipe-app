@@ -33,3 +33,7 @@
   @apply flex gap-1 items-center text-sm text-foreground/[.65] font-semibold underline-offset-[.1875rem] antialiased cursor-pointer decoration-1 underline pb-1.5
   hover:underline hover:text-foreground
 }
+
+.comment-section-comment-author-and-date-container {
+  @apply flex flex-col gap-1
+}

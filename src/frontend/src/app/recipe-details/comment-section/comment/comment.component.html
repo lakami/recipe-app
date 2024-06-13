@@ -1,5 +1,5 @@
 <div class="flex justify-between">
-  <div class="flex flex-col gap-1">
+  <div class="comment-section-comment-author-and-date-container">
         <p class="comment-section-comment-created-by">
           <span class="comment-section-comment-author"
             [routerLink]="'/recipe-author/' + comment.createdBy.profileUrl"
@@ -14,7 +14,7 @@
   </button>
 </div>
 @if (comment.lastModifiedBy) {
-  <div class="flex flex-col gap-1">
+  <div class="comment-section-comment-author-and-date-container">
     <p class="comment-section-comment-last-created-by">
       <span translate="recipe-details.comment-section.comment.last-modified-by"></span>
       <span>{{comment.lastModifiedBy.firstName + " " + comment.lastModifiedBy.lastName}}</span>
