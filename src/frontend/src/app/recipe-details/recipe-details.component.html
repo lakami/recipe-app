@@ -1,7 +1,7 @@
 <div class="card-list-container">
   @if (recipe$ | async; as recipe) {
 
-  <div class="flex flex-row gap-x-2 md:justify-end justify-start">
+  <div class="flex flex-row gap-x-2 justify-end">
       @if (accountService.isAuthenticated()) {
         @if (isFavourite.getValue()) {
           <div class="btn-is-favourite-container">
