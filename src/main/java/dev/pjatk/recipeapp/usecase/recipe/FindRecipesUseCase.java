@@ -3,13 +3,13 @@ package dev.pjatk.recipeapp.usecase.recipe;
 import dev.pjatk.recipeapp.dto.response.RecipeDTO;
 import dev.pjatk.recipeapp.entity.recipe.Recipe;
 import dev.pjatk.recipeapp.repository.RecipeRepository;
+import jakarta.persistence.criteria.Predicate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,108 +19,79 @@ public class FindRecipesUseCase {
 
     private final RecipeRepository recipeRepository;
 
-    private static Specification<Recipe> tagsSpecification(List<String> tags) {
-        return (root, query, criteriaBuilder) -> root
-                .join("tags")
-                .get("name")
-                .in(tags);
-    }
-
-    private static Specification<Recipe> dishesSpecification(List<String> dishes) {
-        return (root, query, criteriaBuilder) -> root
-                .join("dishes")
-                .get("name")
-                .in(dishes);
-    }
-
-    private static Specification<Recipe> dietsSpecification(List<String> categories) {
-        return (root, query, criteriaBuilder) -> root
-                .join("categories")
-                .get("name")
-                .in(categories);
-    }
-
-    private static void setupTextSearchSpecification(String search,
-                                                     List<Specification<Recipe>> specifications) {
-        search = search.trim();
-        search = search.toLowerCase();
-        String[] tokens = search.split("\\s+");
-
-        List<Specification<Recipe>> textSpecifications = new LinkedList<>();
-        Arrays.stream(tokens)
-                .map(FindRecipesUseCase::nameSpecification)
-                .forEach(textSpecifications::add);
-
-        Arrays.stream(tokens)
-                .map(FindRecipesUseCase::descriptionSpecification)
-                .forEach(textSpecifications::add);
-
-        Arrays.stream(tokens)
-                .map(FindRecipesUseCase::ingredientsSpecification)
-                .forEach(textSpecifications::add);
-
-        Arrays.stream(tokens)
-                .map(FindRecipesUseCase::stepsSpecification)
-                .forEach(textSpecifications::add);
-
-        textSpecifications.stream()
-                .reduce(Specification::or)
-                .ifPresent(specifications::add);
-    }
-
-    private static Specification<Recipe> stepsSpecification(String token) {
-        return (root, query, criteriaBuilder) -> criteriaBuilder.like(
-                criteriaBuilder.lower(root.join("steps").get("description")),
-                "%" + token + "%");
-    }
-
-    private static Specification<Recipe> ingredientsSpecification(String token) {
-        return (root, query, criteriaBuilder) -> criteriaBuilder.like(
-                criteriaBuilder.lower(root.join("ingredients").get("name")),
-                "%" + token + "%");
-    }
-
-    private static Specification<Recipe> descriptionSpecification(String token) {
-        return (root, query, criteriaBuilder) -> criteriaBuilder.like(
-                criteriaBuilder.lower(root.get("description")),
-                "%" + token + "%");
-    }
-
-    private static Specification<Recipe> nameSpecification(String token) {
-        return (root, query, criteriaBuilder) -> criteriaBuilder.like(
-                criteriaBuilder.lower(root.get("name")),
-                "%" + token + "%");
-    }
-
     public Page<RecipeDTO> execute(Pageable pageable,
                                    List<String> categories,
                                    List<String> dishes,
                                    List<String> tags,
                                    String search) {
         List<Specification<Recipe>> specifications = new LinkedList<>();
+        Specification<Recipe> specification = Specification.where(null);
         if (categories != null && !categories.isEmpty()) {
-            var spec = dietsSpecification(categories);
-            specifications.add(spec);
+            specification = specification.and(Specs.byDiets(categories));
         }
 
         if (dishes != null && !dishes.isEmpty()) {
-            var spec = dishesSpecification(dishes);
-            specifications.add(spec);
+            specification = specification.and(Specs.byDishes(dishes));
         }
 
         if (tags != null && !tags.isEmpty()) {
-            var spec = tagsSpecification(tags);
-            specifications.add(spec);
+            specification = specification.and(Specs.byTags(tags));
         }
 
         if (search != null && !search.isBlank()) {
-            setupTextSearchSpecification(search, specifications);
+            var tokens = List.of(search.toLowerCase().split("\\s+"));
+            var spec = Specs.byNames(tokens)
+                    .or(Specs.byDescriptions(tokens));
+            specification = specification.and(spec);
         }
 
-        var spec = Specification.allOf(specifications);
-
         return recipeRepository
-                .findAll(spec, pageable)
+                .findAll(specification, pageable)
                 .map(RecipeDTO::new);
+    }
+
+    interface Specs {
+        static Specification<Recipe> byTags(List<String> tags) {
+            return (root, query, criteriaBuilder) -> root
+                    .join("tags")
+                    .get("name")
+                    .in(tags);
+        }
+
+        static Specification<Recipe> byDishes(List<String> dishes) {
+            return (root, query, criteriaBuilder) -> root
+                    .join("dishes")
+                    .get("name")
+                    .in(dishes);
+        }
+
+        static Specification<Recipe> byDiets(List<String> categories) {
+            return (root, query, criteriaBuilder) -> root
+                    .join("categories")
+                    .get("name")
+                    .in(categories);
+        }
+
+        static Specification<Recipe> byNames(List<String> tokens) {
+            return (root, query, criteriaBuilder) -> {
+                Predicate[] predicates = tokens.stream()
+                        .map(token -> criteriaBuilder.like(
+                                criteriaBuilder.lower(root.get("name")),
+                                "%" + token + "%"))
+                        .toArray(Predicate[]::new);
+                return criteriaBuilder.or(predicates);
+            };
+        }
+
+        static Specification<Recipe> byDescriptions(List<String> tokens) {
+            return (root, query, criteriaBuilder) -> {
+                Predicate[] predicates = tokens.stream()
+                        .map(token -> criteriaBuilder.like(
+                                criteriaBuilder.lower(root.get("description")),
+                                "%" + token + "%"))
+                        .toArray(Predicate[]::new);
+                return criteriaBuilder.or(predicates);
+            };
+        }
     }
 }
