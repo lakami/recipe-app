@@ -10,7 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -24,7 +23,6 @@ public class FindRecipesUseCase {
                                    List<String> dishes,
                                    List<String> tags,
                                    String search) {
-        List<Specification<Recipe>> specifications = new LinkedList<>();
         Specification<Recipe> specification = Specification.where(null);
         if (categories != null && !categories.isEmpty()) {
             specification = specification.and(Specs.byDiets(categories));
