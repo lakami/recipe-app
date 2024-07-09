@@ -32,7 +32,6 @@ Projekt na inżynierkę
 - [x] Komentarze
 - [ ] Oceny
 - [x] Pobieranie informacji o użytkowniku pod profil użytkownika
-- [ ] 
 
 ## Frontend
 
@@ -41,7 +40,7 @@ Projekt na inżynierkę
   - [x] Wyświetlanie przepisów
 - [x] Wyświetlanie przepisu po id
 - [x] Dodawanie przepisu
-- [ ] Edycja przepisu
+- [x] Edycja przepisu
 - [x] Logowanie
 - [x] Wylogowanie
 - [x] Rejestracja
@@ -62,20 +61,4 @@ Projekt na inżynierkę
 - [ ] Footer
 - [x] Strona o nas
 - [x] Strona error
-- [ ] 4 Paging !!!
-- 
-- [x] Dodaj przepis do ulubionych
-- [x] 2 Podglądaj przepisy dodane do ulubionych
-- [x] 2 Podglądaj przepisy promowane
-- [x] 3 Edytuj przepis swojego autorstwa
-- [x] Dodaj komentarz
-- [x] Edytuj swój komentarz
-- [x] Usuń swój komentarz
-- [x] Przeglądaj przepisy danego autora
-- [x] 1 Modyfikuj promowane przepisy admin 
-- [x] Edytuj komentarz użytkownika admin
-- [x] Usuń komentarz użytkownika admin
-- [x] Edytuj przepis użytkownika admin
-- [x] zamiana zdjecia podczas edycji przepisu
-- [x] komentarze link do autora
-- [ ] promowane przepisy strona główna
+- [ ] 4 Paging
